@@ -1,0 +1,20 @@
+body {
+    background-color: lightblue;
+    background-image: url("hd-wallpaper-1074131_1920.jpg");
+}
+
+img {
+    padding: 40px;
+    width: 350px;
+    float: left;
+    margin-right: 10px;
+}
+
+h2 {
+    color: navy;
+    text-align: center;
+}
+p {
+    padding: 40px;
+    text-align: left;
+}
