@@ -1,5 +1,4 @@
 body {
-    background-color: lightblue;
     background-image: url("hd-wallpaper-1074131_1920.jpg");
 }
 
@@ -17,6 +16,12 @@ h2 {
 p {
     padding: 40px;
     text-align: left;
+}
+.p1{
+    padding: 40px;
+    text-align: left;
+    font-family: Verdana;
+    font-size:150%;
 }
 .button {
     border: none;
