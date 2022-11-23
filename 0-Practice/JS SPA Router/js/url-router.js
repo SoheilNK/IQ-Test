@@ -48,3 +48,8 @@ const urlLocationHandler = async () => {
 
 
 };
+
+window.onpopstate = urlLocationHandler;
+window.route = urlRoute;
+
+urlLocationHandler();
