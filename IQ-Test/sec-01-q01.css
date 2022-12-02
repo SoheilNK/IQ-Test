@@ -2,26 +2,86 @@
     
     background-image: url("hd-wallpaper-1074131_1920.jpg");
     display:flex;
-    border: 5px solid #224add;
-    flex-direction: column;
-    justify-content:flex-start;
+    border: 5px solid #0c9265;
+    /* flex-direction: column; */
+    justify-content:center;
+    /* align-items: center; */
+    /* height: 680px; */
+    gap: 30px;
     align-items: center;
-    
-    height: 680px;
+    flex-wrap: wrap;
+    height: 70vh;
+    min-height: 70vh;
 }
 
 .container div {
     
-    border: 2px solid #7831b5;
-    flex-basis: 50px;
+    /* border: 2px solid #7831b5; */
+    /* flex-basis: 200px; */
+    
 }
 .container div:nth-of-type(1) {
-    flex-basis: 250px;
+    flex-grow: 0;
+    flex-basis: 100vw;
+    text-align: center;
 }
 .container div:nth-of-type(2) {
-    flex-grow: 1;
+    flex-grow: 2;
+    flex-basis: 200px;
+    text-align:center;
 }
 .container div:nth-of-type(3) {
-    flex-grow: 3;}
+    flex-grow: 3;
+    flex-basis: 200px;
+    text-align: center;
+}
+.container div:nth-of-type(4) {
+    flex-grow: 0;
+    flex-basis: 200px;
+    text-align: center;
+}
 
-;
+body {
+    padding: 0;
+}
+
+nav {
+    padding: 12px;
+    border-bottom: 5px dotted hsl(0deg 0% 0% / 0.2);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight:bolder;
+    
+}
+
+ul {
+    list-style-type: none;
+    align-items: baseline;
+    padding: 0px;
+    margin: 0;
+}
+
+ul a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.logo a {
+    font-size: 1.125rem;
+}
+
+
+label {
+    font-weight: 500;
+}
+
+input {
+    display: block;
+    width: 90%;
+    height: 2.5rem;
+    margin-top: 4px;
+}
+
+button {
+    height: 2.5rem;
+}
