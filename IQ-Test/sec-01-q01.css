@@ -1,8 +1,10 @@
+
 .container {
     
-    background-image: url("hd-wallpaper-1074131_1920.jpg");
+    /* background-image: url("hd-wallpaper-1074131_1920.jpg"); */
+    background-color: rgb(165, 193, 232);
     display:flex;
-    border: 5px solid #0c9265;
+    border:1rem groove #4b5bae;
     /* flex-direction: column; */
     justify-content:center;
     /* align-items: center; */
@@ -24,6 +26,8 @@
     flex-grow: 0;
     flex-basis: 100vw;
     text-align: center;
+    font-family: "Sofia", sans-serif;
+    font-size: 30px;
 }
 .container div:nth-of-type(2) {
     flex-grow: 2;
@@ -46,8 +50,7 @@ body {
 }
 
 nav {
-    padding: 12px;
-    border-bottom: 5px dotted hsl(0deg 0% 0% / 0.2);
+    padding: 15px;
     font-family: 'Courier New', Courier, monospace;
     font-weight:bolder;
     
@@ -67,7 +70,7 @@ ul a {
 }
 
 .logo a {
-    font-size: 1.125rem;
+    font-size: 0.875;
 }
 
 
