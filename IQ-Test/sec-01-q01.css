@@ -26,13 +26,16 @@
     flex-grow: 0;
     flex-basis: 100vw;
     text-align: center;
-    font-family: "Sofia", sans-serif;
+    font-family: "Diplomata SC", sans-serif;
     font-size: 30px;
+    color:rgb(136, 12, 64)
 }
 .container div:nth-of-type(2) {
     flex-grow: 2;
     flex-basis: 200px;
     text-align:center;
+    font-family: "Audiowide", sans-serif;
+    font-size: 30px;
 }
 .container div:nth-of-type(3) {
     flex-grow: 3;
@@ -42,6 +45,7 @@
 .container div:nth-of-type(4) {
     flex-grow: 0;
     flex-basis: 200px;
+    
     text-align: center;
 }
 
@@ -83,8 +87,24 @@ input {
     width: 90%;
     height: 2.5rem;
     margin-top: 4px;
+    font-family: 'Serif';
+    font-size: larger;
 }
 
 button {
-    height: 2.5rem;
+    text-shadow:blueviolet;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing:content-box;
+    background-color:coral;
+    margin: 0em;
+    padding: 10px 6px;
+    border-width: 10px;
+    border-style: outset;
+    border-color:bisque;
+    border-image: initial;
+    font-family: "Sofia", sans-serif;
+    font-size: 30px;
+    color: rgb(43, 12, 136)
 }
