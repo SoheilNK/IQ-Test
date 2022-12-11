@@ -1,63 +1,56 @@
 
 .container {
     
-    /* background-image: url("hd-wallpaper-1074131_1920.jpg"); */
     background-color: rgb(165, 193, 232);
     display:flex;
     border:1rem groove #4b5bae;
-    /* flex-direction: column; */
+    border-radius: 1rem;
+    flex-direction: column;
     justify-content:center;
     /* align-items: center; */
     /* height: 680px; */
     gap: 30px;
-    align-items: center;
-    flex-wrap: wrap;
+    align-items: left;
+    /* flex-wrap: wrap; */
     height: 70vh;
     min-height: 70vh;
+    max-width: 42.5rem;
 }
 
 .container div {
     
     /* border: 2px solid #7831b5; */
-    /* flex-basis: 200px; */
+    flex-basis: 200px;
     
 }
-.container div:nth-of-type(1) {
-    flex-grow: 0;
-    flex-basis: 100vw;
-    text-align: center;
+.container div:nth-of-type(1) { /*Section*/
+    align-content:   flex-start;
     font-family: "Diplomata SC", sans-serif;
-    font-size: 30px;
+    font-size: .25rem;
     color:rgb(136, 12, 64)
 }
-.container div:nth-of-type(2) {
-    flex-grow: 2;
-    flex-basis: 200px;
-    text-align:center;
-    font-family: "Audiowide", sans-serif;
-    font-size: 30px;
+.container div:nth-of-type(2) { /*Question*/
+    /* text-align:center; */
+    /*Title*/
+    font-size: 1.5rem;
+    color:black
 }
-.container div:nth-of-type(3) {
-    flex-grow: 3;
-    flex-basis: 200px;
+.container div:nth-of-type(3) { /*Answer*/
     text-align: center;
 }
-.container div:nth-of-type(4) {
+.container div:nth-of-type(4) { /*Submit*/
     flex-grow: 0;
     flex-basis: 200px;
     
     text-align: center;
 }
 
-body {
-    padding: 0;
-}
 
 nav {
     padding: 15px;
     font-family: 'Courier New', Courier, monospace;
     font-weight:bolder;
-    
+    max-width: 42.5rem;
 }
 
 ul {
@@ -85,26 +78,24 @@ label {
 input {
     display: block;
     width: 90%;
-    height: 2.5rem;
+    height: 1.5rem;
     margin-top: 4px;
     font-family: 'Serif';
     font-size: larger;
+    border-radius: 0.75rem;
+    border: 3px solid rgb(136, 12, 64);
 }
 
 button {
-    text-shadow:blueviolet;
     text-align: center;
-    align-items: flex-start;
-    cursor: default;
-    box-sizing:content-box;
-    background-color:coral;
-    margin: 0em;
+    background-color:rgb(43, 12, 136);
+    margin: 2rem;
     padding: 10px 6px;
     border-width: 10px;
     border-style: outset;
+    border-radius: 2rem;
     border-color:bisque;
-    border-image: initial;
     font-family: "Sofia", sans-serif;
-    font-size: 30px;
-    color: rgb(43, 12, 136)
+    font-size: 2rem;
+    color:  bisque
 }
