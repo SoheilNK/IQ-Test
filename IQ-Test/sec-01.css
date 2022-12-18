@@ -1,7 +1,7 @@
 
 .container {
     
-    background-color: rgb(165, 193, 232);
+    background-color: rgb(241, 234, 255);
     display:flex;
     border:1rem groove #4b5bae;
     border-radius: 1rem;
@@ -62,7 +62,7 @@ ul a {
     font-size: 0.875rem;
 }
 
-.logo a {
+.home a {
     font-size: 0.875;
 }
 
@@ -93,5 +93,32 @@ button {
     border-color:bisque;
     font-family: "Sofia", sans-serif;
     font-size: 2rem;
-    color:  bisque
+    color:  bisque;
+}
+button:hover {
+    text-align: center;
+    background-color: bisque;
+    margin: 2rem;
+    padding: 10px 6px;
+    border-width: 10px;
+    border-style: outset;
+    border-radius: 2rem;
+    border-color: rgb(43, 12, 136);
+    font-family: "Sofia", sans-serif;
+    font-size: 2rem;
+    color: rgb(43, 12, 136);
+}
+
+button:disabled {
+    text-align: center;
+    background-color: gray;
+    margin: 2rem;
+    padding: 10px 6px;
+    border-width: 10px;
+    border-style: outset;
+    border-radius: 2rem;
+    border-color: rgb(179, 179, 179);
+    font-family: "Sofia", sans-serif;
+    font-size: 2rem;
+    color: rgb(224, 222, 222);
 }

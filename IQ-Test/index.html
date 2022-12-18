@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>IQ Test Section 01</title>
-    <link rel="stylesheet" href="sec-01-q01.css">
+    <link rel="stylesheet" href="index.css">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family='Diplomata SC' | 'Caveat'"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
-    <link href="sec-01-q01.js">
+
 <body>
     <style>
         ul {
             display: flex;
             gap: 12px;
         }
-    
-        li.logo {
+
+        li.home {
             margin-right: auto;
         }
     </style>
-    
+
     <nav>
         <ul>
-            <li class="logo">
-                <a href="/intro.html">
+            <li class="home">
+                <a href="/index.html">
                     Home
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="/about.html">
                     About
                 </a>
             </li>
@@ -40,19 +41,30 @@
             </li>
         </ul>
     </nav>
-    
-    
+
+
     <div class="container">
-        <div><h1>IQ Test / Section 01</h1>
-            </div>
-        <div><p style="font-size: small;">Question 1:</p>How old are you?</div>
         <div>
-            <input type="text" placeholder="Enter your answer here" name="q01" id="q01" onchange="checkinput()"">
-            <p id="alert" style="color: red; text-align: center;"></p>
+            <h1>IQ Test / Home</h1>
         </div>
-        <div><button type="button" id="button1" disabled ">Submit</button></div>
+        <div>
+            <p>Please fill the form below to start the test.</p>
+        </div>
+        <div>
+            <form onSubmit="return start()">
+                <label for="fname">First name:(optional)</label><br>
+                <input type="text" id="fname" name="fname" ><br>
+                <label for="lname">Last name:(optional)</label><br>
+                <input type="text" id="lname" name="lname" ><br>
+                <label for="lname">Age:(required)</label><br>
+                <input type="number" id="age" name="age" required><br><br>
+                <input style="background-color: rgb(236, 187, 187); height: 2.5rem; width: 5rem;" type="submit" value="Start">
+            </form>
+        </div>
+        
     </div>
 </body>
 <script>localStorage.setItem("score", JSON.stringify(0))</script>
-<script src="sec-01-q01.js"></script>
+<script src="app.js"></script>
+
 </html>

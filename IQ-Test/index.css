@@ -1,0 +1,115 @@
+
+.container {
+    
+    background-color: rgb(224, 224, 224);
+    display:flex;
+    border:1rem groove #4b5bae;
+    border-radius: 1rem;
+    flex-direction: column;
+    justify-content:center;
+    /* height: 680px; */
+    gap: 30px;
+    height: 70vh;
+    max-width: 42.5rem;
+}
+
+.container div {
+    
+    /* border: 2px solid #7831b5; */
+    flex-basis: 200px;
+}
+.container div:nth-of-type(1) { /*Section*/
+    margin: 0rem;
+    align-content:   flex-start;
+    font-family: "Diplomata SC", sans-serif;
+    font-size: .25rem;
+    color:rgb(136, 12, 64)
+}
+.container div:nth-of-type(2) { /*Question*/
+    text-align:center;
+    font-size: 1.5rem;
+    color:black
+}
+.container div:nth-of-type(3) { /*form*/
+    align-self: center;
+    margin-bottom:2rem;
+}
+
+
+
+
+nav {
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight:bolder;
+    max-width: 42.5rem;
+}
+
+ul {
+    list-style-type: none;
+    align-items: baseline;
+    padding: 0px;
+    margin: 0;
+}
+
+ul a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+label {
+    font-weight: 500;
+}
+
+input {
+    display: block;
+    align-self: center;
+    height: 1.5rem;
+    margin-top: 4px;
+    font-family: 'Serif';
+    font-size: larger;
+    border-radius: 0.75rem;
+    border: 3px solid rgb(136, 12, 64);
+}
+
+button {
+    text-align: center;
+    background-color:rgb(43, 12, 136);
+    margin: 2rem;
+    padding: 10px 6px;
+    border-width: 10px;
+    border-style: outset;
+    border-radius: 2rem;
+    border-color:bisque;
+    font-family: "Sofia", sans-serif;
+    font-size: 2rem;
+    color:  bisque;
+}
+button:hover {
+    text-align: center;
+    background-color: bisque;
+    margin: 2rem;
+    padding: 10px 6px;
+    border-width: 10px;
+    border-style: outset;
+    border-radius: 2rem;
+    border-color: rgb(43, 12, 136);
+    font-family: "Sofia", sans-serif;
+    font-size: 2rem;
+    color: rgb(43, 12, 136);
+}
+
+button:disabled {
+    text-align: center;
+    background-color: gray;
+    margin: 2rem;
+    padding: 10px 6px;
+    border-width: 10px;
+    border-style: outset;
+    border-radius: 2rem;
+    border-color: rgb(179, 179, 179);
+    font-family: "Sofia", sans-serif;
+    font-size: 2rem;
+    color: rgb(224, 222, 222);
+}

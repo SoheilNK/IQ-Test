@@ -8,10 +8,12 @@ function checkinput() {
         text = "Enter a positive number";
         points = points - 1;
         localStorage.setItem("score", JSON.stringify(points));
+        document.getElementById("button1").disabled = true;
     } else {
         text = "Input OK";
         points = points + 1;
         localStorage.setItem("score", JSON.stringify(points));
+        document.getElementById("button1").disabled = false;
     }
   document.getElementById("alert").innerHTML = text + "  " + points;
 }
