@@ -62,10 +62,9 @@ label {
     font-weight: 500;
 }
 
-input {
+input{
     display: block;
     align-self: center;
-    height: 1.5rem;
     margin-top: 4px;
     font-family: 'Serif';
     font-size: larger;
@@ -73,7 +72,7 @@ input {
     border: 3px solid rgb(136, 12, 64);
 }
 
-button {
+/* button {
     text-align: center;
     background-color:rgb(43, 12, 136);
     margin: 2rem;
@@ -98,9 +97,35 @@ button:hover {
     font-family: "Sofia", sans-serif;
     font-size: 2rem;
     color: rgb(43, 12, 136);
+} */
+
+input[type=submit] {
+    border: none;
+    color: white;
+    padding: 1rem;
+    text-align:center;
+    align-content: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-family: "Sofia", sans-serif;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+
 }
 
-button:disabled {
+.button1 {
+    background-color: #544caf;
+    border: 2px solid black;
+}
+
+.button1:hover {
+    background-color: white;
+    color: #544caf;
+}
+
+/* button:disabled {
     text-align: center;
     background-color: gray;
     margin: 2rem;
@@ -112,4 +137,4 @@ button:disabled {
     font-family: "Sofia", sans-serif;
     font-size: 2rem;
     color: rgb(224, 222, 222);
-}
+} */

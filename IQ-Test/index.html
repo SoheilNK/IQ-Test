@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>IQ Test Section 01</title>
     <link rel="stylesheet" href="index.css">
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family='Diplomata SC' | 'Caveat'"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
 
 <body>
@@ -51,20 +50,19 @@
             <p>Please fill the form below to start the test.</p>
         </div>
         <div>
-            <form onSubmit="return start()">
+            <form onSubmit="return start()" action="/sec-01-q03.html">
                 <label for="fname">First name:(optional)</label><br>
                 <input type="text" id="fname" name="fname" ><br>
                 <label for="lname">Last name:(optional)</label><br>
                 <input type="text" id="lname" name="lname" ><br>
                 <label for="lname">Age:(required)</label><br>
                 <input type="number" id="age" name="age" required><br><br>
-                <input style="background-color: rgb(236, 187, 187); height: 2.5rem; width: 5rem;" type="submit" value="Start">
+                <input class="button1" type="submit" value="Start">
             </form>
         </div>
         
     </div>
 </body>
-<script>localStorage.setItem("score", JSON.stringify(0))</script>
 <script src="app.js"></script>
 
 </html>

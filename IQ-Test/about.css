@@ -1,5 +1,5 @@
 body {
-    background-image: url("hd-wallpaper-1074131_1920.jpg");
+    background-color: bisque;
 }
 
 img {
@@ -23,7 +23,7 @@ p {
     font-family: Verdana;
     font-size:150%;
 }
-.button {
+button {
     border: none;
     color: white;
     padding: 16px 32px;
@@ -39,12 +39,11 @@ p {
 }
 
 .button1 {
-    background-color: white;
-    color: black;
-    border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+    border: 2px solid black;
 }
 
 .button1:hover {
-    background-color: #4CAF50;
-    color: white;
+    background-color: white;
+    color: #4CAF50;
 }

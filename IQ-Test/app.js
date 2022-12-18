@@ -2,10 +2,13 @@ function start() {
     let fname1 = document.getElementById("fname").value;
     let lname1 = document.getElementById("lname").value;
     let age1 = document.getElementById("age").value;
-    localStorage.setItem("fname", JSON.stringify(fname1));
-    localStorage.setItem("lname", JSON.stringify(lname1));
+    localStorage.clear();
+    localStorage.setItem("fname", fname1);
+    localStorage.setItem("lname", lname1);
     localStorage.setItem("age", JSON.stringify(age1));
-    window.location.replace("sec-01-q03.html")
+    localStorage.setItem("score1", JSON.stringify(0)); //score for section 1
+    localStorage.setItem("score2", JSON.stringify(0)); //score for section 2
+    localStorage.setItem("score3", JSON.stringify(0)); //score for section 3
 }
 
 
