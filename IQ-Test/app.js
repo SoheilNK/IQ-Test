@@ -12,9 +12,37 @@ function start() {
 }
 
 
+
+
+// 
+
+// //button
+// const button = document.getElementById('btn');
+// button.addEventListener('click', timer);
+let myCounter;
+function timer(t) {
+    clearInterval(myCounter); //to stop counter if already counting.
+    t = t + 3; //5 seconds for reading the question
+  myCounter = setInterval(() => {
+    if (t <= 0) {
+      console.log('completed');
+      clearInterval(myCounter);
+
+    } else {
+      console.log(t--);
+      console.log('still going');
+      let time = document.getElementById('time');
+      time.innerHTML = t;
+    }
+
+  }, 1000);
+};
+
+//--------------------------Validate input-----------------------------
+// document.getElementById("qs1").addEventListener('change', checkinput())
 function checkinput() {
     // Get the value of the input field with id="numb"
-    let x = document.getElementById("q01").value;
+    let x = document.getElementById("qs").value;
     points = JSON.parse(localStorage.getItem("score"));
     // If x is Not a positive Number
     let text;
@@ -22,12 +50,16 @@ function checkinput() {
         text = "Enter a positive number";
         points = points - 1;
         localStorage.setItem("score", JSON.stringify(points));
-        document.getElementById("button1").disabled = true;
+        document.getElementById("btnNext").disabled = true;
     } else {
         text = "Input OK";
         points = points + 1;
         localStorage.setItem("score", JSON.stringify(points));
-        document.getElementById("button1").disabled = false;
+        document.getElementById("btnNext").disabled = false;
     }
   document.getElementById("alert").innerHTML = text + "  " + points;
+}
+
+function nextQ() {
+    document.getElementById("alert").innerHTML = "next question";
 }

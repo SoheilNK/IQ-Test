@@ -7,8 +7,7 @@
     <title>IQ Test Section 01</title>
     <link rel="stylesheet" href="sec-01.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
-    <link href="app.js">
-<body>
+<body onload = "timer(15)"> <!-- Question time -->
     <style>
         ul {
             display: flex;
@@ -22,36 +21,28 @@
     
     <nav>
         <ul>
-            <li class="home">
-                <a href="/intro.html">
-                    Home
-                </a>
-            </li>
             <li>
-                <a href="">
-                    About
-                </a>
+                Time left: 
             </li>
-            <li>
-                <a href="">
-                    Contact
-                </a>
-            </li>
+            <li id="time"></li>
         </ul>
     </nav>
     
     
     <div class="container">
-        <div><h1>IQ Test / Section 01</h1>
-            </div>
-        <div><p style="font-size: small;">Question 1:</p>How old are you?</div>
+        <div><h1>IQ Test / Section 01</h1></div>
+        <div id="question"><p></p></div>
         <div>
-            <input type="text" placeholder="Enter your answer here" name="q01" id="q01" onchange="checkinput()"">
+            <input type="text" placeholder="123..." name="qs" id="qs" onchange="checkinput()">
             <p id="alert" style="color: red; text-align: center;"></p>
         </div>
-        <div><button type="button" id="button1" disabled ">Submit</button></div>
+        <div><button  type="button" class="button1" id="btnNext" disabled onclick="nextQ()">Next</button></div>
     </div>
 </body>
-<script>localStorage.setItem("score", JSON.stringify(0))</script>
-<script src="sec-01-q01.js"></script>
+<script>
+    let qs = "How much is four dollars plus five dollars?" //Question is here
+    document.getElementById("question").innerHTML = qs;
+        // localStorage.setItem("score", JSON.stringify(0))
+</script>
+<script src="app.js"></script>
 </html>

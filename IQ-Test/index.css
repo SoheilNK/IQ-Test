@@ -3,7 +3,7 @@
     
     background-color: rgb(224, 224, 224);
     display:flex;
-    border:1rem groove #4b5bae;
+    border:1rem groove rgb(60, 162, 178);
     border-radius: 1rem;
     flex-direction: column;
     justify-content:center;
@@ -69,35 +69,9 @@ input{
     font-family: 'Serif';
     font-size: larger;
     border-radius: 0.75rem;
-    border: 3px solid rgb(136, 12, 64);
+    border: 3px solid rgb(179, 63, 28);
 }
 
-/* button {
-    text-align: center;
-    background-color:rgb(43, 12, 136);
-    margin: 2rem;
-    padding: 10px 6px;
-    border-width: 10px;
-    border-style: outset;
-    border-radius: 2rem;
-    border-color:bisque;
-    font-family: "Sofia", sans-serif;
-    font-size: 2rem;
-    color:  bisque;
-}
-button:hover {
-    text-align: center;
-    background-color: bisque;
-    margin: 2rem;
-    padding: 10px 6px;
-    border-width: 10px;
-    border-style: outset;
-    border-radius: 2rem;
-    border-color: rgb(43, 12, 136);
-    font-family: "Sofia", sans-serif;
-    font-size: 2rem;
-    color: rgb(43, 12, 136);
-} */
 
 input[type=submit] {
     border: none;
@@ -116,25 +90,12 @@ input[type=submit] {
 }
 
 .button1 {
-    background-color: #544caf;
+    background-color: rgb(60, 162, 178);
     border: 2px solid black;
 }
 
 .button1:hover {
     background-color: white;
-    color: #544caf;
+    color: rgb(60, 162, 178);
 }
 
-/* button:disabled {
-    text-align: center;
-    background-color: gray;
-    margin: 2rem;
-    padding: 10px 6px;
-    border-width: 10px;
-    border-style: outset;
-    border-radius: 2rem;
-    border-color: rgb(179, 179, 179);
-    font-family: "Sofia", sans-serif;
-    font-size: 2rem;
-    color: rgb(224, 222, 222);
-} */

@@ -83,42 +83,36 @@ input {
 }
 
 button {
+    border: none;
+    color: white;
+    padding: .5rem;
     text-align: center;
-    background-color:rgb(43, 12, 136);
-    margin: 2rem;
-    padding: 10px 6px;
-    border-width: 10px;
-    border-style: outset;
-    border-radius: 2rem;
-    border-color:bisque;
+    align-content: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
     font-family: "Sofia", sans-serif;
-    font-size: 2rem;
-    color:  bisque;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+
 }
-button:hover {
-    text-align: center;
-    background-color: bisque;
-    margin: 2rem;
-    padding: 10px 6px;
-    border-width: 10px;
-    border-style: outset;
-    border-radius: 2rem;
-    border-color: rgb(43, 12, 136);
-    font-family: "Sofia", sans-serif;
-    font-size: 2rem;
-    color: rgb(43, 12, 136);
+
+.button1 {
+    background-color: #544caf;
+    border: 2px solid white;
+}
+
+.button1:hover {
+    background-color: white;
+    color: #544caf;
+    border: 2px solid #544caf;
 }
 
 button:disabled {
-    text-align: center;
     background-color: gray;
-    margin: 2rem;
-    padding: 10px 6px;
-    border-width: 10px;
     border-style: outset;
-    border-radius: 2rem;
     border-color: rgb(179, 179, 179);
     font-family: "Sofia", sans-serif;
-    font-size: 2rem;
-    color: rgb(224, 222, 222);
+    color: rgb(179, 179, 179);
 }
