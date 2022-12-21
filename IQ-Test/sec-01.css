@@ -103,7 +103,7 @@ button {
     border: 2px solid white;
 }
 
-.button1:hover {
+.button1:hover:not(:disabled) {
     background-color: white;
     color: #544caf;
     border: 2px solid #544caf;
