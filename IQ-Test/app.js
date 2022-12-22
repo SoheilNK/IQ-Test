@@ -10,9 +10,10 @@ function start() {
     localStorage.setItem("score2", JSON.stringify(0)); //score for section 2
     localStorage.setItem("score3", JSON.stringify(0)); //score for section 3
 }
+let qTime;
 
 function section1() {
-  const sec1 = [
+  const sec1 = [  //section 1 data
     q1 = {
       questionText: "question1",
       questionTime: 15,
@@ -60,14 +61,18 @@ function section1() {
     },
   ];
 
-  for (let q = 1; q <= 14; q++) {
+  for (let q = 1; q <= sec1.length; q++) { //Loop through section1 questions
     let question = sec1[q - 1];
     qText = question.questionText;
     qTime = question.questionTime;
     qAnswer = question.questionAnswer;
-    console.log("q" + q + " = ", qText);
-    console.log("Time:        ", qTime);
-    console.log("Answer:      ", qAnswer);
+    // console.log("q" + q + " = ", qText);
+    // console.log("Time:        ", qTime);
+    // console.log("Answer:      ", qAnswer);
+    document.getElementById("question").innerHTML = qText;
+    timer(qTime);
+    
+
   } 
 };
 
@@ -79,11 +84,9 @@ function section1() {
 // button.addEventListener('click', timer);
 let myCounter;
 let t;
-let qTime;
 function timer(t) {
-  qTime = t; //Question time
     clearInterval(myCounter); //to stop counter if already counting.
-    t = t + 3; //5 seconds for reading the question
+    t = t + 3; //+3 seconds for reading the question
   myCounter = setInterval(() => {
     if (t <= 0) {
       console.log('completed');
