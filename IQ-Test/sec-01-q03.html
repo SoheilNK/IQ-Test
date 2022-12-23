@@ -7,7 +7,7 @@
     <title>IQ Test Section 01</title>
     <link rel="stylesheet" href="sec-01.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
-<body>
+<body onload="showQuestion(q)">
     <style>
         ul {
             display: flex;
@@ -33,7 +33,7 @@
         <div><h1>IQ Test / Section 01</h1></div>
         <div id="question"><p></p></div>
         <div>
-            <input type="text" placeholder="123..." name="answer" id="answer">
+            <input type="text" placeholder="123..." name="answer" id="answer" autofocus>
             <p id="alert" style="color: red; text-align: center;"></p>
         </div>
         <div><button  type="button" class="button1" id="btnNext" disabled="disabled">Next</button></div>
@@ -42,5 +42,5 @@
 </body>
 
 <script src="app.js"></script>
-<script>section1();</script>
+
 </html>
