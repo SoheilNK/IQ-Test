@@ -13,6 +13,7 @@ let myCounter;  //Counter for timer
 let t;          //Timer set time 
 let question;   //current question
 let totalSec1 = 0; //final points for section1
+let errCount = 0;  //counts number of consecutive errors
 
 elBtnNext.addEventListener('click', nextQ);
 elAnswer.addEventListener('keyup', handleAnswerChange);
@@ -90,6 +91,24 @@ const sec1 = [
   },
   q7 = {
       questionText: "question7",
+      questionTime: 30,
+      questionAnswer: 2,
+      rewardTime: 0,
+      answerTime: 0,
+      answerGet: 0,
+      answerPoint: 0
+  },
+  q8 = {
+    questionText: "question8",
+    questionTime: 30,
+    questionAnswer: 2,
+    rewardTime: 0,
+    answerTime: 0,
+    answerGet: 0,
+    answerPoint: 0
+  },
+  q9 = {
+      questionText: "question9",
       questionTime: 30,
       questionAnswer: 2,
       rewardTime: 0,
@@ -176,8 +195,10 @@ function nextQ() {
   let aPoint = 0;
   if (aGet == qAnswer) {
     if (aTime <= rTime) { aPoint = 2 } else { aPoint = 1 };
+    errCount = 0;
   } else {
-      aPoint = 0;
+    aPoint = 0;
+    errCount++;
   }
   console.log("Question # : ", q);
   console.log("Answer time: ", aTime);
@@ -202,12 +223,13 @@ function nextQ() {
       } else {
         q = sec1.length + 1; //stop the test for section 1
       }
-  } else if (q > 4 && sec1[q-1].answerPoint == 0 && sec1[q-2].answerPoint == 0 && sec1[q-3].answerPoint == 0 && sec1[q-4].answerPoint == 0) {
+  } else if (q > 4 && errCount == 4) {
       q = sec1.length + 1; //stop the test for section 1
   } else {
     q++;
   }
   
+  console.log("error = " + errCount);
 
   if (q > sec1.length) {
     document.getElementById("alert").innerHTML = "End of Section 1";
