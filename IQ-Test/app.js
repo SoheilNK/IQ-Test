@@ -46,7 +46,7 @@ const sec1 = [
   },
   q2 = {
     questionText: "question2",
-    questionTime: 5,
+    questionTime: 15,
     questionAnswer: 2,
     rewardTime: 0,
     answerTime: 0,
@@ -55,7 +55,7 @@ const sec1 = [
   },
   q3 = {
     questionText: "question3",
-    questionTime: 30,
+    questionTime: 15,
     questionAnswer: 2,
     rewardTime: 0,
     answerTime: 0,
@@ -64,7 +64,7 @@ const sec1 = [
   },
   q4 = {
     questionText: "question4",
-    questionTime: 30,
+    questionTime: 15,
     questionAnswer: 2,
     rewardTime: 0,
     answerTime: 0,
@@ -115,7 +115,47 @@ const sec1 = [
       answerTime: 0,
       answerGet: 0,
       answerPoint: 0
-    }
+  },q10 = {
+    questionText: "question10",
+    questionTime: 30,
+    questionAnswer: 2,
+    rewardTime: 0,
+    answerTime: 0,
+    answerGet: 0,
+    answerPoint: 0
+  },q11 = {
+    questionText: "question11",
+    questionTime: 60,
+    questionAnswer: 2,
+    rewardTime: 10,
+    answerTime: 0,
+    answerGet: 0,
+    answerPoint: 0
+  },q12 = {
+    questionText: "question12",
+    questionTime: 60,
+    questionAnswer: 2,
+    rewardTime: 10,
+    answerTime: 0,
+    answerGet: 0,
+    answerPoint: 0
+  },q13 = {
+    questionText: "question13",
+    questionTime: 60,
+    questionAnswer: 2,
+    rewardTime: 15,
+    answerTime: 0,
+    answerGet: 0,
+    answerPoint: 0
+  },q14 = {
+    questionText: "question14",
+    questionTime: 120,
+    questionAnswer: 2,
+    rewardTime: 20,
+    answerTime: 0,
+    answerGet: 0,
+    answerPoint: 0
+  }
   ];
 //------------------------ section 1 data -------End------------
 
@@ -194,7 +234,7 @@ function nextQ() {
   
   let aPoint = 0;
   if (aGet == qAnswer) {
-    if (aTime <= rTime) { aPoint = 2 } else { aPoint = 1 };
+    if (aTime <= rTime && rTime != 0) { aPoint = 2 } else { aPoint = 1 };
     errCount = 0;
   } else {
     aPoint = 0;
@@ -213,13 +253,14 @@ function nextQ() {
     if (question.answerPoint == 0 && sec1[q-2].answerPoint == 0) {
       q = 1;
     } else {
-      sec1[0].answerPoint == 1;
-      sec1[1].answerPoint == 1;
+      sec1[0].answerPoint = 1;
+      sec1[1].answerPoint = 1;
       q++;
     }
   } else if (q == 2) {
       if ((question.answerPoint + sec1[q - 2].answerPoint) > 0) {
         q = 5;
+        errCount = 0;
       } else {
         q = sec1.length + 1; //stop the test for section 1
       }
@@ -234,11 +275,20 @@ function nextQ() {
   if (q > sec1.length) {
     document.getElementById("alert").innerHTML = "End of Section 1";
     elBtnNext.setAttribute("disabled", "");
+    elAnswer.setAttribute("disabled", "");
+    let qqa = ""; //question data
+
     sec1.forEach(qq => {
-      console.log(qq);
+      Object.keys(qq).forEach(key => {
+        qqa = qqa + (key, qq[key]) + "  ";
+      });
       totalSec1 = totalSec1 + qq.answerPoint;
+      console.log(qqa);
+      qqa = "";
     });
+    
     console.log("Score for section 1 : " + totalSec1);
+    
   } else {
     elAnswer.value = '';
     aGet = '';
