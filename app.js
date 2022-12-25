@@ -176,7 +176,7 @@ function showQuestion(qn) {
 function timer(t) {
 
   clearInterval(myCounter); //to stop counter if already counting.
-  t = t + 3; //+3 seconds for reading the question
+  // t = t + 3; //+3 seconds for reading the question
   myCounter = setInterval(() => {
   if (t <= 0) {
     console.log('completed');
@@ -231,7 +231,7 @@ function nextQ() {
   
   let remTime = document.getElementById('time').innerHTML;
   aTime = qTime - remTime;
-  
+  //--------------------------evaluate answer-------------
   let aPoint = 0;
   if (aGet == qAnswer) {
     if (aTime <= rTime && rTime != 0) { aPoint = 2 } else { aPoint = 1 };
@@ -248,7 +248,7 @@ function nextQ() {
   question.answerGet = aGet;
   question.answerPoint = aPoint;
   question.answerTime = aTime;
-
+  //--------------------goto next question considering score-------------
   if (q == 4) {
     if (question.answerPoint == 0 && sec1[q-2].answerPoint == 0) {
       q = 1;
@@ -271,7 +271,7 @@ function nextQ() {
   }
   
   console.log("error = " + errCount);
-
+  //--------------------------finalize section 1-------------
   if (q > sec1.length) {
     document.getElementById("alert").innerHTML = "End of Section 1";
     elBtnNext.setAttribute("disabled", "");
@@ -288,7 +288,7 @@ function nextQ() {
     });
     
     console.log("Score for section 1 : " + totalSec1);
-    
+    window.location.href = "sec-02.html";
   } else {
     elAnswer.value = '';
     aGet = '';

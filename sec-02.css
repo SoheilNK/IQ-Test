@@ -1,0 +1,142 @@
+
+.container {
+    
+    background-color: rgb(247, 255, 234);
+    display:flex;
+    border:1rem groove #a7ae4b;
+    border-radius: 1rem;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    /* height: 680px; */
+    gap: 2rem;
+    height: 70vh;
+    min-height: 70vh;
+    max-width: 42.5rem;
+}
+
+.container div {
+    
+    border: 2px solid #7831b5;
+    flex-basis: 200px;
+}
+.container #section {
+    align-self:   flex-start;
+    font-family: "Diplomata SC", sans-serif;
+    font-size: 0.25rem;
+    color:rgb(136, 12, 64)
+}
+.container #pickup-area {
+    /* font-size: 1.5rem; */
+    background-color: #a7ae4b;
+    color:black
+}
+.container #drop-area { 
+    align-self: center;
+    background-color: #4bae81;
+
+}
+.container #btnNext {
+    flex-grow: 0;
+    flex-basis: 200px;
+    border: 10px solid #7831b5;
+}
+
+.pickup-area {
+   display: flex; 
+}
+.pickup-area div {
+    width: 30px;
+    height: 30px;
+    gap: 10px;
+}
+
+.drop-area {
+    display: flex;
+    flex-wrap: wrap;
+    height: 90px;
+    width: 90px;
+    align-content: space-between;
+}
+
+.drop-area div {
+    background-color: aqua;
+    width: 30px;
+    height: 30px;
+    gap: 10px;
+}
+
+nav {
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight:bolder;
+    max-width: 42.5rem;
+}
+
+ul {
+    list-style-type: none;
+    align-items: baseline;
+    padding: 0px;
+    margin: 0;
+}
+
+ul a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.home a {
+    font-size: 0.875;
+}
+
+
+label {
+    font-weight: 500;
+}
+
+input {
+    display: block;
+    align-self: center;
+    height: 1.5rem;
+    margin-top: 4px;
+    font-family: 'Serif';
+    font-size: larger;
+    border-radius: 0.75rem;
+    border: 3px solid rgb(136, 12, 64);
+}
+
+button {
+    border: none;
+    color: white;
+    padding: .5rem;
+    text-align: center;
+    align-content: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-family: "Sofia", sans-serif;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+
+}
+
+.button1 {
+    background-color: #544caf;
+    border: 2px solid white;
+}
+
+.button1:hover:not(:disabled) {
+    background-color: white;
+    color: #544caf;
+    border: 2px solid #544caf;
+}
+
+button:disabled {
+    background-color: gray;
+    border-style: outset;
+    border-color: rgb(179, 179, 179);
+    font-family: "Sofia", sans-serif;
+    color: rgb(179, 179, 179);
+}
