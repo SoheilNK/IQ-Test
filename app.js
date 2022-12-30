@@ -55,7 +55,7 @@ const sec1 = [
   },
   q3 = {
     questionText: "question3",
-    questionTime: 15,
+    questionTime: 5, // change time to 15
     questionAnswer: 2,
     rewardTime: 0,
     answerTime: 0,
@@ -181,7 +181,9 @@ function timer(t) {
   if (t <= 0) {
     console.log('completed');
     clearInterval(myCounter);
-    nextQ();
+    document.getElementById("alert").innerHTML = "Time is up, Please click next to go to the next question.";
+    elBtnNext.removeAttribute("disabled");
+    elAnswer.setAttribute("disabled", "");
   } else {
     t--;
     // console.log(t);
@@ -198,8 +200,6 @@ function timer(t) {
 
 // let answerV;
 
-elAnswer.addEventListener('keyup', handleAnswerChange);
-elAnswer.addEventListener('change', handleAnswerChange);
 
 const checkAnswerValidation = (aGet) => (!isNaN(aGet) && aGet !== 0);
 
@@ -212,9 +212,13 @@ function handleAnswerChange(event) {
   const hasValidAnswer = checkAnswerValidation(aGet);
   
   if (hasValidAnswer) {
-  elBtnNext.removeAttribute("disabled");
+    elBtnNext.removeAttribute("disabled");
+    document.getElementById("alert").innerHTML = "Please click next to go to the next question.";
+ 
   } else {
     elBtnNext.setAttribute("disabled", "");
+    document.getElementById("alert").innerHTML = "Please enter a number.";
+
   };
   if (event.keyCode === 13) {
     elBtnNext.click();
@@ -250,7 +254,7 @@ function nextQ() {
   question.answerTime = aTime;
   //--------------------goto next question considering score-------------
   if (q == 4) {
-    if (question.answerPoint == 0 && sec1[q-2].answerPoint == 0) {
+    if (question.answerPoint == 0 && sec1[2].answerPoint == 0) {
       q = 1;
     } else {
       sec1[0].answerPoint = 1;
@@ -258,7 +262,7 @@ function nextQ() {
       q++;
     }
   } else if (q == 2) {
-      if ((question.answerPoint + sec1[q - 2].answerPoint) > 0) {
+      if ((question.answerPoint + sec1[0].answerPoint) > 0) {
         q = 5;
         errCount = 0;
       } else {
@@ -293,6 +297,7 @@ function nextQ() {
     elAnswer.value = '';
     aGet = '';
     elBtnNext.setAttribute("disabled", "");
+    elAnswer.removeAttribute("disabled");
     elAnswer.focus();
     showQuestion(q);
   }
