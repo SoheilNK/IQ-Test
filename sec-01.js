@@ -9,8 +9,6 @@ let aTime;      //received answer time for a question
 let aGet;       //received answer for a question
 let aPoint;     //received point for a question
 let rTime;      //remaining time for a question
-let myCounter;  //Counter for timer
-let t;          //Timer set time 
 let question;   //current question
 let totalSec1 = 0; //final points for section1
 let errCount = 0;  //counts number of consecutive errors
@@ -55,7 +53,7 @@ const sec1 = [
   },
   q3 = {
     questionText: "question3",
-    questionTime: 5, // change time to 15
+    questionTime: 15,
     questionAnswer: 2,
     rewardTime: 0,
     answerTime: 0,
@@ -173,32 +171,8 @@ function showQuestion(qn) {
   console.log("Answer:          ", qAnswer);
 }
 
-function timer(t) {
-
-  clearInterval(myCounter); //to stop counter if already counting.
-  // t = t + 3; //+3 seconds for reading the question
-  myCounter = setInterval(() => {
-  if (t <= 0) {
-    console.log('completed');
-    clearInterval(myCounter);
-    document.getElementById("alert").innerHTML = "Time is up, Please click next to go to the next question.";
-    elBtnNext.removeAttribute("disabled");
-    elAnswer.setAttribute("disabled", "");
-  } else {
-    t--;
-    // console.log(t);
-    // console.log('still going');
-    let time = document.getElementById('time');
-    time.innerHTML = t;
-  }
-  }, 1000);
-}
 
 //--------------------------Validate input-----------Start-------
-
-// const answer1 = document.getElementById("answer");
-
-// let answerV;
 
 
 const checkAnswerValidation = (aGet) => (!isNaN(aGet) && aGet !== 0);
@@ -292,7 +266,9 @@ function nextQ() {
     });
     
     console.log("Score for section 1 : " + totalSec1);
-    window.location.href = "sec-02.html";
+    elBtnNext.innerHTML = "Goto to the next Section";
+    elBtnNext.setAttribute("onclick", 'window.location.href = "sec-02.html";');
+    elBtnNext.removeAttribute("disabled");
   } else {
     elAnswer.value = '';
     aGet = '';
