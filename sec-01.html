@@ -8,29 +8,22 @@
     <link rel="stylesheet" href="sec-01.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
 <body onload="showQuestion(q)">
-    <style>
-        ul {
-            display: flex;
-            gap: 12px;
-        }
     
-        li.home {
-            margin-right: auto;
-        }
-    </style>
-    
-    <nav>
-        <ul>
-            <li>
-                Time left: 
-            </li>
-            <li id="time"></li>
-        </ul>
-    </nav>
     
     
     <div class="container">
-        <div><h1>IQ Test / Section 1</h1></div>
+        <div #navbar>
+                <nav>
+                    <ul>
+                        <li id="section"><strong>IQ Test</strong> / Section 1</li>
+                        <li id="remTime">
+                            Remaining Time:
+                        </li>
+                        <li id="time"></li>
+                    </ul>
+                </nav>
+
+        </div>
         <div id="question"><p></p></div>
         <div>
             <input type="text" placeholder="123..." name="answer" id="answer" autofocus autocomplete="off">

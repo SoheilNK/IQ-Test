@@ -10,8 +10,8 @@ function timer(t) {
     console.log('completed');
     clearInterval(myCounter);
     document.getElementById("alert").innerHTML = "Time is up, Please click next to go to the next question.";
-    elBtnNext.removeAttribute("disabled");
-    elAnswer.setAttribute("disabled", "");
+    BtnNext.removeAttribute("disabled");
+    InAnswer.setAttribute("disabled", "");
   } else {
     t--;
     // console.log(t);

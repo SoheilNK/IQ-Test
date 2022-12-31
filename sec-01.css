@@ -1,119 +1,115 @@
-
 .container {
-    
-    background-color: rgb(241, 234, 255);
-    display:flex;
-    border:1rem groove #4b5bae;
-    border-radius: 1rem;
-    flex-direction: column;
-    justify-content:center;
-    /* height: 680px; */
-    gap: 30px;
-    height: 70vh;
-    min-height: 70vh;
-    max-width: 42.5rem;
+  background-color: rgb(241, 234, 255);
+  display: flex;
+  border: 1rem groove #4b5bae;
+  border-radius: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  /* height: 680px; */
+  gap: 30px;
+  width: 62.5rem;
+  height: 70vh;
+  min-height: 70vh;
+  /* max-width: 42.5rem; */
 }
 
 .container div {
-    
-    /* border: 2px solid #7831b5; */
-    flex-basis: 200px;
+  /* border: 2px solid #7831b5; */
+  flex-basis: 200px;
 }
-.container div:nth-of-type(1) { /*Section*/
-    align-content:   flex-start;
-    font-family: "Diplomata SC", sans-serif;
-    font-size: .25rem;
-    color:rgb(136, 12, 64)
+.container div:nth-of-type(1) {
+  /*Section*/
+  align-content: flex-start;
+  font-family: "Diplomata SC", sans-serif;
 }
-.container div:nth-of-type(2) { /*Question*/
-    text-align:center;
-    font-size: 1.5rem;
-    color:black
+.container div:nth-of-type(2) {
+  /*Question*/
+  text-align: center;
+  font-size: 1.5rem;
+  color: black;
 }
-.container div:nth-of-type(3) { /*Answer*/
-    align-self: center;
-
+.container div:nth-of-type(3) {
+  /*Answer*/
+  align-self: center;
 }
-.container div:nth-of-type(4) { /*Submit*/
-    flex-grow: 0;
-    flex-basis: 200px;
-    text-align: center;
+.container div:nth-of-type(4) {
+  /*Submit*/
+  flex-grow: 0;
+  flex-basis: 200px;
+  text-align: center;
 }
-
-
 
 nav {
-    padding: 15px;
+    padding: 2px;
     font-family: 'Courier New', Courier, monospace;
-    font-weight:bolder;
-    max-width: 42.5rem;
+    /* font-weight:bolder; */
+    /* max-width: 42.5rem; */
 }
 
 ul {
+    display: flex;
+    gap: 12px;
     list-style-type: none;
     align-items: baseline;
     padding: 0px;
     margin: 0;
 }
 
-ul a {
-    color: inherit;
-    text-decoration: none;
-    font-size: 0.875rem;
+
+li#section {
+    margin-right: auto;
 }
 
-.home a {
-    font-size: 0.875;
+li#time {
+    min-width: 4rem;
 }
-
 
 label {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 input {
-    display: block;
-    align-self: center;
-    height: 1.5rem;
-    margin-top: 4px;
-    margin: auto;
-    font-family: 'Serif';
-    font-size: larger;
-    border-radius: 0.75rem;
-    border: 3px solid rgb(136, 12, 64);
+  display: block;
+  align-self: center;
+  height: 1.5rem;
+  margin-top: 4px;
+  margin: auto;
+  font-family: "Serif";
+  font-size: larger;
+  border-radius: 0.75rem;
+  border: 3px solid rgb(136, 12, 64);
 }
 
 button {
-    border: none;
-    color: white;
-    padding: .5rem;
-    text-align: center;
-    align-content: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.5rem;
-    font-family: "Sofia", sans-serif;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 8px;
-
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+  align-content: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  font-family: "Sofia", sans-serif;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
 .button1 {
-    background-color: #544caf;
-    border: 2px solid white;
+  background-color: #544caf;
+  border: 2px solid white;
 }
 
 .button1:hover:not(:disabled) {
-    background-color: white;
-    color: #544caf;
-    border: 2px solid #544caf;
+  background-color: white;
+  color: #544caf;
+  border: 2px solid #544caf;
 }
 
 button:disabled {
-    background-color: gray;
-    border-style: outset;
-    border-color: rgb(179, 179, 179);
-    font-family: "Sofia", sans-serif;
-    color: rgb(179, 179, 179);
+  background-color: gray;
+  border-style: outset;
+  border-color: rgb(179, 179, 179);
+  font-family: "Sofia", sans-serif;
+  color: rgb(179, 179, 179);
 }
