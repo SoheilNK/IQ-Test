@@ -1,4 +1,20 @@
-        function allowDrop(ev) {
+let q = 1;
+
+//------------------------ section 2 data -------Start------------
+const sec2 = [ //+*****************************************************************************************************
+  {
+    questionImg: "pattern-00.jpg",
+    questionTime: 15,
+    questionAnswer: 7,
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: 0,
+    answerPoint: 0,
+  },
+];
+
+function allowDrop(ev) {
             ev.preventDefault();
         }
 
@@ -27,4 +43,9 @@
 
             }
 
-        }
+}
+        
+function showQuestion(qq) {
+
+    
+}

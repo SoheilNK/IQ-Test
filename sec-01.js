@@ -53,7 +53,7 @@ const sec1 = [
   }),
   (q3 = {
     questionText:
-      "Lee has 4 blankets. He buys 5 more. How many blankets does he have altogether?",
+      "Lee has four blankets. He buys five more. How many blankets does he have altogether?",
     questionTime: 15,
     questionAnswer: 9,
     rewardTime: 0,
@@ -72,7 +72,8 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q5 = {
-    questionText: "A newspaper salesman sold six newspapers. Each newspaper costs twenty-five dollars. How much money did he make?",
+    questionText:
+      "A newspaper salesman sold six newspapers. Each newspaper costs twenty-five dollars. How much money did he make?",
     questionTime: 30,
     questionAnswer: 150,
     rewardTime: 0,
@@ -90,7 +91,8 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q7 = {
-    questionText: "How many oranges could you buy with 36 dollars if each orange was six dollars? ",
+    questionText:
+      "How many oranges could you buy with thirty-six dollars if each orange was six dollars? ",
     questionTime: 30,
     questionAnswer: 6,
     rewardTime: 0,
@@ -99,7 +101,8 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q8 = {
-    questionText: "Sara runs three miles per hour, how long does it take to run 24 miles? ",
+    questionText:
+      "Sara runs three miles per hour, how long does it take to run twenty-four miles? ",
     questionTime: 30,
     questionAnswer: 8,
     rewardTime: 0,
@@ -108,7 +111,8 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q9 = {
-    questionText: "If Megan buys 7 postage stamps which costs 3 dollars each and she pays 50 dollars to the cashier, how much should she receive?",
+    questionText:
+      "If Megan buys seven postage stamps which costs three dollars each and she pays fifty dollars to the cashier, how much should she receive?",
     questionTime: 30,
     questionAnswer: 29,
     rewardTime: 0,
@@ -117,7 +121,8 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q10 = {
-    questionText: "Liam had one hundred and eighty dollars and spent seventy-five dollars. How much money does he have? ",
+    questionText:
+      "Liam had one hundred and eighty dollars and spent seventy-five dollars. How much money does he have? ",
     questionTime: 30,
     questionAnswer: 105,
     rewardTime: 0,
@@ -126,7 +131,8 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q11 = {
-    questionText: "The price of a pair of cans is 31 dollars. How much does a dozen cost?",
+    questionText:
+      "The price of a pair of cans is thirty-one dollars. How much does a dozen cost?",
     questionTime: 60,
     questionAnswer: 186,
     rewardTime: 10,
@@ -135,7 +141,8 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q12 = {
-    questionText: "Hasan bought a second-handed couch. He paid for two third of the original price.He paid four thousand dollars.How much was the original price?",
+    questionText:
+      "Hasan bought a second-handed couch. He paid for two third of the original price.He paid four thousand dollars.How much was the original price?",
     questionTime: 60,
     questionAnswer: 6000,
     rewardTime: 10,
@@ -144,7 +151,8 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q13 = {
-    questionText: "Suzi earns four hundred dollars weekly. If the tax rate is fifteen percent, how much she earns weekly?",
+    questionText:
+      "Suzi earns four hundred dollars weekly. If the tax rate is fifteen percent, how much she earns weekly?",
     questionTime: 60,
     questionAnswer: 340,
     rewardTime: 15,
@@ -153,7 +161,8 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q14 = {
-    questionText: "How many workers will be needed to complete a task in half a day when it takes 6 days for 8 workers to complete the same task?",
+    questionText:
+      "How many workers will be needed to complete a task in half a day when it takes six days for eight workers to complete the same task?",
     questionTime: 120,
     questionAnswer: 96,
     rewardTime: 20,
@@ -172,7 +181,7 @@ function showQuestion(qn) {
   rTime = question.rewardTime;
   document.getElementById("question").innerHTML = qText;
   if (qn == 1) {
-    qText = qText + '   <img src="sec01 - q01.png" alt="cubes" width="600">';
+    qText = qText + '   <img src="sec01_q01.png" alt="cubes" width="600">';
     document.getElementById("question").innerHTML = qText;
   }
   
