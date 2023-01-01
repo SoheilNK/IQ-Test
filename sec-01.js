@@ -171,6 +171,11 @@ function showQuestion(qn) {
   qAnswer = question.questionAnswer;
   rTime = question.rewardTime;
   document.getElementById("question").innerHTML = qText;
+  if (qn == 1) {
+    qText = qText + '   <img src="sec01 - q01.png" alt="cubes" width="600">';
+    document.getElementById("question").innerHTML = qText;
+  }
+  
   timer(qTime);
 
   console.log("q" + q + "     = ", qText);

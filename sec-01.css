@@ -15,11 +15,11 @@
   /* border: 2px solid #7831b5; */
   flex-basis: 200px;
 }
-.container div:nth-of-type(1) {
-  /*Section*/
+/* .container div:nth-of-type(1) {
+  /*Section
   align-content: flex-start;
   font-family: "Diplomata SC", sans-serif;
-}
+} */
 .container div:nth-of-type(2) {
   /*Question*/
   text-align: center;
@@ -38,28 +38,29 @@
 }
 
 nav {
-    padding: 2px;
-    font-family: 'Courier New', Courier, monospace;
-    /* font-weight:bolder; */
-    /* max-width: 42.5rem; */
+  padding: 2px;
+  font-family: "Courier New", Courier, monospace;
+  /* font-weight:bolder; */
+  /* max-width: 42.5rem; */
 }
 
 ul {
-    display: flex;
-    gap: 12px;
-    list-style-type: none;
-    align-items: baseline;
-    padding: 0px;
-    margin: 0;
+  display: flex;
+  gap: 12px;
+  list-style-type: none;
+  align-items: baseline;
+  padding: 0px;
+  margin: 0;
 }
-
 
 li#section {
-    margin-right: auto;
+  margin-right: auto;
 }
 
-li#time {
-    min-width: 4rem;
+li#timerDiv {
+  color: black;
+  min-width: 4rem;
+  transition: opacity 0.4s;
 }
 
 label {
