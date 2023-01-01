@@ -5,12 +5,10 @@
   border-radius: 1rem;
   flex-direction: column;
   justify-content: center;
-  /* height: 680px; */
   gap: 30px;
   width: 62.5rem;
   height: 70vh;
   min-height: 70vh;
-  /* max-width: 42.5rem; */
 }
 
 .container div {

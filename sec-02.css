@@ -1,39 +1,22 @@
-
 .container {
-    
     background-color: white;
     display:flex;
-    /* border:1rem groove #a7ae4b; */
     border-radius: 1rem;
     flex-direction: column;
     justify-content:top;
     align-items: center;
-    /* height: 680px; */
     gap: .5rem;
     width: 62.5rem;
     height: 90vh;
     min-height: 90vh;
-    /* max-width: 80rem; */
 }
 
 
-/* .container div {
-    
-    border: 2px solid #7831b5;
-    flex-basis: 200px;
-} */
 .container div:nth-of-type(1) {
   /*Section*/
   align-content: flex-start;
   font-family: "Diplomata SC", sans-serif;
 }
-.container #section {
-    align-self:   flex-start;
-    font-family: sans-serif;
-    font-size: 0.25rem;
-    color:rgb(136, 12, 64)
-}
-
 
 .container #btnNext {
     flex-grow: 0;
@@ -99,7 +82,7 @@ nav {
     padding: 2px;
     font-family: 'Courier New', Courier, monospace;
     /* font-weight:bolder; */
-    /* max-width: 42.5rem; */
+    width: 62.5rem;
 }
 
 ul {

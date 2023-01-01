@@ -2,7 +2,7 @@ let myCounter;  //Counter for timer
 let t;          //Timer set time
 
 function timer(t) {
-
+  
   clearInterval(myCounter); //to stop counter if already counting.
   // t = t + 3; //+3 seconds for reading the question
   myCounter = setInterval(() => {
@@ -18,6 +18,12 @@ function timer(t) {
     // console.log('still going');
     let time = document.getElementById('time');
     time.innerHTML = t;
-  }
+    }
+    if (t=9) {
+      // setInterval(function () { ****************************************************************************
+      //   time.style.color = "red";
+      //   time.style.opacity = (time.style.opacity == 0 ? 1 : 0);
+      // }, 500);
+    }
   }, 1000);
 }
