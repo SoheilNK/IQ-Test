@@ -14,9 +14,8 @@ function timer(t) {
   if (t <= 0) {
     console.log('completed');
     clearInterval(myCounter);
-    document.getElementById("alert").innerHTML = "Time is up, Please click next to go to the next question.";
-    BtnNext.removeAttribute("disabled");
-    InAnswer.setAttribute("disabled", "");
+    timerOut();
+    
   } else {
     t--;
     time.style.opacity = 1;

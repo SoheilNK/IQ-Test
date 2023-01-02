@@ -7,7 +7,7 @@
     <title>IQ Test</title>
     <link rel="stylesheet" href="sec-02.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
-<body onload="showQuestion()">
+<body onload="runSec2()">
     
  <nav>
                 <ul>
@@ -54,29 +54,32 @@
         <div class="workshop">
             
             
-            <div class="drop-side">
+            <div class="drop-side"> 
                 <div class="drop-area" id="drop-area">
-                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>    
-                    <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                    <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><p>1</p></div>
+                    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><p>2</p></div>
+                    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"><p>3</p></div>
+                    <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"><p>4</p></div>
+                    <!-- <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"><p>5</p</div>
+                    <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"><p>6</p</div>    
+                    <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"><p>7</p</div>
+                    <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"><p>8</p</div>
+                    <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"><p>9</p</div> -->
                 </div>
             </div>
             <div id="lineV"><img src="cube-black.jpg" width="1" height="340"></div>
             <div class="pattern-side">
-                <div id="pattern">
-                    <img src="pattern-00.jpg" alt="Pattern">
+                <div >
+                    <img id="pattern" src="" alt="Pattern">
                 </div>
             </div>
         </div>
 
-
-        <div><button  type="button" class="button1" id="btnNext" disabled="disabled">Next</button></div>
+        <div><p id="alert" style="color: red; text-align: center;">Complete the left side to go to the next question.</p></div>
+        <div>
+            
+            <button  type="button" class="button1" id="btnNext" disabled="disabled">Next</button>
+        </div>
     </div>
 
 </body>

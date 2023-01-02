@@ -192,6 +192,8 @@ function showQuestion(qn) {
   console.log("Answer:          ", qAnswer);
 }
 
+
+
 //--------------------------Validate input-----------Start-------
 
 const checkAnswerValidation = (aGet) => !isNaN(aGet) && aGet !== 0;
