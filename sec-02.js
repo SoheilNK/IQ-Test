@@ -3,6 +3,8 @@ let pattern = document.getElementById("pattern");
 let qImage; //question image
 let qTime; //question time
 let aGet = "";  //answer recieved
+let aTime = 0;  //answer time
+let aPoint = 0; //answer point
 
 let BtnNext = document.getElementById("btnNext");
 let images;
@@ -39,6 +41,7 @@ function timerOut() {
     BtnNext.removeAttribute("disabled");
     imagesFrezz(); //  prevent images from further movements
     calulateAnswer();
+    calculatePoints(); //*********************************************************** */
 }
 
 function imagesFrezz() {
@@ -55,8 +58,14 @@ function calulateAnswer() {
         aGet = aGet + imageCode;
         console.log(aGet);
     }
+    let remTime = document.getElementById("time").innerHTML;
+    aTime = qTime - remTime;
+    sec2[q - 1].answerGet = aGet;
+    sec2[q - 1].answerTime = aTime;
 }
-
+function calculatePoints() {
+    //****************************************************** */
+}
 
 
 
