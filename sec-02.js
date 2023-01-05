@@ -1,10 +1,12 @@
 let q = 1;
+localStorage.setItem("q", "1");
 let pattern = document.getElementById("pattern");
 let qImage; //question image
 let qTime; //question time
-let aGet = "";  //answer recieved
-let aTime = 0;  //answer time
+let aGet = ""; //answer recieved
+let aTime = 0; //answer time
 let aPoint = 0; //answer point
+let attempt = 1;
 
 let BtnNext = document.getElementById("btnNext");
 let images;
@@ -21,10 +23,103 @@ const sec2 = [
     answerGet: "",
     answerPoint: 0,
   },
+  {
+    questionImage: "pattern-02.jpg",
+    questionTime: 12,
+    questionAnswer: "1122",
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-03.jpg",
+    questionTime: 12,
+    questionAnswer: "1122",
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-04.jpg",
+    questionTime: 12,
+    questionAnswer: "1122",
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-05.jpg",
+    questionTime: 12,
+    questionAnswer: "1122",
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-06.jpg",
+    questionTime: 12,
+    questionAnswer: "1122",
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-07.jpg",
+    questionTime: 12,
+    questionAnswer: "1122",
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-08.jpg",
+    questionTime: 12,
+    questionAnswer: "1122",
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-09.jpg",
+    questionTime: 12,
+    questionAnswer: "1122",
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-10.jpg",
+    questionTime: 12,
+    questionAnswer: "1122",
+    rewardTime1: 0,
+    rewardTime2: 0,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  }
 ];
 
 function runSec2() {
+    q = Number(localStorage.getItem("q")) ;
+    attempt = Number(localStorage.getItem("attempt"));
   qTime = sec2[q - 1].questionTime;
+//   clearDropArea();
   showQuestion(q);
   timer(qTime);
 }
@@ -35,13 +130,13 @@ function showQuestion(qq) {
 }
 
 function timerOut() {
-    //what happens when timer hits zero
-    document.getElementById("alert").innerHTML =
+  //what happens when timer hits zero
+  document.getElementById("alert").innerHTML =
     "Time is up, Please click next to go to the next question.";
-    BtnNext.removeAttribute("disabled");
-    imagesFrezz(); //  prevent images from further movements
-    calulateAnswer();
-    calculatePoints(); //*********************************************************** */
+  BtnNext.removeAttribute("disabled");
+  imagesFrezz(); //  prevent images from further movements
+  calulateAnswer();
+  calculatePoints();
 }
 
 function imagesFrezz() {
@@ -50,29 +145,64 @@ function imagesFrezz() {
     images[i].setAttribute("draggable", "false");
   }
 }
-function calulateAnswer() {
+function clearDropArea() {
+  images = document.getElementsByTagName("img");
+    for (var i = 0; i < images.length; i++) {
+      images[i].setAttribute("draggable", "true");
+    }
     images = document.getElementById("drop-area").getElementsByTagName("img");
     for (var i = 0; i < images.length; i++) {
-        var imageCode = images[i].id.slice(3, 4);
-        console.log(imageCode);
-        aGet = aGet + imageCode;
-        console.log(aGet);
+      images[i].parentNode.removeChild(images[i]);
     }
-    let remTime = document.getElementById("time").innerHTML;
-    aTime = qTime - remTime;
-    sec2[q - 1].answerGet = aGet;
-    sec2[q - 1].answerTime = aTime;
+}
+function calulateAnswer() {
+  images = document.getElementById("drop-area").getElementsByTagName("img");
+  for (var i = 0; i < images.length; i++) {
+    var imageCode = images[i].id.slice(3, 4);
+    console.log(imageCode);
+    aGet = aGet + imageCode;
+    console.log(aGet);
+  }
+  let remTime = document.getElementById("time").innerHTML;
+  aTime = qTime - remTime;
+  sec2[q - 1].answerGet = aGet;
+  sec2[q - 1].answerTime = aTime;
 }
 function calculatePoints() {
-    //****************************************************** */
+  qAnswer = sec2[q - 1].questionAnswer;
+  if (q == 1) {
+    aPoint = 0;
+    if (aGet == qAnswer) {
+      if (attempt == 1) {
+        aPoint = 4;
+      } else {
+        aPoint = 2;
+      }
+      sec2[q - 1].answerPoint = aPoint;
+      q++;
+      attempt = 1;
+      localStorage.setItem("q", q.toString());
+      localStorage.setItem("attempt", attempt.toString());
+    //   location.reload();
+    } else {
+      if (attempt == 1) {
+        attempt++;
+        window.alert("Please try again");
+        localStorage.setItem("q", q.toString());
+        localStorage.setItem("attempt", attempt.toString());
+        // location.reload();
+      } else {
+        sec2[q - 1].answerPoint = aPoint;
+        q++;
+          attempt = 1;
+          localStorage.setItem("q", q.toString());
+          localStorage.setItem("attempt", attempt.toString());
+        //   location.reload();
+      }
+    }
+  }
+  console.log(aGet, qAnswer, attempt, aPoint);
 }
-
-
-
-
-
-
-
 
 function allowDrop(ev) {
   ev.preventDefault();
