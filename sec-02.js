@@ -1,15 +1,53 @@
-let q = 1;
-localStorage.setItem("q", "1");
+let q;
+// localStorage.setItem("q", "1");
 let pattern = document.getElementById("pattern");
 let qImage; //question image
 let qTime; //question time
 let aGet = ""; //answer recieved
 let aTime = 0; //answer time
 let aPoint = 0; //answer point
-let attempt = 1;
+let attempt;
 
 let BtnNext = document.getElementById("btnNext");
 let images;
+
+BtnNext.addEventListener("click", gotoNextQ);
+
+function gotoNextQ() {
+  location.reload();
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+  ev.dataTransfer.setData("source", ev.path[1].id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  var target_id = ev.target.id;
+  var source_id = ev.dataTransfer.getData("source");
+  imagefile = document.getElementById(source_id).innerHTML;
+  ev.target.appendChild(document.getElementById(data));
+  document
+    .getElementById(source_id)
+    .setAttribute("ondragover", "allowDrop(event)");
+  ev.target.setAttribute("ondragover", "");
+  if (source_id.slice(0, 4) == "cube") {
+    idName = data.slice(0, 4);
+    idNumber = +data.slice(5);
+    idNumber++;
+    newId = idName + "-" + idNumber;
+    document.getElementById(source_id).innerHTML = imagefile;
+    document.getElementById(data).setAttribute("id", newId);
+    document.getElementById(source_id).setAttribute("ondragover", "");
+  }
+}
+
 
 //------------------------ section 2 data -------Start------------
 const sec2 = [
@@ -112,14 +150,14 @@ const sec2 = [
     answerTime: 0,
     answerGet: "",
     answerPoint: 0,
-  }
+  },
 ];
 
 function runSec2() {
-    q = Number(localStorage.getItem("q")) ;
-    attempt = Number(localStorage.getItem("attempt"));
+  q = Number(localStorage.getItem("q"));
+  attempt = Number(localStorage.getItem("attempt"));
   qTime = sec2[q - 1].questionTime;
-//   clearDropArea();
+  //   clearDropArea();
   showQuestion(q);
   timer(qTime);
 }
@@ -147,13 +185,13 @@ function imagesFrezz() {
 }
 function clearDropArea() {
   images = document.getElementsByTagName("img");
-    for (var i = 0; i < images.length; i++) {
-      images[i].setAttribute("draggable", "true");
-    }
-    images = document.getElementById("drop-area").getElementsByTagName("img");
-    for (var i = 0; i < images.length; i++) {
-      images[i].parentNode.removeChild(images[i]);
-    }
+  for (var i = 0; i < images.length; i++) {
+    images[i].setAttribute("draggable", "true");
+  }
+  images = document.getElementById("drop-area").getElementsByTagName("img");
+  for (var i = 0; i < images.length; i++) {
+    images[i].parentNode.removeChild(images[i]);
+  }
 }
 function calulateAnswer() {
   images = document.getElementById("drop-area").getElementsByTagName("img");
@@ -181,56 +219,22 @@ function calculatePoints() {
       sec2[q - 1].answerPoint = aPoint;
       q++;
       attempt = 1;
-      localStorage.setItem("q", q.toString());
-      localStorage.setItem("attempt", attempt.toString());
-    //   location.reload();
     } else {
       if (attempt == 1) {
         attempt++;
         window.alert("Please try again");
-        localStorage.setItem("q", q.toString());
-        localStorage.setItem("attempt", attempt.toString());
-        // location.reload();
       } else {
         sec2[q - 1].answerPoint = aPoint;
         q++;
-          attempt = 1;
-          localStorage.setItem("q", q.toString());
-          localStorage.setItem("attempt", attempt.toString());
-        //   location.reload();
+        attempt = 1;
       }
     }
   }
+  window.alert("your point: " + aPoint);
+
   console.log(aGet, qAnswer, attempt, aPoint);
+  console.log("next question", q);
+  localStorage.setItem("q", q.toString());
+  localStorage.setItem("attempt", attempt.toString());
 }
 
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
-function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-  ev.dataTransfer.setData("source", ev.path[1].id);
-}
-
-function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  var target_id = ev.target.id;
-  var source_id = ev.dataTransfer.getData("source");
-  imagefile = document.getElementById(source_id).innerHTML;
-  ev.target.appendChild(document.getElementById(data));
-  document
-    .getElementById(source_id)
-    .setAttribute("ondragover", "allowDrop(event)");
-  ev.target.setAttribute("ondragover", "");
-  if (source_id.slice(0, 4) == "cube") {
-    idName = data.slice(0, 4);
-    idNumber = +data.slice(5);
-    idNumber++;
-    newId = idName + "-" + idNumber;
-    document.getElementById(source_id).innerHTML = imagefile;
-    document.getElementById(data).setAttribute("id", newId);
-    document.getElementById(source_id).setAttribute("ondragover", "");
-  }
-}
