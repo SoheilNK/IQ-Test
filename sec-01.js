@@ -304,4 +304,18 @@ function nextQ() {
       InAnswer.focus();
       showQuestion(q);
     }
-  }
+}
+  
+// document.getElementById("alert").innerHTML =
+//   "Time is up, Please click next to go to the next question.";
+// elBtnNext.removeAttribute("disabled");
+// elAnswer.setAttribute("disabled", "");
+
+function timerOut() {
+  //what happens when timer hits zero
+  document.getElementById("alert").innerHTML =
+    "Time is up, Please click next to go to the next question.";
+  BtnNext.removeAttribute("disabled");
+  InAnswer.setAttribute("disabled", "");
+}
+
