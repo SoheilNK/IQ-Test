@@ -64,6 +64,7 @@ const sec1 = [
   (q4 = {
     questionText:
       "If a person buys a six dollars postage stamp and gives ten dollars cash to a cashier, s/he should get back?",
+      //""If a person buys a six-dollar ice cream and gives ten dollars cash to the cashier, how much should they get back in dollars?""
     questionTime: 15,
     questionAnswer: 4,
     rewardTime: 0,
@@ -73,7 +74,7 @@ const sec1 = [
   }),
   (q5 = {
     questionText:
-      "A newspaper salesman sold six newspapers. Each newspaper costs twenty-five dollars. How much money did he make?",
+      "A newspaper salesman sold six newspapers. Each newspaper costs twenty-five cents. How much money did he make in cents?",
     questionTime: 30,
     questionAnswer: 150,
     rewardTime: 0,
@@ -83,6 +84,7 @@ const sec1 = [
   }),
   (q6 = {
     questionText: "One and a half meters is equal to how many centimetres?",
+    // "One and a half metres is equal to how many centimetres?"
     questionTime: 30,
     questionAnswer: 150,
     rewardTime: 0,
@@ -92,7 +94,7 @@ const sec1 = [
   }),
   (q7 = {
     questionText:
-      "How many oranges could you buy with thirty-six dollars if each orange was six dollars? ",
+      "How many oranges could you buy with thirty-six dollars if each orange was six dollars?",
     questionTime: 30,
     questionAnswer: 6,
     rewardTime: 0,
@@ -103,6 +105,7 @@ const sec1 = [
   (q8 = {
     questionText:
       "Sara runs three miles per hour, how long does it take to run twenty-four miles? ",
+      // "Sara runs three miles per hour. How long does it take her to run twenty-four miles? ",
     questionTime: 30,
     questionAnswer: 8,
     rewardTime: 0,
@@ -113,6 +116,7 @@ const sec1 = [
   (q9 = {
     questionText:
       "If Megan buys seven postage stamps which costs three dollars each and she pays fifty dollars to the cashier, how much should she receive?",
+      //"If Megan buys seven postage stamps which costs three dollars each and she pays fifty dollars to the cashier, how much change should she receive in dollars?"
     questionTime: 30,
     questionAnswer: 29,
     rewardTime: 0,
@@ -122,7 +126,7 @@ const sec1 = [
   }),
   (q10 = {
     questionText:
-      "Liam had one hundred and eighty dollars and spent seventy-five dollars. How much money does he have? ",
+      "Liam had one hundred and eighty dollars and spent seventy-five dollars. How much money does he have left? ",
     questionTime: 30,
     questionAnswer: 105,
     rewardTime: 0,
@@ -142,7 +146,7 @@ const sec1 = [
   }),
   (q12 = {
     questionText:
-      "Hasan bought a second-handed couch. He paid for two third of the original price.He paid four thousand dollars.How much was the original price?",
+      "Hasan bought a secondhand couch. He paid two thirds of the original price. He paid four thousand dollars. How much was the original price in dollars?",
     questionTime: 60,
     questionAnswer: 6000,
     rewardTime: 10,
@@ -152,7 +156,7 @@ const sec1 = [
   }),
   (q13 = {
     questionText:
-      "Suzi earns four hundred dollars weekly. If the tax rate is fifteen percent, how much she earns weekly?",
+      "Suzi earns four hundred dollars gross weekly. If the tax rate is fifteen percent, how much does she take home weekly?",
     questionTime: 60,
     questionAnswer: 340,
     rewardTime: 15,
