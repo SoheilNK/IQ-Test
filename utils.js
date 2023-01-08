@@ -33,10 +33,6 @@ function timer(t) {
         time.style.opacity = 0;
         remTime.style.opacity = 0;
       }, 500);
-      // timerDiv.style.color = "red";
-      // timerDiv.style.opacity = timerDiv.style.opacity == 0 ? 1 : 0;
-      // timerDiv.style.opacity = 0;
-
     };
   }, 1000);
 }

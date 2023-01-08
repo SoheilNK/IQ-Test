@@ -18,19 +18,13 @@
     /* border: 2px solid #7831b5; */
     flex-basis: 200px;
 }
-.container div:nth-of-type(1) { /*Section*/
-    margin: 0rem;
-    align-content:   flex-start;
-    font-family: "Diplomata SC", sans-serif;
-    font-size: .25rem;
-    color:rgb(136, 12, 64)
-}
-.container div:nth-of-type(2) { /*Question*/
+
+.container div:nth-of-type(1) { /*Question*/
     text-align:center;
     font-size: 1.5rem;
     color:black
 }
-.container div:nth-of-type(3) { /*form*/
+.container div:nth-of-type(2) { /*form*/
     align-self: center;
     margin-bottom:2rem;
 }
@@ -39,7 +33,6 @@
 
 
 nav {
-    padding: 15px;
     font-family: 'Courier New', Courier, monospace;
     font-weight:bolder;
     width: 62.5rem;

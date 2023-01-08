@@ -1,4 +1,4 @@
-let q = 1;  //question number
+let q = 1; //question number
 let pattern = document.getElementById("pattern");
 let qImage; //question image
 let qTime; //question time
@@ -7,8 +7,11 @@ let aTime = 0; //answer time
 let aPoint = 0; //answer point
 let attempt = 1; //attempts for questions 1 and 2
 
-let BtnNext = document.getElementById("btnNext");
+const BtnNext = document.getElementById("btnNext");
 let images;
+
+BtnNext.addEventListener("click", gotoNextQ);
+
 
 const sec2 = [
   {
@@ -113,9 +116,6 @@ const sec2 = [
   },
 ];
 
-
-BtnNext.addEventListener("click", runSec2);
-
 function allowDrop(ev) {
   ev.preventDefault();
 }
@@ -147,25 +147,19 @@ function drop(ev) {
   }
 }
 
-//------------------------ section 2 data -------Start------------
-
 function runSec2() {
-  //   q = Number(localStorage.getItem("q"));
-  //   attempt = Number(localStorage.getItem("attempt"));
   qTime = sec2[q - 1].questionTime;
-        showQuestion(q);
-        timer(qTime);
+  
+  showQuestion(q);
+  timer(qTime);
 }
 
 function showQuestion(qq) {
-    qImage = sec2[qq - 1].questionImage;
-            let originalPage =
-              `
-        <div>      
-        </div>
-        <div style="font-size: larger;"><p>Using the squares below, create a picture like the right-side pattern. </p></div>
-        
-        <div class="pickup-area" id="pickup-area">
+  aGet = "";
+  qTime = sec2[q - 1].questionTime;
+  qImage = sec2[qq - 1].questionImage;
+  let pickupArea =
+    `
             <div id="trash" style="border: 0px;" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <img src="static/bin-icon.png" id="trash" width="100px" height="100px">
             </div>
@@ -187,14 +181,9 @@ function showQuestion(qq) {
             <div id="cube6" ondrop="drop(event)">
                 <img src="static/cube-half4.jpg" draggable="true" ondragstart="drag(event)" id="img6-1" width="100" height="100">
             </div>
-
-        </div>
-        <div class="workshop">
-            
-            
-            <div class="drop-side"> 
-                <div class="drop-area" id="drop-area">
-                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><p>1</p></div>
+  `;
+  let dropArea = 
+`                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><p>1</p></div>
                     <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><p>2</p></div>
                     <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"><p>3</p></div>
                     <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"><p>4</p></div>
@@ -203,43 +192,41 @@ function showQuestion(qq) {
                     <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"><p>7</p</div>
                     <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"><p>8</p</div>
                     <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"><p>9</p</div> -->
-                </div>
-            </div>
-            <div id="lineV"><img src="static/cube-black.jpg" width="1" height="340"></div>
-            <div class="pattern-side">
-                <div >
-                    <img id="pattern" src="static/` +
-              qImage +
-              `" alt="Pattern">
-                </div>
-            </div>
-        </div>
-
-        <div><p id="alert" style="color: red; text-align: center;">Complete the left side to go to the next question.</p></div>
-        <div>
-            
-            <button  type="button" class="button1" id="btnNext" >Next</button>
-        </div>
 `;
-            document.getElementById("container").innerHTML = originalPage;
+  document.getElementById("pickup-area").innerHTML = pickupArea;
+  document.getElementById("drop-area").innerHTML = dropArea;
+  pattern.setAttribute("src", "static/" + qImage);
+  document.getElementById("alert").setAttribute("style", "color : blue");
+  document.getElementById("alert").innerHTML =
+    "Complete the left side to go to the next question.";
+
 }
+
 
 function timerOut() {
   //what happens when timer hits zero
+  document.getElementById("alert").setAttribute("style", "color : blue");
   document.getElementById("alert").innerHTML =
     "Time is up, Please click next to go to the next question.";
   BtnNext.removeAttribute("disabled");
-  imagesFrezz(); //  prevent images from further movements
-  calulateAnswer();
-  calculatePoints();
+  frezzImages(); //  prevent images from further movements
+  gotoNextQ();
 }
 
-function imagesFrezz() {
+function gotoNextQ(){
+  calulateAnswer();
+  calculatePoints();
+  showQuestion(q);
+  timer(qTime);
+}
+
+function frezzImages() {
   images = document.getElementsByTagName("img");
   for (var i = 0; i < images.length; i++) {
     images[i].setAttribute("draggable", "false");
   }
 }
+
 function calulateAnswer() {
   images = document.getElementById("drop-area").getElementsByTagName("img");
   for (var i = 0; i < images.length; i++) {
@@ -253,6 +240,7 @@ function calulateAnswer() {
   sec2[q - 1].answerGet = aGet;
   sec2[q - 1].answerTime = aTime;
 }
+
 function calculatePoints() {
   qAnswer = sec2[q - 1].questionAnswer;
   if (q == 1 || q == 2) {
