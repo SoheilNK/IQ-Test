@@ -63,8 +63,7 @@ const sec1 = [
   }),
   (q4 = {
     questionText:
-      "If a person buys a six dollars postage stamp and gives ten dollars cash to a cashier, s/he should get back?",
-      //""If a person buys a six-dollar ice cream and gives ten dollars cash to the cashier, how much should they get back in dollars?""
+      "If a person buys a six-dollar ice cream and gives ten dollars cash to the cashier, how much should they get back in dollars?",
     questionTime: 15,
     questionAnswer: 4,
     rewardTime: 0,
@@ -83,8 +82,7 @@ const sec1 = [
     answerPoint: 0,
   }),
   (q6 = {
-    questionText: "One and a half meters is equal to how many centimetres?",
-    // "One and a half metres is equal to how many centimetres?"
+    questionText: "One and a half metres is equal to how many centimetres?",
     questionTime: 30,
     questionAnswer: 150,
     rewardTime: 0,
@@ -104,8 +102,7 @@ const sec1 = [
   }),
   (q8 = {
     questionText:
-      "Sara runs three miles per hour, how long does it take to run twenty-four miles? ",
-      // "Sara runs three miles per hour. How long does it take her to run twenty-four miles? ",
+      "Sara runs three miles per hour. How long does it take her to run twenty-four miles?",
     questionTime: 30,
     questionAnswer: 8,
     rewardTime: 0,
@@ -115,8 +112,7 @@ const sec1 = [
   }),
   (q9 = {
     questionText:
-      "If Megan buys seven postage stamps which costs three dollars each and she pays fifty dollars to the cashier, how much should she receive?",
-      //"If Megan buys seven postage stamps which costs three dollars each and she pays fifty dollars to the cashier, how much change should she receive in dollars?"
+      "If Megan buys seven postage stamps which costs three dollars each and she pays fifty dollars to the cashier, how much change should she receive in dollars?",
     questionTime: 30,
     questionAnswer: 29,
     rewardTime: 0,
@@ -183,20 +179,20 @@ function showQuestion(qn) {
   qTime = question.questionTime;
   qAnswer = question.questionAnswer;
   rTime = question.rewardTime;
+  document.getElementById("alert").innerHTML = "";
   document.getElementById("question").innerHTML = qText;
   if (qn == 1) {
-    qText = qText + '   <img src="sec01_q01.png" alt="cubes" width="600">';
+    qText =
+      qText + '   <img src="static/sec01_q01.png" alt="cubes" width="600">';
     document.getElementById("question").innerHTML = qText;
   }
-  
+
   timer(qTime);
 
   console.log("q" + q + "     = ", qText);
   console.log("Time:            ", qTime);
   console.log("Answer:          ", qAnswer);
 }
-
-
 
 //--------------------------Validate input-----------Start-------
 
@@ -212,11 +208,14 @@ function handleAnswerChange(event) {
 
   if (hasValidAnswer) {
     BtnNext.removeAttribute("disabled");
+    document.getElementById("alert").setAttribute("style", "color : blue");
     document.getElementById("alert").innerHTML =
       "Please click next to go to the next question.";
   } else {
     BtnNext.setAttribute("disabled", "");
-    document.getElementById("alert").innerHTML = "Please enter a number.";
+    document.getElementById("alert").setAttribute("style", "color : red");
+    document.getElementById("alert").innerHTML =
+      "Please enter a number greater than zero.";
   }
   if (event.keyCode === 13) {
     BtnNext.click();
@@ -227,99 +226,93 @@ function handleAnswerChange(event) {
 
 function nextQ() {
   clearInterval(myCounter);
-  document.getElementById("alert").innerHTML = "next question";
   calculate_points();
   gotoNextQ();
 }
-  //--------------------------handle button click------End-------
-  function calculate_points() {
-    let remTime = document.getElementById("time").innerHTML;
-    aTime = qTime - remTime;
-    let aPoint = 0;
-    if (aGet == qAnswer) {
-      if (aTime <= rTime && rTime != 0) {
-        aPoint = 2;
-      } else {
-        aPoint = 1;
-      }
-      errCount = 0;
+//--------------------------handle button click------End-------
+function calculate_points() {
+  let remTime = document.getElementById("time").innerHTML;
+  aTime = qTime - remTime;
+  let aPoint = 0;
+  if (aGet == qAnswer) {
+    if (aTime <= rTime && rTime != 0) {
+      aPoint = 2;
     } else {
-      aPoint = 0;
-      errCount++;
+      aPoint = 1;
     }
-    console.log("Question # : ", q);
-    console.log("Answer time: ", aTime);
-    console.log("Your answer: ", aGet);
-    console.log("Your point: ", aPoint);
-
-    question.answerGet = aGet;
-    question.answerPoint = aPoint;
-    question.answerTime = aTime;
-
+    errCount = 0;
+  } else {
+    aPoint = 0;
+    errCount++;
   }
-  function gotoNextQ() {
-    if (q == 4) {
-      if (question.answerPoint == 0 && sec1[2].answerPoint == 0) {
-        q = 1;
-      } else {
-        sec1[0].answerPoint = 1;
-        sec1[1].answerPoint = 1;
-        q++;
-      }
-    } else if (q == 2) {
-      if (question.answerPoint + sec1[0].answerPoint > 0) {
-        q = 5;
-        errCount = 0;
-      } else {
-        q = sec1.length + 1; //stop the test for section 1
-      }
-    } else if (q > 4 && errCount == 4) {
-      q = sec1.length + 1; //stop the test for section 1
+  console.log("Question # : ", q);
+  console.log("Answer time: ", aTime);
+  console.log("Your answer: ", aGet);
+  console.log("Your point: ", aPoint);
+
+  question.answerGet = aGet;
+  question.answerPoint = aPoint;
+  question.answerTime = aTime;
+}
+function gotoNextQ() {
+  if (q == 4) {
+    if (question.answerPoint == 0 && sec1[2].answerPoint == 0) {
+      q = 1;
     } else {
+      sec1[0].answerPoint = 1;
+      sec1[1].answerPoint = 1;
       q++;
     }
-
-    console.log("error = " + errCount);
-    //--------------------------finalize section 1-------------
-    if (q > sec1.length) {
-      document.getElementById("alert").innerHTML = "End of Section 1";
-      BtnNext.setAttribute("disabled", "");
-      InAnswer.setAttribute("disabled", "");
-      let qqa = ""; //question data
-
-      sec1.forEach((qq) => {
-        Object.keys(qq).forEach((key) => {
-          qqa = qqa + (key, qq[key]) + "  ";
-        });
-        totalSec1 = totalSec1 + qq.answerPoint;
-        console.log(qqa);
-        qqa = "";
-      });
-
-      console.log("Score for section 1 : " + totalSec1);
-      BtnNext.innerHTML = "Goto to the next Section";
-      BtnNext.setAttribute("onclick", 'window.location.href = "sec-02.html";');
-      BtnNext.removeAttribute("disabled");
+  } else if (q == 2) {
+    if (question.answerPoint + sec1[0].answerPoint > 0) {
+      q = 5;
+      errCount = 0;
     } else {
-      InAnswer.value = "";
-      aGet = "";
-      BtnNext.setAttribute("disabled", "");
-      InAnswer.removeAttribute("disabled");
-      InAnswer.focus();
-      showQuestion(q);
+      q = sec1.length + 1; //stop the test for section 1
     }
+  } else if (q > 4 && errCount == 4) {
+    q = sec1.length + 1; //stop the test for section 1
+  } else {
+    q++;
+  }
+
+  console.log("error = " + errCount);
+  //--------------------------finalize section 1-------------
+  if (q > sec1.length) {
+    document.getElementById("alert").setAttribute("style", "color : blue");
+    document.getElementById("alert").innerHTML = "End of Section 1";
+    BtnNext.setAttribute("disabled", "");
+    InAnswer.setAttribute("disabled", "");
+    let qqa = ""; //question data
+
+    sec1.forEach((qq) => {
+      Object.keys(qq).forEach((key) => {
+        qqa = qqa + (key, qq[key]) + "  ";
+      });
+      totalSec1 = totalSec1 + qq.answerPoint;
+      console.log(qqa);
+      qqa = "";
+    });
+
+    console.log("Score for section 1 : " + totalSec1);
+    BtnNext.innerHTML = "Goto to the next Section";
+    BtnNext.setAttribute("onclick", 'window.location.href = "sec-02.html";');
+    BtnNext.removeAttribute("disabled");
+  } else {
+    InAnswer.value = "";
+    aGet = "";
+    BtnNext.setAttribute("disabled", "");
+    InAnswer.removeAttribute("disabled");
+    InAnswer.focus();
+    showQuestion(q);
+  }
 }
-  
-// document.getElementById("alert").innerHTML =
-//   "Time is up, Please click next to go to the next question.";
-// elBtnNext.removeAttribute("disabled");
-// elAnswer.setAttribute("disabled", "");
 
 function timerOut() {
   //what happens when timer hits zero
+  document.getElementById("alert").setAttribute("style", "color : blue");
   document.getElementById("alert").innerHTML =
     "Time is up, Please click next to go to the next question.";
   BtnNext.removeAttribute("disabled");
   InAnswer.setAttribute("disabled", "");
 }
-

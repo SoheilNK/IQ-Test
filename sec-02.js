@@ -160,31 +160,32 @@ function runSec2() {
 function showQuestion(qq) {
     qImage = sec2[qq - 1].questionImage;
             let originalPage =
-              `        <div>      
+              `
+        <div>      
         </div>
         <div style="font-size: larger;"><p>Using the squares below, create a picture like the right-side pattern. </p></div>
         
         <div class="pickup-area" id="pickup-area">
             <div id="trash" style="border: 0px;" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <img src="bin-icon.png" id="trash" width="100px" height="100px">
+                <img src="static/bin-icon.png" id="trash" width="100px" height="100px">
             </div>
             <div id="cube1" ondrop="drop(event)" >
-                <img src="cube-red.jpg" draggable="true" ondragstart="drag(event)" id="img1-1" width="100px" height="100px">
+                <img src="static/cube-red.jpg" draggable="true" ondragstart="drag(event)" id="img1-1" width="100px" height="100px">
             </div>
             <div id="cube2" ondrop="drop(event)">
-                <img src="cube-black.jpg" draggable="true" ondragstart="drag(event)" id="img2-1" width="100px" height="100px">
+                <img src="static/cube-black.jpg" draggable="true" ondragstart="drag(event)" id="img2-1" width="100px" height="100px">
             </div>
             <div id="cube3" ondrop="drop(event)">
-                <img src="cube-half1.jpg" draggable="true" ondragstart="drag(event)" id="img3-1" width="100px" height="100px">
+                <img src="static/cube-half1.jpg" draggable="true" ondragstart="drag(event)" id="img3-1" width="100px" height="100px">
             </div>
             <div id="cube4" ondrop="drop(event)">
-                <img src="cube-half2.jpg" draggable="true" ondragstart="drag(event)" id="img4-1" width="100" height="100">
+                <img src="static/cube-half2.jpg" draggable="true" ondragstart="drag(event)" id="img4-1" width="100" height="100">
             </div>
             <div id="cube5" ondrop="drop(event)">
-                <img src="cube-half3.jpg" draggable="true" ondragstart="drag(event)" id="img5-1" width="100" height="100">
+                <img src="static/cube-half3.jpg" draggable="true" ondragstart="drag(event)" id="img5-1" width="100" height="100">
             </div>
             <div id="cube6" ondrop="drop(event)">
-                <img src="cube-half4.jpg" draggable="true" ondragstart="drag(event)" id="img6-1" width="100" height="100">
+                <img src="static/cube-half4.jpg" draggable="true" ondragstart="drag(event)" id="img6-1" width="100" height="100">
             </div>
 
         </div>
@@ -204,10 +205,10 @@ function showQuestion(qq) {
                     <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"><p>9</p</div> -->
                 </div>
             </div>
-            <div id="lineV"><img src="cube-black.jpg" width="1" height="340"></div>
+            <div id="lineV"><img src="static/cube-black.jpg" width="1" height="340"></div>
             <div class="pattern-side">
                 <div >
-                    <img id="pattern" src="` +
+                    <img id="pattern" src="static/` +
               qImage +
               `" alt="Pattern">
                 </div>
