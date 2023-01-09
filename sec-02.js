@@ -6,6 +6,8 @@ let aGet = ""; //answer recieved
 let aTime = 0; //answer time
 let aPoint = 0; //answer point
 let attempt = 1; //attempts for questions 1 and 2
+let dropArea;
+let totalSec2 = 0;
 
 const BtnNext = document.getElementById("btnNext");
 let images;
@@ -115,7 +117,7 @@ const sec2 = [
     answerPoint: 0,
   },
 ];
-
+//------------------------------drag and drop----------------------
 function allowDrop(ev) {
   ev.preventDefault();
 }
@@ -146,7 +148,7 @@ function drop(ev) {
     document.getElementById(source_id).setAttribute("ondragover", "");
   }
 }
-
+//--------------------------------------------------------------------------
 function runSec2() {
   qTime = sec2[q - 1].questionTime;
   
@@ -182,17 +184,30 @@ function showQuestion(qq) {
                 <img src="static/cube-half4.jpg" draggable="true" ondragstart="drag(event)" id="img6-1" width="100" height="100">
             </div>
   `;
-  let dropArea = 
-`                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><p>1</p></div>
-                    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><p>2</p></div>
-                    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"><p>3</p></div>
-                    <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"><p>4</p></div>
-                    <!-- <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"><p>5</p</div>
-                    <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"><p>6</p</div>    
-                    <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"><p>7</p</div>
-                    <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"><p>8</p</div>
-                    <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"><p>9</p</div> -->
-`;
+  if (q <= 6) {
+    dropArea = 
+      `
+          <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><p>1</p></div>
+          <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><p>2</p></div>
+          <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"><p>3</p></div>
+          <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"><p>4</p></div>
+        `;
+  } else {
+    document.getElementById("drop-area").setAttribute("style", "height: 300px; width: 300px;");
+    dropArea = `
+          <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>    
+          <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        `;
+    
+  }
+
   document.getElementById("pickup-area").innerHTML = pickupArea;
   document.getElementById("drop-area").innerHTML = dropArea;
   pattern.setAttribute("src", "static/" + qImage);
@@ -209,8 +224,8 @@ function timerOut() {
   document.getElementById("alert").innerHTML =
     "Time is up, Please click next to go to the next question.";
   BtnNext.removeAttribute("disabled");
-  frezzImages(); //  prevent images from further movements
-  gotoNextQ();
+  freezeImages(); //  prevent images from further movements
+
 }
 
 function gotoNextQ(){
@@ -220,7 +235,7 @@ function gotoNextQ(){
   timer(qTime);
 }
 
-function frezzImages() {
+function freezeImages() {
   images = document.getElementsByTagName("img");
   for (var i = 0; i < images.length; i++) {
     images[i].setAttribute("draggable", "false");
@@ -263,8 +278,36 @@ function calculatePoints() {
         q++;
         attempt = 1;
       }
-    }
-  }
+    };
+  };
+
+  if (q > 2 && q <7) {
+    q++;
+  };
+
+  if (q > 6 && q < 11) {
+    q++;
+  };
+  if (q > 10) {
+    document.getElementById("alert").setAttribute("style", "color : blue");
+    document.getElementById("alert").innerHTML = "End of Section 2";
+    BtnNext.setAttribute("disabled", "");
+    let qqa = ""; //question data
+
+    sec2.forEach((qq) => {
+      Object.keys(qq).forEach((key) => {
+        qqa = qqa + (key, qq[key]) + "  ";
+      });
+      totalSec2 = totalSec2 + qq.answerPoint;
+      console.log(qqa);
+      qqa = "";
+    });
+
+    console.log("Score for section 2 : " + totalSec2);
+    BtnNext.innerHTML = "Goto to the Result";
+    BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
+    BtnNext.removeAttribute("disabled");
+  };
   window.alert("your point: " + aPoint);
 
   console.log(aGet, qAnswer, attempt, aPoint);

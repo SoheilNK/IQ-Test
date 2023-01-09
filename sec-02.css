@@ -50,6 +50,8 @@
 .drop-area {
     display: flex;
     flex-wrap: wrap;
+    /* background-color: rgb(107, 230, 113); */
+
     justify-content: center;
     align-items: center;
     position: relative;
