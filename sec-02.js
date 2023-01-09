@@ -1,4 +1,4 @@
-let q = 1; //question number
+let q = 9; //question number
 let pattern = document.getElementById("pattern");
 let qImage; //question image
 let qTime; //question time
@@ -8,6 +8,7 @@ let aPoint = 0; //answer point
 let attempt = 1; //attempts for questions 1 and 2
 let dropArea;
 let totalSec2 = 0;
+let errCount = 0; //counts number of consecutive errors
 
 const BtnNext = document.getElementById("btnNext");
 let images;
@@ -18,7 +19,7 @@ BtnNext.addEventListener("click", gotoNextQ);
 const sec2 = [
   {
     questionImage: "pattern-01.jpg",
-    questionTime: 12,
+    questionTime: 60,
     questionAnswer: "1122",
     rewardTime1: 0,
     rewardTime2: 0,
@@ -28,8 +29,8 @@ const sec2 = [
   },
   {
     questionImage: "pattern-02.jpg",
-    questionTime: 12,
-    questionAnswer: "1122",
+    questionTime: 60,
+    questionAnswer: "4226",
     rewardTime1: 0,
     rewardTime2: 0,
     answerTime: 0,
@@ -38,8 +39,8 @@ const sec2 = [
   },
   {
     questionImage: "pattern-03.jpg",
-    questionTime: 12,
-    questionAnswer: "1122",
+    questionTime: 60,
+    questionAnswer: "2116",
     rewardTime1: 0,
     rewardTime2: 0,
     answerTime: 0,
@@ -48,8 +49,8 @@ const sec2 = [
   },
   {
     questionImage: "pattern-04.jpg",
-    questionTime: 12,
-    questionAnswer: "1122",
+    questionTime: 60,
+    questionAnswer: "4522",
     rewardTime1: 0,
     rewardTime2: 0,
     answerTime: 0,
@@ -58,8 +59,8 @@ const sec2 = [
   },
   {
     questionImage: "pattern-05.jpg",
-    questionTime: 12,
-    questionAnswer: "1122",
+    questionTime: 60,
+    questionAnswer: "1531",
     rewardTime1: 0,
     rewardTime2: 0,
     answerTime: 0,
@@ -68,8 +69,8 @@ const sec2 = [
   },
   {
     questionImage: "pattern-06.jpg",
-    questionTime: 12,
-    questionAnswer: "1122",
+    questionTime: 60,
+    questionAnswer: "5436",
     rewardTime1: 0,
     rewardTime2: 0,
     answerTime: 0,
@@ -78,40 +79,40 @@ const sec2 = [
   },
   {
     questionImage: "pattern-07.jpg",
-    questionTime: 12,
-    questionAnswer: "1122",
-    rewardTime1: 0,
-    rewardTime2: 0,
+    questionTime: 120,
+    questionAnswer: "516121413",
+    rewardTime1: 30,
+    rewardTime2: 40,
     answerTime: 0,
     answerGet: "",
     answerPoint: 0,
   },
   {
     questionImage: "pattern-08.jpg",
-    questionTime: 12,
-    questionAnswer: "1122",
-    rewardTime1: 0,
-    rewardTime2: 0,
+    questionTime: 120,
+    questionAnswer: "535353535",
+    rewardTime1: 45,
+    rewardTime2: 70,
     answerTime: 0,
     answerGet: "",
     answerPoint: 0,
   },
   {
     questionImage: "pattern-09.jpg",
-    questionTime: 12,
-    questionAnswer: "1122",
-    rewardTime1: 0,
-    rewardTime2: 0,
+    questionTime: 120,
+    questionAnswer: "546635453",
+    rewardTime1: 60,
+    rewardTime2: 80,
     answerTime: 0,
     answerGet: "",
     answerPoint: 0,
   },
   {
     questionImage: "pattern-10.jpg",
-    questionTime: 12,
-    questionAnswer: "1122",
-    rewardTime1: 0,
-    rewardTime2: 0,
+    questionTime: 180,
+    questionAnswer: "425632146",
+    rewardTime1: 60,
+    rewardTime2: 80,
     answerTime: 0,
     answerGet: "",
     answerPoint: 0,
@@ -231,8 +232,10 @@ function timerOut() {
 function gotoNextQ(){
   calulateAnswer();
   calculatePoints();
-  showQuestion(q);
-  timer(qTime);
+  if (q < 11) {
+    showQuestion(q);
+    timer(qTime);
+  } 
 }
 
 function freezeImages() {
@@ -258,6 +261,9 @@ function calulateAnswer() {
 
 function calculatePoints() {
   qAnswer = sec2[q - 1].questionAnswer;
+  rTime1 = sec2[q - 1].rewardTime1;
+  rTime2 = sec2[q - 1].rewardTime2;
+
   if (q == 1 || q == 2) {
     aPoint = 0;
     if (aGet == qAnswer) {
@@ -266,50 +272,76 @@ function calculatePoints() {
       } else {
         aPoint = 2;
       }
-      sec2[q - 1].answerPoint = aPoint;
-      q++;
       attempt = 1;
+      errCount = 0;
     } else {
       if (attempt == 1) {
         attempt++;
         window.alert("Please try again");
+        q--;
       } else {
-        sec2[q - 1].answerPoint = aPoint;
-        q++;
         attempt = 1;
+        errCount++;
       }
-    };
-  };
+    }
+  }
 
-  if (q > 2 && q <7) {
-    q++;
-  };
+  if (q > 2 && q < 7) {
+    if (aGet == qAnswer) {
+      aPoint = 4;
+      errCount = 0;
+    } else {
+      aPoint = 0;
+      errCount++;
+    }
+  }
 
   if (q > 6 && q < 11) {
-    q++;
-  };
-  if (q > 10) {
-    document.getElementById("alert").setAttribute("style", "color : blue");
-    document.getElementById("alert").innerHTML = "End of Section 2";
-    BtnNext.setAttribute("disabled", "");
-    let qqa = ""; //question data
+    if (aGet == qAnswer) {
+      if (aTime <= rTime1) {
+        aPoint = 6;
+      } else if (aTime <= rTime2) {
+        aPoint = 5;
+      } else {
+        aPoint = 4;
+      }
+      errCount = 0;
+    } else {
+      //wrong answer
+      aPoint = 0;
+      errCount++;
+    }
+  }
 
-    sec2.forEach((qq) => {
-      Object.keys(qq).forEach((key) => {
-        qqa = qqa + (key, qq[key]) + "  ";
-      });
-      totalSec2 = totalSec2 + qq.answerPoint;
-      console.log(qqa);
-      qqa = "";
-    });
-
-    console.log("Score for section 2 : " + totalSec2);
-    BtnNext.innerHTML = "Goto to the Result";
-    BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
-    BtnNext.removeAttribute("disabled");
-  };
+  sec2[q - 1].answerPoint = aPoint;
+  q++;
   window.alert("your point: " + aPoint);
 
   console.log(aGet, qAnswer, attempt, aPoint);
   console.log("next question", q);
+  if (q > 10 || errCount == 3) {
+    endSection2();
+  }
+}
+
+function endSection2() {
+  document.getElementById("alert").setAttribute("style", "color : blue");
+  document.getElementById("alert").innerHTML = "End of Section 2";
+  BtnNext.setAttribute("disabled", "");
+  let qqa = ""; //question data
+
+  sec2.forEach((qq) => {
+    Object.keys(qq).forEach((key) => {
+      qqa = qqa + (key, qq[key]) + "  ";
+    });
+    totalSec2 = totalSec2 + qq.answerPoint;
+    console.log(qqa);
+    qqa = "";
+  });
+
+  console.log("Score for section 2 : " + totalSec2);
+  BtnNext.innerHTML = "Goto to the Result";
+  BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
+  BtnNext.removeAttribute("disabled");
+  
 }
