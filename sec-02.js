@@ -1,4 +1,4 @@
-let q = 9; //question number
+let q = 1; //question number
 let pattern = document.getElementById("pattern");
 let qImage; //question image
 let qTime; //question time
