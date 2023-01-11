@@ -17,18 +17,7 @@ BtnNext.addEventListener("click", nextQ);
 InAnswer.addEventListener("keyup", handleAnswerChange);
 InAnswer.addEventListener("change", console.log("answer change"));
 
-function start() {
-  let fname1 = document.getElementById("fname").value;
-  let lname1 = document.getElementById("lname").value;
-  let age1 = document.getElementById("age").value;
-  localStorage.clear();
-  localStorage.setItem("fname", fname1);
-  localStorage.setItem("lname", lname1);
-  localStorage.setItem("age", JSON.stringify(age1));
-  localStorage.setItem("score1", JSON.stringify(0)); //score for section 1
-  localStorage.setItem("score2", JSON.stringify(0)); //score for section 2
-  localStorage.setItem("score3", JSON.stringify(0)); //score for section 3
-}
+
 
 //------------------------ section 1 data -------Start------------
 const sec1 = [
