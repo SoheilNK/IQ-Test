@@ -92,7 +92,7 @@ const sec1 = [
   }),
   (q7 = {
     questionText:
-      "How many oranges could you buy with thirty-six dollars if each orange was six dollars?",
+      "How many oranges could you buy with thirty-six dollars if each orange was six dollars?", // "...if each orange were six dollars"
     questionTime: 30,
     questionAnswer: 6,
     rewardTime: 0,
@@ -102,7 +102,7 @@ const sec1 = [
   }),
   (q8 = {
     questionText:
-      "Sara runs three miles per hour. How long does it take her to run twenty-four miles?",
+      "Sara runs three miles per hour. How long does it take her to run twenty-four miles?", // "How many hours does it take her..."
     questionTime: 30,
     questionAnswer: 8,
     rewardTime: 0,
@@ -122,7 +122,7 @@ const sec1 = [
   }),
   (q10 = {
     questionText:
-      "Liam had one hundred and eighty dollars and spent seventy-five dollars. How much money does he have left? ",
+      "Liam had one hundred and eighty dollars and spent seventy-five dollars. How much money does he have left? ", // How much money in dollars does he have left?
     questionTime: 30,
     questionAnswer: 105,
     rewardTime: 0,
@@ -132,7 +132,7 @@ const sec1 = [
   }),
   (q11 = {
     questionText:
-      "The price of a pair of cans is thirty-one dollars. How much does a dozen cost?",
+      "The price of a pair of cans is thirty-one dollars. How much does a dozen cost?", // "...in dollars?"
     questionTime: 60,
     questionAnswer: 186,
     rewardTime: 10,
@@ -152,7 +152,7 @@ const sec1 = [
   }),
   (q13 = {
     questionText:
-      "Suzi earns four hundred dollars gross weekly. If the tax rate is fifteen percent, how much does she take home weekly?",
+      "Suzi earns four hundred dollars gross weekly. If the tax rate is fifteen percent, how much does she take home weekly?", //...in dollars?
     questionTime: 60,
     questionAnswer: 340,
     rewardTime: 15,
