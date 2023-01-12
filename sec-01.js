@@ -285,7 +285,7 @@ function gotoNextQ() {
     sec1.push(totalSec1);
     localStorage.setItem("sec1Data", JSON.stringify(sec1));
     console.log("Score for section 1 : " + totalSec1);
-    BtnNext.innerHTML = "Goto to the next Section";
+    BtnNext.innerHTML = "Go to the next Section";
     BtnNext.setAttribute("onclick", 'window.location.href = "sec-02.html";');
     BtnNext.removeAttribute("disabled");
   } else {

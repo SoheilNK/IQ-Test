@@ -188,10 +188,10 @@ function showQuestion(qq) {
   if (q <= 6) {
     dropArea = 
       `
-          <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><p>1</p></div>
-          <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><p>2</p></div>
-          <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"><p>3</p></div>
-          <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"><p>4</p></div>
+          <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><p></p></div>
+          <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><p></p></div>
+          <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"><p></p></div>
+          <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"><p></p></div>
         `;
   } else {
     document.getElementById("drop-area").setAttribute("style", "height: 300px; width: 300px;");
@@ -232,7 +232,7 @@ function timerOut() {
 function gotoNextQ(){
   calulateAnswer();
   calculatePoints();
-  if (q < 11) {
+  if (q < 11 && errCount != 3) {
     showQuestion(q);
     timer(qTime);
   } 
@@ -260,6 +260,7 @@ function calulateAnswer() {
 }
 
 function calculatePoints() {
+  repeat = false;
   qAnswer = sec2[q - 1].questionAnswer;
   rTime1 = sec2[q - 1].rewardTime1;
   rTime2 = sec2[q - 1].rewardTime2;
@@ -278,7 +279,7 @@ function calculatePoints() {
       if (attempt == 1) {
         attempt++;
         window.alert("Please try again");
-        q--;
+        repeat = true;
       } else {
         attempt = 1;
         errCount++;
@@ -314,8 +315,11 @@ function calculatePoints() {
   }
 
   sec2[q - 1].answerPoint = aPoint;
-  q++;
-  window.alert("your point: " + aPoint);
+  if (!repeat) {
+    q++;
+  } 
+
+  // window.alert("your point: " + aPoint);
 
   console.log(aGet, qAnswer, attempt, aPoint);
   console.log("next question", q);
@@ -328,6 +332,7 @@ function endSection2() {
   document.getElementById("alert").setAttribute("style", "color : blue");
   document.getElementById("alert").innerHTML = "End of Section 2";
   BtnNext.setAttribute("disabled", "");
+  clearInterval(myCounter);
   let qqa = ""; //question data
 
   sec2.forEach((qq) => {
@@ -338,9 +343,11 @@ function endSection2() {
     console.log(qqa);
     qqa = "";
   });
+  sec2.push(totalSec2);
+  localStorage.setItem("sec2Data", JSON.stringify(sec2));
 
   console.log("Score for section 2 : " + totalSec2);
-  BtnNext.innerHTML = "Goto to the Result";
+  BtnNext.innerHTML = "Go to the Result";
   BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
   BtnNext.removeAttribute("disabled");
   
