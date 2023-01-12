@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>IQ Test Section 01</title>
+    <title>IQ Test/User Data</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
 
@@ -66,19 +66,9 @@
     function start() {
         pData = Array.from(document.querySelectorAll('input')).reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {});
         delete pData[""];
-
-        // let fname1 = document.getElementById("fname").value;
-        // let lname1 = document.getElementById("lname").value;
-        // let age1 = document.getElementById("birthday").value;
         localStorage.clear();
-        localStorage.setItem("personalData", pData);
-        // localStorage.setItem("fname", fname1);
-        // localStorage.setItem("lname", lname1);
-        // localStorage.setItem("age", JSON.stringify(age1));
-        localStorage.setItem("score1", JSON.stringify(0)); //score for section 1
-        localStorage.setItem("score2", JSON.stringify(0)); //score for section 2
-        localStorage.setItem("score3", JSON.stringify(0)); //score for section 3
-
+        localStorage.setItem("personalData", JSON.stringify(pData));
+    
 }
 </script>
 

@@ -1,0 +1,73 @@
+.container {
+    
+    background-color: rgb(224, 224, 224);
+    display:flex;
+    border:1rem groove rgb(60, 162, 178);
+    border-radius: 1rem;
+    flex-direction: column;
+    justify-content:center;
+    /* height: 680px; */
+    gap: 30px;
+    height: 70vh;
+    width: 62.5rem;
+}
+.container div#title{
+  text-align: center;
+  font-family: "Diplomata SC", sans-serif;
+  font-size: 1.5rem;
+}
+
+nav {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight:bolder;
+    width: 62.5rem;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    align-items: baseline;
+    padding: 0px;
+    margin: 0;
+}
+
+ul a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+li.home {
+            margin-right: auto;
+        }
+
+.button1 {
+    background-color: rgb(60, 162, 178);
+    border: 2px solid black;
+}
+
+.button1:hover {
+    background-color: white;
+    color: rgb(60, 162, 178);
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: auto;
+  margin: 3rem;
+}
+th {
+    border: 1px solid #201919;
+  text-align: center;
+  background-color:rgb(124, 192, 248);
+
+}
+td {
+  border: 1px solid #201919;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

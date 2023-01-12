@@ -4,23 +4,75 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result</title>
+    <title>Test Result</title>
+    <link rel="stylesheet" href="result.css">
+    
 </head>
 <body>
     <img src="static/website-under-construction.png" alt="website-under-construction.png" srcset="">
 <div id="result"></div>
+<!-- ********************************************************** -->
+
+<nav>
+        <ul>
+            <li class="home">
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav>
+    <ul>
+        <li id="section"><strong>IQ Test</strong> / Result Page</li>
+    </ul>
+
+    <div class="container">
+        <div id="title">
+            <p>Your results for the test.</p>
+        </div>
+        <div id="tables">
+            <table id="userDataTb">
+                <tr>
+                    <th>First Name</th>
+                    <th>Family Name</th>
+                    <th>Age</th>
+                </tr>
+                <tr>
+                    <td id="fname"></td>
+                    <td id="lname"></td>
+                    <td id="age"></td>
+                </tr>
+            </table>
+            <table id="section1Tb">
+                <tr>
+                    <th>Question Number</th>
+                    <th>Correct Answer</th>
+                    <th>Your Answer</th>
+                    <th>Your Time</th>
+                    <th>Points</th>
+                </tr>
+            </table>
+            <table id="section2Tb">
+                <tr>
+                    <th>Question Number</th>
+                    <th>Correct Answer</th>
+                    <th>Your Answer</th>
+                    <th>Your Time</th>
+                    <th>Points</th>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+
 
 </body>
-
-<script>
-// let pData = JSON.parse(localStorage.getItem("personalData"));
-let sec1 = JSON.parse(localStorage.getItem("sec1Data"));
-let sec2 = JSON.parse(localStorage.getItem("sec2Data"));
-
-// console.log(pData);
-console.log(sec1);
-console.log(sec2);
-</script>
 
 <script src="result.js"></script>
 <script src="utils.js"></script>
