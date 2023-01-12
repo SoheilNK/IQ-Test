@@ -65,13 +65,13 @@
     
     function start() {
         pData = Array.from(document.querySelectorAll('input')).reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {});
-        pData.splice(0 , 1);
+        delete pData[""];
 
         // let fname1 = document.getElementById("fname").value;
         // let lname1 = document.getElementById("lname").value;
         // let age1 = document.getElementById("birthday").value;
         localStorage.clear();
-        localStorage.setItem("personalData", personalData);
+        localStorage.setItem("personalData", pData);
         // localStorage.setItem("fname", fname1);
         // localStorage.setItem("lname", lname1);
         // localStorage.setItem("age", JSON.stringify(age1));
