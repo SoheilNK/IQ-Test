@@ -1,7 +1,7 @@
 const BtnNext = document.getElementById("btnNext");
 const InAnswer = document.getElementById("answer");
 
-let q = 12; //Start with question #3
+let q = 3; //Start with question #3
 let qText; //question text
 let qTime; //question allowed time
 let qAnswer; //correct answer for a question
