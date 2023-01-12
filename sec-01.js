@@ -1,7 +1,7 @@
 const BtnNext = document.getElementById("btnNext");
 const InAnswer = document.getElementById("answer");
 
-let q = 3; //Start with question #3
+let q = 12; //Start with question #3
 let qText; //question text
 let qTime; //question allowed time
 let qAnswer; //correct answer for a question
@@ -214,10 +214,13 @@ function handleAnswerChange(event) {
 //--------------------------handle button click------Start-------
 
 function nextQ() {
-  clearInterval(myCounter);
-  calculate_points();
-  gotoNextQ();
-}
+  
+if (q<15) {
+	  clearInterval(myCounter);
+	  calculate_points();
+	  gotoNextQ();
+	
+}}
 //--------------------------handle button click------End-------
 function calculate_points() {
   let remTime = document.getElementById("time").innerHTML;
