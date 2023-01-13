@@ -53,15 +53,5 @@
 </body>
 
 
-<script>
-    
-    function start() {
-        pData = Array.from(document.querySelectorAll('input')).reduce((acc, input) => ({ ...acc, [input.id]: input.value }), {});
-        delete pData[""];
-        localStorage.clear();
-        localStorage.setItem("personalData", JSON.stringify(pData));
-    
-}
-</script>
 
 </html>
