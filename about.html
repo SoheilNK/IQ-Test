@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Wechsler IQ test</title>
-<link rel="stylesheet" href="about.css">
-</head>
+
+<head style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>IQ Test/About</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
+
 <body>
-        <h2>Wechsler Test & Intelligence Scale</h2>
+    <style>
+        ul {
+            display: flex;
+            gap: 12px;
+        }
+
+        li.home {
+            margin-right: auto;
+        }
+    </style>
+
+    <nav>
+        <ul>
+            <li class="home">
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    About
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav>
+                    <ul>
+                        <li id="section"><strong>IQ Test</strong> / About Page</li>
+                    </ul>
+
+
+    <div class="container">
+        <div>
+            <h2>Wechsler Test & Intelligence Scale</h2>
         <img src="static/WAIS_IV.jpg" alt="Wechsler Adult Intelligence Scale | Fourth Edition">
+        </div>
+        <div>
         
         <p>The Wechsler IQ test is a test that helps to measure cognitive abilities and intelligence. It has evolved over time, but
         the original Wechsler Intelligence Scales were developed by Dr. David Wechsler in 1939. It was initially called the
@@ -31,14 +71,14 @@
         individual’s lowest level of knowledge.
     
         </p>
-
-
-    <div style="text-align: center;">
-        <a href="section1.html">
-            <button class="button1" id="">Start</button>
-        </a>
-    </div>    
-
+        </div>
+        <div>
+            <button  type="button" class="button1" id="btnNext" onclick="history.back()">Go Back</button>
+        </div>
+        
+    </div>
 </body>
-<script src="app.js"></script>
+
+
+
 </html>
