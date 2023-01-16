@@ -21,6 +21,7 @@
 .container div:nth-of-type(2) {
     align-self: center;
     margin:2rem;
+    padding: 2rem;
 }
 .container div:nth-of-type(3) {
     align-self: center;
