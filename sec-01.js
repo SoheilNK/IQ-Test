@@ -82,6 +82,7 @@ const sec1 = [
   (q7 = {
     questionText:
       "How many oranges could you buy with thirty-six dollars if each orange were six dollars?",
+    questionTime: 30,
     questionAnswer: 6,
     rewardTime: 0,
     answerTime: 0,
