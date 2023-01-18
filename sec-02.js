@@ -9,8 +9,6 @@ let attempt = 1; //attempts for questions 1 and 2
 let dropArea;
 let totalSec2 = 0;
 let errCount = 0; //counts number of consecutive errors
-let data;
-let source;
 
 const BtnNext = document.getElementById("btnNext");
 let images;
@@ -121,104 +119,35 @@ const sec2 = [
   },
 ];
 //------------------------------drag and drop----------------------
-// function allowDrop(ev) {
-//   ev.preventDefault();
-// }
-
-// function drag(ev) {
-//   ev.dataTransfer.setData("text", ev.target.id);
-//   ev.dataTransfer.setData("source", ev.path[1].id);
-// }
-
-// function drop(ev) {
-//   ev.preventDefault();
-//   var data = ev.dataTransfer.getData("text");
-//   var target_id = ev.target.id;
-//   var source_id = ev.dataTransfer.getData("source");
-//   imagefile = document.getElementById(source_id).innerHTML;
-//   ev.target.appendChild(document.getElementById(data));
-//   document
-//     .getElementById(source_id)
-//     .setAttribute("ondragover", "allowDrop(event)");
-//   ev.target.setAttribute("ondragover", "");
-//   if (source_id.slice(0, 4) == "cube") {
-//     idName = data.slice(0, 4);
-//     idNumber = +data.slice(5);
-//     idNumber++;
-//     newId = idName + "-" + idNumber;
-//     document.getElementById(source_id).innerHTML = imagefile;
-//     document.getElementById(data).setAttribute("id", newId);
-//     document.getElementById(source_id).setAttribute("ondragover", "");
-//   }
-// }
-
-
-function dragStart(e) {
-  e.dataTransfer.setData("data", e.target.id);
-  // e.dataTranfser.setData("source", e.target.parentElement.id);
-    e.dataTransfer.setData("source", e.target.parentElement.id);
-
-    // setTimeout(() => {
-    //     e.target.classList.add('hide');
-    // }, 0);
+function allowDrop(ev) {
+  ev.preventDefault();
 }
 
-
-
-
-function dragEnter(e) {
-  var target_id = e.target.id;
-  var content = target_id.slice(0, 3);
-  if (content == 'img') {
-    // e.Default();
-  } else { e.preventDefault() };
-    e.target.classList.add('drag-over');
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+  ev.dataTransfer.setData("source", ev.path[1].id);
 }
 
-function dragOver(e) {
-  var target_id = e.target.id;
-  var content = target_id.slice(0, 3);
-  if (content == "img") {
-    // e.Default();
-  } else {
-    e.preventDefault();
-  }
-  e.target.classList.add("drag-over");
-}
-
-function dragLeave(e) {
-    e.target.classList.remove('drag-over');
-}
-
-function drop(e) {
-  e.target.classList.remove("drag-over");
-  var data = e.dataTransfer.getData("data");
-  // get the draggable element
-  const source_id = e.dataTransfer.getData("source");
-  var target_id = e.target.id;
-  const draggable = document.getElementById(data);
-
-  // imagefile = draggable.innerHTML;
-  e.target.appendChild(draggable);
-  draggable.classList.remove("hide");
-  parentElement = document.getElementById(source_id);
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  var target_id = ev.target.id;
+  var source_id = ev.dataTransfer.getData("source");
+  imagefile = document.getElementById(source_id).innerHTML;
+  ev.target.appendChild(document.getElementById(data));
+  document
+    .getElementById(source_id)
+    .setAttribute("ondragover", "allowDrop(event)");
+  ev.target.setAttribute("ondragover", "");
   if (source_id.slice(0, 4) == "cube") {
-      idName = data.slice(0, 4);
-      idNumber = +data.slice(5);
-      idNumber++;
+    idName = data.slice(0, 4);
+    idNumber = +data.slice(5);
+    idNumber++;
     newId = idName + "-" + idNumber;
-    newImage = draggable.cloneNode(true);
-    newImage.setAttribute('id', newId);
-    parentElement.appendChild(newImage);
-   
-    document.getElementById(newId).addEventListener("dragstart", dragStart);
-    }
-
-  // // add it to the drop target
-  // e.target.appendChild(draggable);
-
-  // display the draggable element
-  
+    document.getElementById(source_id).innerHTML = imagefile;
+    document.getElementById(data).setAttribute("id", newId);
+    document.getElementById(source_id).setAttribute("ondragover", "");
+  }
 }
 //--------------------------------------------------------------------------
 function runSec2() {
@@ -232,51 +161,52 @@ function showQuestion(qq) {
   aGet = "";
   qTime = sec2[q - 1].questionTime;
   qImage = sec2[qq - 1].questionImage;
-  let pickupArea = `
-            <div id="trash" class="box" style="border: 0px;">
+  let pickupArea =
+    `
+            <div id="trash" style="border: 0px;" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <img src="static/bin-icon.png" id="trash" width="100px" height="100px">
             </div>
-            <div id="cube1">
-                <img src="static/cube-red.jpg" draggable="true" class="item" id="img1-1">
+            <div id="cube1" ondrop="drop(event)" >
+                <img src="static/cube-red.jpg" draggable="true" ondragstart="drag(event)" id="img1-1" width="100px" height="100px">
             </div>
-            <div id="cube2">
-                <img src="static/cube-black.jpg" draggable="true" class="item" id="img2-1">
+            <div id="cube2" ondrop="drop(event)">
+                <img src="static/cube-black.jpg" draggable="true" ondragstart="drag(event)" id="img2-1" width="100px" height="100px">
             </div>
-            <div id="cube3">
-                <img src="static/cube-half1.jpg" draggable="true" class="item" id="img3-1">
+            <div id="cube3" ondrop="drop(event)">
+                <img src="static/cube-half1.jpg" draggable="true" ondragstart="drag(event)" id="img3-1" width="100px" height="100px">
             </div>
-            <div id="cube4">
-                <img src="static/cube-half2.jpg" draggable="true" class="item" id="img4-1">
+            <div id="cube4" ondrop="drop(event)">
+                <img src="static/cube-half2.jpg" draggable="true" ondragstart="drag(event)" id="img4-1" width="100" height="100">
             </div>
-            <div id="cube5">
-                <img src="static/cube-half3.jpg" draggable="true" class="item" id="img5-1">
+            <div id="cube5" ondrop="drop(event)">
+                <img src="static/cube-half3.jpg" draggable="true" ondragstart="drag(event)" id="img5-1" width="100" height="100">
             </div>
-            <div id="cube6">
-                <img src="static/cube-half4.jpg" draggable="true" class="item" id="img6-1">
-            </div> 
+            <div id="cube6" ondrop="drop(event)">
+                <img src="static/cube-half4.jpg" draggable="true" ondragstart="drag(event)" id="img6-1" width="100" height="100">
+            </div>
   `;
   if (q <= 6) {
-    dropArea = `
-          <div id="div1" class="box"></div>
-          <div id="div2" class="box"></div>
-          <div id="div3" class="box"></div>
-          <div id="div4" class="box"></div>
+    dropArea = 
+      `
+          <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><p></p></div>
+          <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"><p></p></div>
+          <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"><p></p></div>
+          <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"><p></p></div>
         `;
   } else {
-    document
-      .getElementById("drop-area")
-      .setAttribute("style", "height: 300px; width: 300px;");
+    document.getElementById("drop-area").setAttribute("style", "height: 300px; width: 300px;");
     dropArea = `
-          <div id="div1" class="box"></div>
-          <div id="div2" class="box"></div>
-          <div id="div3" class="box"></div>
-          <div id="div4" class="box"></div>
-          <div id="div5" class="box"></div>
-          <div id="div6" class="box"></div>
-          <div id="div7" class="box"></div>
-          <div id="div8" class="box"></div>
-          <div id="div8" class="box"></div>
+          <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>    
+          <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
         `;
+    
   }
 
   document.getElementById("pickup-area").innerHTML = pickupArea;
@@ -286,22 +216,6 @@ function showQuestion(qq) {
   document.getElementById("alert").innerHTML =
     "Complete the left side to go to the next question.";
 
-  /* draggable element */
-  const items = document.querySelectorAll(".item");
-
-  items.forEach((item) => {
-    item.addEventListener("dragstart", dragStart);
-  });
-
-  /* drop targets */
-  const boxes = document.querySelectorAll(".box");
-
-  boxes.forEach((box) => {
-    box.addEventListener("dragenter", dragEnter);
-    box.addEventListener("dragover", dragOver);
-    box.addEventListener("dragleave", dragLeave);
-    box.addEventListener("drop", drop);
-  });
 }
 
 
@@ -335,9 +249,9 @@ function calulateAnswer() {
   images = document.getElementById("drop-area").getElementsByTagName("img");
   for (var i = 0; i < images.length; i++) {
     var imageCode = images[i].id.slice(3, 4);
-    // console.log(imageCode);
+    console.log(imageCode);
     aGet = aGet + imageCode;
-    // console.log(aGet);
+    console.log(aGet);
   }
   let remTime = document.getElementById("time").innerHTML;
   aTime = qTime - remTime;
@@ -401,46 +315,40 @@ function calculatePoints() {
   }
 
   sec2[q - 1].answerPoint = aPoint;
-  if (!repeat) { //****************** */
+  if (!repeat) {
     q++;
   } 
 
   // window.alert("your point: " + aPoint);
 
-  // console.log(aGet, qAnswer, attempt, aPoint);
-  // console.log("next question", q);
-  if (q == 11 || errCount == 3) {
+  console.log(aGet, qAnswer, attempt, aPoint);
+  console.log("next question", q);
+  if (q > 10 || errCount == 3) {
     endSection2();
   }
 }
-
-function showResult() {
-  window.location.href = "result.html";
-} 
 
 function endSection2() {
   document.getElementById("alert").setAttribute("style", "color : blue");
   document.getElementById("alert").innerHTML = "End of Section 2";
   BtnNext.setAttribute("disabled", "");
   clearInterval(myCounter);
+  let qqa = ""; //question data
 
   sec2.forEach((qq) => {
-    // Object.keys(qq).forEach((key) => {
-    //   qqa = qqa + (key, qq[key]) + "  ";
-    // });
+    Object.keys(qq).forEach((key) => {
+      qqa = qqa + (key, qq[key]) + "  ";
+    });
     totalSec2 = totalSec2 + qq.answerPoint;
-    // console.log(qqa);
-    // qqa = "";
+    console.log(qqa);
+    qqa = "";
   });
   sec2.push(totalSec2);
   localStorage.setItem("sec2Data", JSON.stringify(sec2));
 
-  // console.log("Score for section 2 : " + totalSec2);
+  console.log("Score for section 2 : " + totalSec2);
   BtnNext.innerHTML = "Go to the Result";
-  BtnNext.removeEventListener("click", gotoNextQ);
   BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
   BtnNext.removeAttribute("disabled");
   
 }
-
-

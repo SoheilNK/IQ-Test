@@ -59,34 +59,12 @@
     width: 200px;
 }
 
-.box {
-    height: 92px;
-    width: 92px;
-    border: solid 3px #ccc;
-
-
-    /* align items in the box */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+.drop-area div {
+    /* background-color: rgb(212, 250, 250); */
+    border: 1px solid black;
+    width: 98px;
+    height: 98px;
 }
-
-
-.drag-over {
-    border: dashed 3px red;
-}
-
-.item {
-    height: 100px;
-    width: 100px;
-}
-
-.hide {
-    display: none;
-}
-
 .drop-area p { position: absolute;}
 
 .pattern-side {
