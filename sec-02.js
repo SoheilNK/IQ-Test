@@ -119,8 +119,12 @@ const sec2 = [
   },
 ];
 //------------------------------drag and drop----------------------
-function allowDrop(ev) {
-  ev.preventDefault();
+
+
+function dragStart(e) {
+  e.dataTransfer.setData("data", e.target.id);
+    e.dataTransfer.setData("source", e.target.parentElement.id);
+
 }
 
 function drag(ev) {
