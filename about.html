@@ -6,47 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>IQ Test/About</title>
-    <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
 
 <body>
-    <style>
-        ul {
-            display: flex;
-            gap: 12px;
-        }
-
-        li.home {
-            margin-right: auto;
-        }
-    </style>
-
-    <nav>
+    <div class="deeppurple-4 header">
+      <nav>
         <ul>
-            <li class="home">
-                <a href="index.html">
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    About
-                </a>
-            </li>
+          <li id="section"><strong>IQ Test</strong></li>
+          <li class="home">
+            <a href="index.html"> Home </a>
+          </li>
+          <li>
+            <a href="about.html"> About </a>
+          </li>
         </ul>
-    </nav>
-    <nav>
-                    <ul>
-                        <li id="section"><strong>IQ Test</strong> / About Page</li>
-                    </ul>
-
+      </nav>
+    </div>
 
     <div class="container">
         <div>
-            <h2>Wechsler Test & Intelligence Scale</h2>
-        <img src="static/WAIS_IV.jpg" alt="Wechsler Adult Intelligence Scale | Fourth Edition">
+            <h1 style="text-align: center;">
+                Wechsler Test & Intelligence Scale
+                <img src="static/WAIS_IV.jpg" alt="Wechsler Adult Intelligence Scale | Fourth Edition">
+            </h1>
         </div>
-        <div>
+        <div class="content">
             <p>
             The Wechsler IQ test is a test that helps to measure cognitive abilities and intelligence. It has evolved over time, but
             the original Wechsler Intelligence Scales were developed by Dr. David Wechsler in 1939. It was initially called the
@@ -71,8 +61,13 @@
             individual’s lowest level of knowledge.
             </p>
         </div>
-        <div>
-            <button  type="button" class="button1" id="btnNext" onclick="history.back()">Go Back</button>
+        <div style="text-align: center;">
+           <button
+                type="button"
+                class="button1 deeppurple-3"
+                id="btnNext"
+                onclick="history.back()">Go Back
+            </button>
         </div>
         
     </div>
