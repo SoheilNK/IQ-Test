@@ -1,20 +1,14 @@
-.deeppurple-1 { background-color: #F191F2; }
-.deeppurple-2 { background-color: #D466F2; }
-.deeppurple-3 { 
-    background-color: #601BA6;
-    color: white 
+:root {
+    --deeppurple-1: #F191F2;
+    --deeppurple-2: #D466F2;
+    --deeppurple-3: #601BA6;
+    --deeppurple-4: #6d4fa1;
+    --deeppurple-5: #f2f2f2; 
+    --width1: 800px;
 }
-.deeppurple-4 { 
-    background-color: #6d4fa1; 
-    color: white }
-.deeppurple-5 { 
-    background-color: #F2F2F2; 
-}
-
-
 
 body{
-    background-color: #F2F2F2;
+    background-color: var(--deeppurple-5);
     font-family: 'Noto Sans', sans-serif;
     font-size: 1rem;
     
@@ -23,6 +17,8 @@ body{
 .header {
     display: flex;
     flex-direction: row;
+    background-color: var(--deeppurple-4);
+    color: white;
     font-family: 'Playfair Display', serif;
     height: 4rem;
     justify-content: center;
@@ -30,7 +26,7 @@ body{
 }
 
 nav{
-    width: 1000px;
+    width: var(--width1);
     min-width: 300px;
  }
 
@@ -67,14 +63,14 @@ h1, h2, h3 {
     background-color: white;
     margin: auto;
     margin-top: 2rem;
-    max-width: 1000px;
+    max-width: var(--width1);
     min-width: 300px;
     border-radius: 1rem;
     flex-direction: column;
 }
 
 .content { 
-    border: 2px solid #F2F2F2;
+    border: 4px solid var(--deeppurple-5);
     border-radius: 1rem;
     width: 70%;
     margin: auto;
@@ -87,6 +83,8 @@ ol li {
 }
 
 .button1 {
+    background-color: var(--deeppurple-3);
+    color: wheat;
     border: none;
     padding: 1rem;
     margin: 2rem;
@@ -98,7 +96,7 @@ ol li {
 }
 
 .button1:hover {
-    background-color: white;
-    color: #601BA6;
-    border: #601BA6 solid 1px;
+    background-color: wheat;
+    color: var(--deeppurple-3);
+    border: var(--deeppurple-3) solid 1px;
 }
