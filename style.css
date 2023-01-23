@@ -76,7 +76,6 @@ h1, h2, h3 {
     margin: auto;
     padding: 5%;
     padding-top: 0%;
-    
 } 
 ol li {
     margin-bottom: 1.5rem;
@@ -99,4 +98,19 @@ ol li {
     background-color: wheat;
     color: var(--deeppurple-3);
     border: var(--deeppurple-3) solid 1px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input{
+    /* display: block; */
+    /* align-self: center; */
+    margin-top: 4px;
+    margin-bottom: 8px;
+    /* font-family: 'Serif'; */
+    font-size: large;
+    border-radius: 0.75rem;
+    border: 3px solid var(--deeppurple-4);
 }
