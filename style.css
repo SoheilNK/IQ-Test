@@ -12,15 +12,12 @@
     background-color: #F2F2F2; 
 }
 
-.content {
-    background-color: white;
-}
+
 
 body{
     background-color: #F2F2F2;
     font-family: 'Noto Sans', sans-serif;
     font-size: 1rem;
-
     
 }
 
@@ -61,22 +58,59 @@ ul a {
     text-decoration: none;
 }
 
-h1 {
+h1, h2, h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
 }
 
+
 .container {
+    /* text-align: center;    */
+    /* align-self: ;  */
     display:flex;
+    background-color: white;
+    margin: auto;
+    margin-top: 2rem;
+    max-width: 1000px;
+    min-width: 300px;
     /* flex-wrap: wrap; */
     /* border:1rem groove rgb(60, 162, 178); */
     border-radius: 1rem;
     flex-direction: column;
     
-    justify-content:center;
+    /* justify-content:center; */
     /* height: 680px; */
-    gap: 30px;
+    /* gap: 30px; */
     /* height: 70vh; */
-    width: 62.5rem;
+    /* width: 62.5rem; */
     
+}
+
+.content { 
+    border: 2px solid #F2F2F2;
+    border-radius: 1rem;
+    width: 50%;
+    margin: auto;
+    padding: 5%;
+    padding-top: 0%;
+    
+} 
+ol li {
+    margin-bottom: 1.5rem;
+}
+
+.button1 {
+    border: none;
+    padding: 1rem;
+    margin: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.button1:hover {
+    background-color: white;
+    color: #601BA6;
+    border: #601BA6 solid 1px;
 }
