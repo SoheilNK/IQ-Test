@@ -172,15 +172,16 @@ function showQuestion(qn) {
   document.getElementById("question").innerHTML = qText;
   if (qn == 1) {
     qText =
-      qText + '   <img src="static/sec01_q01.png" alt="cubes" width="600">';
+      qText +
+      '  <br/><br/> <img src="static/sec01_q01.png" alt="cubes" width="600">';
     document.getElementById("question").innerHTML = qText;
   }
 
   timer(qTime);
 
-  console.log("q" + q + "     = ", qText);
-  console.log("Time:            ", qTime);
-  console.log("Answer:          ", qAnswer);
+  // console.log("q" + q + "     = ", qText);
+  // console.log("Time:            ", qTime);
+  // console.log("Answer:          ", qAnswer);
 }
 
 //--------------------------Validate input-----------Start-------
@@ -198,8 +199,6 @@ function handleAnswerChange(event) {
   if (hasValidAnswer) {
     BtnNext.removeAttribute("disabled");
     document.getElementById("alert").setAttribute("style", "color : blue");
-    document.getElementById("alert").innerHTML =
-      "Please click next to go to the next question.";
   } else {
     BtnNext.setAttribute("disabled", "");
     document.getElementById("alert").setAttribute("style", "color : red");
@@ -305,7 +304,7 @@ function timerOut() {
   //what happens when timer hits zero
   document.getElementById("alert").setAttribute("style", "color : blue");
   document.getElementById("alert").innerHTML =
-    "Time is up, Please click next to go to the next question.";
+    "Time is up!!!";
   BtnNext.removeAttribute("disabled");
   InAnswer.setAttribute("disabled", "");
 }
