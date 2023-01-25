@@ -130,7 +130,97 @@ input   {
     border: 3px solid var(--deeppurple-4);
 }
 
+/* section1 ----------------------------- */
+
 #question {
     width: 400px;
     font-weight: bold;
+}
+
+/* section2 ----------------------------- */
+.pickup-area {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+.pickup-area div {
+    width: 80px;
+    height: 80px;
+    margin: 3px;
+}
+.box {
+    height: 74px;
+    width: 74px;
+    border: solid 3px var(--deeppurple-5);
+
+
+    /* align items in the box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+#trash {
+    width: 80px;
+    height: 80px;
+    border: 0px;
+}
+.item {
+    height: 80px;
+    width: 80px;
+}
+.workshop {
+    display: flex;
+    gap:  1rem;
+}
+
+.drop-side {
+    display: flex;
+    /* background-color: antiquewhite; */
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+}
+.drop-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 160px;
+    width: 160px;
+    
+}
+.workshop div{
+    padding: 0px;
+}
+
+
+
+.drag-over {
+    border: dashed 3px red;
+}
+
+
+
+.hide {
+    display: none;
+}
+
+.drop-area p { position: absolute;}
+
+.pattern-side {
+    display: flex;
+    /* background-color: antiquewhite; */
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+}
+
+#lineV {
+    width: 5px;
+    text-align: center;
 }

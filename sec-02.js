@@ -180,11 +180,6 @@ function drop(e) {
     document.getElementById(newId).addEventListener("dragstart", dragStart);
     }
 
-  // // add it to the drop target
-  // e.target.appendChild(draggable);
-
-  // display the draggable element
-  
 }
 //--------------------------------------------------------------------------
 function runSec2() {
@@ -199,8 +194,8 @@ function showQuestion(qq) {
   qTime = sec2[q - 1].questionTime;
   qImage = sec2[qq - 1].questionImage;
   let pickupArea = `
-            <div id="trash" class="box" style="border: 0px;">
-                <img src="static/bin-icon.png" id="trash" width="100px" height="100px">
+            <div id="trash" class="box">
+                <img src="static/recycle-bin-icon-16272.png" id="trash">
             </div>
             <div id="cube1">
                 <img src="static/cube-red.jpg" draggable="true" class="item" id="img1-1">
@@ -231,7 +226,7 @@ function showQuestion(qq) {
   } else {
     document
       .getElementById("drop-area")
-      .setAttribute("style", "height: 300px; width: 300px;");
+      .setAttribute("style", "height: 240px; width: 240px;");
     dropArea = `
           <div id="div1" class="box"></div>
           <div id="div2" class="box"></div>
@@ -241,7 +236,7 @@ function showQuestion(qq) {
           <div id="div6" class="box"></div>
           <div id="div7" class="box"></div>
           <div id="div8" class="box"></div>
-          <div id="div8" class="box"></div>
+          <div id="div9" class="box"></div>
         `;
   }
 
@@ -249,8 +244,6 @@ function showQuestion(qq) {
   document.getElementById("drop-area").innerHTML = dropArea;
   pattern.setAttribute("src", "static/" + qImage);
   document.getElementById("alert").setAttribute("style", "color : blue");
-  document.getElementById("alert").innerHTML =
-    "Complete the left side to go to the next question.";
 
   /* draggable element */
   const items = document.querySelectorAll(".item");
