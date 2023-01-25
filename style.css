@@ -1,9 +1,10 @@
 :root {
-    --deeppurple-1: #F191F2;
-    --deeppurple-2: #D466F2;
-    --deeppurple-3: #601BA6;
+    --deeppurple-1: #A174ED;
+    --deeppurple-2: #998BB0;
+    --deeppurple-3: #4A366E;
     --deeppurple-4: #6d4fa1;
-    --deeppurple-5: #f2f2f2; 
+    --deeppurple-5: #f2f2f2;
+    --table: #CEBBED;
     --width1: 800px;
 }
 
@@ -92,28 +93,29 @@ ol li {
 
 .button1 {
     background-color: var(--deeppurple-3);
-    color: wheat;
+    color: white;
     border: none;
     padding: 1rem;
     margin: 2rem;
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
+    /* font-weight: bold; */
     transition-duration: 0.4s;
     cursor: pointer;
     border-radius: 8px;
 }
 
 .button1:hover:not(:disabled) {
-    background-color: wheat;
-    color: var(--deeppurple-3);
+    background-color: var(--deeppurple-1);
+    /* color:white; */
     border: var(--deeppurple-3) solid 1px;
 }
 
 .button1:disabled {
-  background-color: gray;
+  background-color: var(--deeppurple-2);
   border-style: outset;
-  border-color: rgb(179, 179, 179);
-  font-family: "Sofia", sans-serif;
+  /* border-color: rgb(179, 179, 179);
+  font-family: "Sofia", sans-serif; */
   color: rgb(179, 179, 179);
 }
 
@@ -223,4 +225,31 @@ input   {
 #lineV {
     width: 5px;
     text-align: center;
+}
+
+/* section2 ----------------------------- */
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: auto;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+
+}
+th {
+    border: 1px solid var(--deeppurple-4);
+  text-align: center;
+  background-color:var(--deeppurple-2);
+
+}
+td {
+    border: 1px solid var(--deeppurple-4);
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color:var(--deeppurple-2);
 }
