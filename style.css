@@ -107,15 +107,11 @@ ol li {
 
 .button1:hover:not(:disabled) {
     background-color: var(--deeppurple-1);
-    /* color:white; */
-    border: var(--deeppurple-3) solid 1px;
 }
 
 .button1:disabled {
   background-color: var(--deeppurple-2);
   border-style: outset;
-  /* border-color: rgb(179, 179, 179);
-  font-family: "Sofia", sans-serif; */
   color: rgb(179, 179, 179);
 }
 
