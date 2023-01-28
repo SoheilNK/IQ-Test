@@ -6,13 +6,14 @@
     --deeppurple-5: #f2f2f2;
     --table: #CEBBED;
     --width1: 50rem;
+    --minWidth: 18.75rem;
 }
 
 body{
     background-color: var(--deeppurple-5);
     font-family: 'Noto Sans', sans-serif;
     font-size: 1rem;
-    min-width: 18.75rem;
+    min-width: var(--minWidth);
     
 }
 
@@ -85,7 +86,7 @@ h1, h2, h3 {
     width: 70%;
     margin: auto;
     padding: 1rem;
-    padding-top: 0%;
+    padding-top: 0;
     gap: 12.5px;
 } 
 .content div {
@@ -135,7 +136,7 @@ input   {
 /* section1 ----------------------------- */
 
 #question {
-    width: 400px;
+    max-width: 400px;
     font-weight: bold;
 }
 
