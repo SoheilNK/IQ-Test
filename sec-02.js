@@ -1,4 +1,4 @@
-let q = 1; //question number
+let q = 1; 
 let pattern = document.getElementById("pattern");
 let qImage; //question image
 let qTime; //question time
@@ -226,7 +226,10 @@ function showQuestion(qq) {
   } else {
     document
       .getElementById("drop-area")
-      .setAttribute("style", "height: 240px; width: 240px;");
+      .setAttribute(
+        "style",
+        "height: calc(var(--imgWidth) * 240 / 80 ); width: calc(var(--imgWidth) * 240 / 80 );"
+      );
     dropArea = `
           <div id="div1" class="box"></div>
           <div id="div2" class="box"></div>
