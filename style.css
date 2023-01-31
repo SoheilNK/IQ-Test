@@ -66,6 +66,7 @@ h3 {
 .container {
   display: flex;
   background-color: white;
+  opacity: 0.99999;
   margin: auto;
   margin-top: 2rem;
   max-width: var(--width1);

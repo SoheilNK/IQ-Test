@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" onmouseup="drop(event)" ontouchend="drop(event)">
 <head style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
   </head>
-<body onload="runSec2()">
+<body onload="runSec2()" onmousemove="move(event)" ontouchmove="move(event)">
     <style>
         .content div {
             padding: 0;
@@ -31,7 +31,7 @@
       </nav>
     </div>
     
-    <div class="container" id="container">
+    <div class="container" id="container" onmousemove="move(event)" ontouchmove="move(event)">
         <h2 style="text-align: center">Section Two Questions</h2>
         <div class="content" style="padding-bottom: 0rem;">
             <div id="timeDiv">
@@ -48,7 +48,7 @@
                 
                 
                 <div class="drop-side"> 
-                    <div class="drop-area" id="drop-area">
+                    <div class="drop-area" id="drop-area" >
                     </div>
                 </div>
                 <div id="lineV"><img src="static/line.jpg"></div>

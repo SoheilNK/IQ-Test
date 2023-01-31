@@ -120,68 +120,124 @@ const sec2 = [
     answerPoint: 0,
   },
 ];
-//------------------------------drag and drop----------------------
+//------------------------------drag and drop----old------------------
 
 
-function dragStart(e) {
-  e.dataTransfer.setData("data", e.target.id);
-    e.dataTransfer.setData("source", e.target.parentElement.id);
+// function dragStart(e) {
+//   e.dataTransfer.setData("data", e.target.id);
+//     e.dataTransfer.setData("source", e.target.parentElement.id);
 
-}
-
-
+// }
 
 
-function dragEnter(e) {
-  var target_id = e.target.id;
-  var content = target_id.slice(0, 3);
-  if (content == 'img') {
-    // e.Default();
-  } else { e.preventDefault() };
-    e.target.classList.add('drag-over');
-}
 
-function dragOver(e) {
-  var target_id = e.target.id;
-  var content = target_id.slice(0, 3);
-  if (content == "img") {
-    // e.Default();
-  } else {
-    e.preventDefault();
-  }
-  e.target.classList.add("drag-over");
-}
 
-function dragLeave(e) {
-    e.target.classList.remove('drag-over');
-}
+// function dragEnter(e) {
+//   var target_id = e.target.id;
+//   var content = target_id.slice(0, 3);
+//   if (content == 'img') {
+//     // e.Default();
+//   } else { e.preventDefault() };
+//     e.target.classList.add('drag-over');
+// }
 
-function drop(e) {
-  e.target.classList.remove("drag-over");
-  var data = e.dataTransfer.getData("data");
-  // get the draggable element
-  const source_id = e.dataTransfer.getData("source");
-  var target_id = e.target.id;
-  const draggable = document.getElementById(data);
+// function dragOver(e) {
+//   var target_id = e.target.id;
+//   var content = target_id.slice(0, 3);
+//   if (content == "img") {
+//     // e.Default();
+//   } else {
+//     e.preventDefault();
+//   }
+//   e.target.classList.add("drag-over");
+// }
 
-  // imagefile = draggable.innerHTML;
-  e.target.appendChild(draggable);
-  draggable.classList.remove("hide");
-  parentElement = document.getElementById(source_id);
-  if (source_id.slice(0, 4) == "cube") {
-      idName = data.slice(0, 4);
-      idNumber = +data.slice(5);
-      idNumber++;
-    newId = idName + "-" + idNumber;
-    newImage = draggable.cloneNode(true);
-    newImage.setAttribute('id', newId);
-    parentElement.appendChild(newImage);
+// function dragLeave(e) {
+//     e.target.classList.remove('drag-over');
+// }
+
+// function drop(e) {
+//   e.target.classList.remove("drag-over");
+//   var data = e.dataTransfer.getData("data");
+//   // get the draggable element
+//   const source_id = e.dataTransfer.getData("source");
+//   var target_id = e.target.id;
+//   const draggable = document.getElementById(data);
+
+//   // imagefile = draggable.innerHTML;
+//   e.target.appendChild(draggable);
+//   draggable.classList.remove("hide");
+//   parentElement = document.getElementById(source_id);
+//   if (source_id.slice(0, 4) == "cube") {
+//       idName = data.slice(0, 4);
+//       idNumber = +data.slice(5);
+//       idNumber++;
+//     newId = idName + "-" + idNumber;
+//     newImage = draggable.cloneNode(true);
+//     newImage.setAttribute('id', newId);
+//     parentElement.appendChild(newImage);
    
-    document.getElementById(newId).addEventListener("dragstart", dragStart);
+//     document.getElementById(newId).addEventListener("dragstart", dragStart);
+//     }
+
+// }
+//--------------------------------------------------------------------------
+//------new drag and drop with touch support--------------------------------
+let moving = null;
+
+function pickup(event) {
+  moving = event.target;
+  moving.style.height = moving.clientHeight + "px";
+  moving.style.width = moving.clientWidth + "px";
+  moving.style.position = "fixed";
+  moving.style.zIndex = "-10";
+}
+
+function move(event) {
+  if (moving) {
+    if (event.clientX) {
+      // mousemove
+      moving.style.left = event.clientX - moving.clientWidth / 2 + "px";
+      moving.style.top = event.clientY - moving.clientHeight / 2 + "px";
+    } else {
+      // touchmove - assuming a single touchpoint
+      moving.style.left =
+        event.changedTouches[0].clientX - moving.clientWidth / 2 + "px";
+      moving.style.top =
+        event.changedTouches[0].clientY - moving.clientHeight / 2 + "px";
+    }
+  }
+}
+
+function drop(event) {
+  if (moving) {
+    if (event.currentTarget.tagName !== "HTML") {
+      let target = null;
+      if (event.clientX) {
+        target = document.elementFromPoint(event.clientX, event.clientY);
+      } else {
+        target = document.elementFromPoint(
+          event.changedTouches[0].clientX,
+          event.changedTouches[0].clientY
+        );
+      }
+
+      target.appendChild(moving);
     }
 
+    // reset our element
+    moving.style.left = "";
+    moving.style.top = "";
+    moving.style.height = "";
+    moving.style.width = "";
+    moving.style.position = "";
+    moving.style.zIndex = "";
+
+    moving = null;
+  }
 }
-//--------------------------------------------------------------------------
+//-----------------------------------------------------------------
+
 function runSec2() {
   qTime = sec2[q - 1].questionTime;
   
@@ -198,30 +254,30 @@ function showQuestion(qq) {
                 <img src="static/recycle-bin-icon-16272.png" id="trash">
             </div>
             <div id="cube1">
-                <img src="static/cube-red.jpg" draggable="true" class="item" id="img1-1">
+                <img src="static/cube-red.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img1-1">
             </div>
             <div id="cube2">
-                <img src="static/cube-black.jpg" draggable="true" class="item" id="img2-1">
+                <img src="static/cube-black.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img2-1">
             </div>
             <div id="cube3">
-                <img src="static/cube-half1.jpg" draggable="true" class="item" id="img3-1">
+                <img src="static/cube-half1.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img3-1">
             </div>
             <div id="cube4">
-                <img src="static/cube-half2.jpg" draggable="true" class="item" id="img4-1">
+                <img src="static/cube-half2.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img4-1">
             </div>
             <div id="cube5">
-                <img src="static/cube-half3.jpg" draggable="true" class="item" id="img5-1">
+                <img src="static/cube-half3.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)"class="item" id="img5-1">
             </div>
             <div id="cube6">
-                <img src="static/cube-half4.jpg" draggable="true" class="item" id="img6-1">
+                <img src="static/cube-half4.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img6-1">
             </div> 
   `;
   if (q <= 6) {
     dropArea = `
-          <div id="div1" class="box"></div>
-          <div id="div2" class="box"></div>
-          <div id="div3" class="box"></div>
-          <div id="div4" class="box"></div>
+          <div id="div1" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div2" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div3" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div4" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
         `;
   } else {
     document
@@ -249,21 +305,21 @@ function showQuestion(qq) {
   document.getElementById("alert").setAttribute("style", "color : blue");
 
   /* draggable element */
-  const items = document.querySelectorAll(".item");
+  // const items = document.querySelectorAll(".item");
 
-  items.forEach((item) => {
-    item.addEventListener("dragstart", dragStart);
-  });
+  // items.forEach((item) => {
+  //   item.addEventListener("dragstart", dragStart);
+  // });
 
   /* drop targets */
-  const boxes = document.querySelectorAll(".box");
+  // const boxes = document.querySelectorAll(".box");
 
-  boxes.forEach((box) => {
-    box.addEventListener("dragenter", dragEnter);
-    box.addEventListener("dragover", dragOver);
-    box.addEventListener("dragleave", dragLeave);
-    box.addEventListener("drop", drop);
-  });
+  // boxes.forEach((box) => {
+  //   box.addEventListener("dragenter", dragEnter);
+  //   box.addEventListener("dragover", dragOver);
+  //   box.addEventListener("dragleave", dragLeave);
+  //   box.addEventListener("drop", drop);
+  // });
 }
 
 
