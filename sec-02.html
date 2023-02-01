@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="en" onmouseup="drop(event)" ontouchend="drop(event)">
 <head style>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
   </head>
-<body onload="runSec2()" onmousemove="move(event)" ontouchmove="move(event)">
+<body onload="runSec2()">
     <style>
         .content div {
             padding: 0;
@@ -31,9 +31,9 @@
       </nav>
     </div>
     
-    <div class="container" id="container" onmousemove="move(event)" ontouchmove="move(event)">
+    <div class="container" id="container" onmouseup="drop(event)" ontouchend="drop(event)">
         <h2 style="text-align: center">Section Two Questions</h2>
-        <div class="content" style="padding-bottom: 0rem;">
+        <div class="content" style="padding-bottom: 0rem;" onmousemove="move(event)" ontouchmove="move(event)">
             <div id="timeDiv">
                 <p id="remTime">
                     Remaining Time:
@@ -44,11 +44,11 @@
             
             <div class="pickup-area" id="pickup-area">
             </div>
-            <div class="workshop">
+            <div class="workshop" id="workshop">
                 
                 
                 <div class="drop-side"> 
-                    <div class="drop-area" id="drop-area" >
+                    <div class="drop-area" id="drop-area">
                     </div>
                 </div>
                 <div id="lineV"><img src="static/line.jpg"></div>

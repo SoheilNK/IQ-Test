@@ -1,4 +1,4 @@
-let q = 1; 
+let q = 1;
 let pattern = document.getElementById("pattern");
 let qImage; //question image
 let qTime; //question time
@@ -16,7 +16,6 @@ const BtnNext = document.getElementById("btnNext");
 let images;
 
 BtnNext.addEventListener("click", gotoNextQ);
-
 
 const sec2 = [
   {
@@ -122,15 +121,11 @@ const sec2 = [
 ];
 //------------------------------drag and drop----old------------------
 
-
 // function dragStart(e) {
 //   e.dataTransfer.setData("data", e.target.id);
 //     e.dataTransfer.setData("source", e.target.parentElement.id);
 
 // }
-
-
-
 
 // function dragEnter(e) {
 //   var target_id = e.target.id;
@@ -176,7 +171,7 @@ const sec2 = [
 //     newImage = draggable.cloneNode(true);
 //     newImage.setAttribute('id', newId);
 //     parentElement.appendChild(newImage);
-   
+
 //     document.getElementById(newId).addEventListener("dragstart", dragStart);
 //     }
 
@@ -186,17 +181,27 @@ const sec2 = [
 let moving = null;
 
 function pickup(event) {
+  event.preventDefault();
   moving = event.target;
   moving.style.height = moving.clientHeight + "px";
   moving.style.width = moving.clientWidth + "px";
   moving.style.position = "fixed";
-  moving.style.zIndex = "-10";
+  // moving.style.zIndex = "-10";
 }
+// $(document).bind("touchstart", function (e) {
+//   e.preventDefault();
+//   var orig = e.riginalEvent;
+
+//         })
 
 function move(event) {
   if (moving) {
     if (event.clientX) {
       // mousemove
+      // for test
+      // targetHit = document.elementFromPoint(event.clientX, event.clientY);
+      // for test
+
       moving.style.left = event.clientX - moving.clientWidth / 2 + "px";
       moving.style.top = event.clientY - moving.clientHeight / 2 + "px";
     } else {
@@ -236,11 +241,12 @@ function drop(event) {
     moving = null;
   }
 }
+
 //-----------------------------------------------------------------
 
 function runSec2() {
   qTime = sec2[q - 1].questionTime;
-  
+
   showQuestion(q);
   timer(qTime);
 }
@@ -250,7 +256,7 @@ function showQuestion(qq) {
   qTime = sec2[q - 1].questionTime;
   qImage = sec2[qq - 1].questionImage;
   let pickupArea = `
-            <div id="trash" class="box">
+            <div id="trash" class="box" onmouseup="drop(event)" ontouchend="drop(event)">
                 <img src="static/recycle-bin-icon-16272.png" id="trash">
             </div>
             <div id="cube1">
@@ -274,10 +280,10 @@ function showQuestion(qq) {
   `;
   if (q <= 6) {
     dropArea = `
-          <div id="div1" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
-          <div id="div2" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
-          <div id="div3" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
-          <div id="div4" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+    <div id="div2" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+    <div id="div3" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+    <div id="div4" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+    <div id="div1" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
         `;
   } else {
     document
@@ -322,7 +328,6 @@ function showQuestion(qq) {
   // });
 }
 
-
 function timerOut() {
   //what happens when timer hits zero
   document.getElementById("alert").setAttribute("style", "color : blue");
@@ -330,16 +335,15 @@ function timerOut() {
     "Time is up, Please click next to go to the next question.";
   BtnNext.removeAttribute("disabled");
   freezeImages(); //  prevent images from further movements
-
 }
 
-function gotoNextQ(){
+function gotoNextQ() {
   calulateAnswer();
   calculatePoints();
   if (q < 11 && errCount != 3) {
     showQuestion(q);
     timer(qTime);
-  } 
+  }
 }
 
 function freezeImages() {
@@ -419,9 +423,10 @@ function calculatePoints() {
   }
 
   sec2[q - 1].answerPoint = aPoint;
-  if (!repeat) { //****************** */
+  if (!repeat) {
+    //****************** */
     q++;
-  } 
+  }
 
   // window.alert("your point: " + aPoint);
 
@@ -434,7 +439,7 @@ function calculatePoints() {
 
 function showResult() {
   window.location.href = "result.html";
-} 
+}
 
 function endSection2() {
   document.getElementById("alert").setAttribute("style", "color : blue");
@@ -458,7 +463,4 @@ function endSection2() {
   BtnNext.removeEventListener("click", gotoNextQ);
   BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
   BtnNext.removeAttribute("disabled");
-  
 }
-
-
