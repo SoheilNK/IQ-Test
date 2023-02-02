@@ -16,7 +16,7 @@ const BtnNext = document.getElementById("btnNext");
 let images;
 
 BtnNext.addEventListener("click", gotoNextQ);
-BtnNext.addEventListener("touchstart", gotoNextQ);
+// BtnNext.addEventListener("touchstart", gotoNextQ);
 
 const sec2 = [
   {
@@ -196,36 +196,59 @@ function pickup(event) {
 //         })
 
 function move(event) {
-  event.preventDefault();
+  // event.preventDefault();
   if (moving) {
     if (event.clientX) {
       // mousemove
       // for test
-      // targetHit = document.elementFromPoint(event.clientX, event.clientY);
+      targetHit = document.elementFromPoint(event.clientX, event.clientY);
       // for test
 
       moving.style.left = event.clientX - moving.clientWidth / 2 + "px";
       moving.style.top = event.clientY - moving.clientHeight / 2 + "px";
     } else {
       // touchmove - assuming a single touchpoint
+      targetHit = document.elementFromPoint(
+        event.changedTouches[0].clientX,
+        event.changedTouches[0].clientY
+      );
+
       moving.style.left =
         event.changedTouches[0].clientX - moving.clientWidth / 2 + "px";
       moving.style.top =
         event.changedTouches[0].clientY - moving.clientHeight / 2 + "px";
     }
+
+    if (targetHit.id == "div1") {
+      document.getElementById("div1").classList.add("drag-over");
+    } else {
+      document.getElementById("div1").classList.remove("drag-over");
+    }
+    if (targetHit.id == "div2") {
+      document.getElementById("div2").classList.add("drag-over");
+    } else {
+      document.getElementById("div2").classList.remove("drag-over");
+    }
+    if (targetHit.id == "div3") {
+      document.getElementById("div3").classList.add("drag-over");
+    } else {
+      document.getElementById("div3").classList.remove("drag-over");
+    }
+    if (targetHit.id == "div4") {
+      document.getElementById("div4").classList.add("drag-over");
+    } else {
+      document.getElementById("div4").classList.remove("drag-over");
+    }
   }
 }
 
 function drop(event) {
-  event.preventDefault();
+  // event.preventDefault();
   if (moving) {
     if (event.currentTarget.tagName !== "HTML") {
       let target = null;
       if (event.clientX) {
-        target = document.elementFromPoint(
-          event.clientX ,
-          event.clientY
-        );
+        target = document.elementFromPoint(event.clientX, event.clientY);
         // target = event.currentTarget;
       } else {
         target = document.elementFromPoint(
@@ -379,6 +402,8 @@ function timerOut() {
 }
 
 function gotoNextQ() {
+  document.getElementById("btnNext").style.backgroundColor =
+    "var(--deeppurple-3)";
   calulateAnswer();
   calculatePoints();
   if (q < 11 && errCount != 3) {
@@ -390,7 +415,8 @@ function gotoNextQ() {
 function freezeImages() {
   images = document.getElementsByTagName("img");
   for (var i = 0; i < images.length; i++) {
-    images[i].setAttribute("draggable", "false");
+    images[i].removeAttribute("onmousedown");
+    images[i].removeAttribute("ontouchstart");
   }
 }
 
@@ -502,8 +528,8 @@ function endSection2() {
   // console.log("Score for section 2 : " + totalSec2);
   BtnNext.innerHTML = "Go to the Result";
   BtnNext.removeEventListener("click", gotoNextQ);
-  BtnNext.removeEventListener("touchstart", gotoNextQ);
+  // BtnNext.removeEventListener("touchstart", gotoNextQ);
   BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
-  BtnNext.setAttribute("ontouchstart", 'window.location.href = "result.html";');
+  // BtnNext.setAttribute("ontouchstart", 'window.location.href = "result.html";');
   BtnNext.removeAttribute("disabled");
 }

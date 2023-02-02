@@ -97,6 +97,10 @@ ol li {
   margin-bottom: 1.5rem;
 }
 
+#alert {
+  min-height: 1.5rem;
+}
+
 .button1 {
   background-color: var(--deeppurple-3);
   color: white;
@@ -116,7 +120,7 @@ ol li {
 }
 
 .button1:disabled {
-  background-color: var(--deeppurple-2);
+  background-color: var(--deeppurple-5);
   border-style: outset;
   color: rgb(179, 179, 179);
 }
