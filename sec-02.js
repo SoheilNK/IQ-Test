@@ -9,13 +9,14 @@ let attempt = 1; //attempts for questions 1 and 2
 let dropArea;
 let totalSec2 = 0;
 let errCount = 0; //counts number of consecutive errors
-let data;
-let source;
+let moving = null;
+let sourcePickup = "";
 
 const BtnNext = document.getElementById("btnNext");
 let images;
 
 BtnNext.addEventListener("click", gotoNextQ);
+BtnNext.addEventListener("touchstart", gotoNextQ);
 
 const sec2 = [
   {
@@ -178,15 +179,15 @@ const sec2 = [
 // }
 //--------------------------------------------------------------------------
 //------new drag and drop with touch support--------------------------------
-let moving = null;
 
 function pickup(event) {
   event.preventDefault();
+  sourcePickup = event.currentTarget.parentElement.id;
   moving = event.target;
   moving.style.height = moving.clientHeight + "px";
   moving.style.width = moving.clientWidth + "px";
   moving.style.position = "fixed";
-  // moving.style.zIndex = "-10";
+  moving.style.zIndex = "-10";
 }
 // $(document).bind("touchstart", function (e) {
 //   e.preventDefault();
@@ -195,6 +196,7 @@ function pickup(event) {
 //         })
 
 function move(event) {
+  event.preventDefault();
   if (moving) {
     if (event.clientX) {
       // mousemove
@@ -215,30 +217,69 @@ function move(event) {
 }
 
 function drop(event) {
+  event.preventDefault();
   if (moving) {
     if (event.currentTarget.tagName !== "HTML") {
       let target = null;
       if (event.clientX) {
-        target = document.elementFromPoint(event.clientX, event.clientY);
+        target = document.elementFromPoint(
+          event.clientX ,
+          event.clientY
+        );
+        // target = event.currentTarget;
       } else {
         target = document.elementFromPoint(
           event.changedTouches[0].clientX,
           event.changedTouches[0].clientY
         );
+        // if (target.tagName == "IMG") {
+        //   target = target.parentElement;
+        // }
+      }
+      if (
+        (target.innerHTML == "" && target.tagName !== "IMG") ||
+        target.id == "trash1"
+      ) {
+        target.appendChild(moving);
+        parentElement = document.getElementById(sourcePickup);
+        if (sourcePickup.slice(0, 4) == "cube") {
+          idName = moving.id.slice(0, 4);
+          idNumber = +moving.id.slice(5);
+          idNumber++;
+          newId = idName + "-" + idNumber;
+          newImage = moving.cloneNode(true);
+          newImage.setAttribute("id", newId);
+          parentElement.appendChild(newImage);
+
+          document
+            .getElementById(newId)
+            .setAttribute("onmousedown", "pickup(event)");
+          document
+            .getElementById(newId)
+            .setAttribute("ontouchstart", "pickup(event)");
+
+          // reset our element
+          newImage.style.left = "";
+          newImage.style.top = "";
+          newImage.style.height = "";
+          newImage.style.width = "";
+          newImage.style.position = "";
+          newImage.style.zIndex = "";
+
+          newImage = null;
+        }
       }
 
-      target.appendChild(moving);
+      // reset our element
+      moving.style.left = "";
+      moving.style.top = "";
+      moving.style.height = "";
+      moving.style.width = "";
+      moving.style.position = "";
+      moving.style.zIndex = "";
+
+      moving = null;
     }
-
-    // reset our element
-    moving.style.left = "";
-    moving.style.top = "";
-    moving.style.height = "";
-    moving.style.width = "";
-    moving.style.position = "";
-    moving.style.zIndex = "";
-
-    moving = null;
   }
 }
 
@@ -256,8 +297,8 @@ function showQuestion(qq) {
   qTime = sec2[q - 1].questionTime;
   qImage = sec2[qq - 1].questionImage;
   let pickupArea = `
-            <div id="trash" class="box" onmouseup="drop(event)" ontouchend="drop(event)">
-                <img src="static/recycle-bin-icon-16272.png" id="trash">
+            <div id="trash" class="box" >
+                <img src="static/recycle-bin-icon-16272.png" id="trash1" onmouseup="drop(event)" ontouchend="drop(event)">
             </div>
             <div id="cube1">
                 <img src="static/cube-red.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img1-1">
@@ -293,15 +334,15 @@ function showQuestion(qq) {
         "height: calc(var(--imgWidth) * 240 / 80 ); width: calc(var(--imgWidth) * 240 / 80 );"
       );
     dropArea = `
-          <div id="div1" class="box"></div>
-          <div id="div2" class="box"></div>
-          <div id="div3" class="box"></div>
-          <div id="div4" class="box"></div>
-          <div id="div5" class="box"></div>
-          <div id="div6" class="box"></div>
-          <div id="div7" class="box"></div>
-          <div id="div8" class="box"></div>
-          <div id="div9" class="box"></div>
+          <div id="div1" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div2" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div3" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div4" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div5" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div6" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div7" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div8" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div9" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
         `;
   }
 
@@ -461,6 +502,8 @@ function endSection2() {
   // console.log("Score for section 2 : " + totalSec2);
   BtnNext.innerHTML = "Go to the Result";
   BtnNext.removeEventListener("click", gotoNextQ);
+  BtnNext.removeEventListener("touchstart", gotoNextQ);
   BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
+  BtnNext.setAttribute("ontouchstart", 'window.location.href = "result.html";');
   BtnNext.removeAttribute("disabled");
 }
