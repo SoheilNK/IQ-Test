@@ -98,7 +98,7 @@ ol li {
 }
 
 #alert {
-  min-height: 1.5rem;
+  min-height: 3rem;
 }
 
 .button1 {
@@ -121,7 +121,6 @@ ol li {
 
 .button1:disabled {
   background-color: var(--deeppurple-5);
-  border-style: outset;
   color: rgb(179, 179, 179);
 }
 
