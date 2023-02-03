@@ -11,6 +11,7 @@ let totalSec2 = 0;
 let errCount = 0; //counts number of consecutive errors
 let moving = null;
 let sourcePickup = "";
+let boxes = null;
 
 const BtnNext = document.getElementById("btnNext");
 let images;
@@ -219,26 +220,34 @@ function move(event) {
         event.changedTouches[0].clientY - moving.clientHeight / 2 + "px";
     }
 
-    if (targetHit.id == "div1") {
-      document.getElementById("div1").classList.add("drag-over");
-    } else {
-      document.getElementById("div1").classList.remove("drag-over");
-    }
-    if (targetHit.id == "div2") {
-      document.getElementById("div2").classList.add("drag-over");
-    } else {
-      document.getElementById("div2").classList.remove("drag-over");
-    }
-    if (targetHit.id == "div3") {
-      document.getElementById("div3").classList.add("drag-over");
-    } else {
-      document.getElementById("div3").classList.remove("drag-over");
-    }
-    if (targetHit.id == "div4") {
-      document.getElementById("div4").classList.add("drag-over");
-    } else {
-      document.getElementById("div4").classList.remove("drag-over");
-    }
+      boxes.forEach((box) => {
+        if (targetHit.id == box.id) {
+          box.classList.add("drag-over");
+        } else {
+          box.classList.remove("drag-over");
+        }
+      });
+
+    // if (targetHit.id == "div1") {
+    //   document.getElementById("div1").classList.add("drag-over");
+    // } else {
+    //   document.getElementById("div1").classList.remove("drag-over");
+    // }
+    // if (targetHit.id == "div2") {
+    //   document.getElementById("div2").classList.add("drag-over");
+    // } else {
+    //   document.getElementById("div2").classList.remove("drag-over");
+    // }
+    // if (targetHit.id == "div3") {
+    //   document.getElementById("div3").classList.add("drag-over");
+    // } else {
+    //   document.getElementById("div3").classList.remove("drag-over");
+    // }
+    // if (targetHit.id == "div4") {
+    //   document.getElementById("div4").classList.add("drag-over");
+    // } else {
+    //   document.getElementById("div4").classList.remove("drag-over");
+    // }
   }
 }
 
@@ -373,6 +382,10 @@ function showQuestion(qq) {
   document.getElementById("drop-area").innerHTML = dropArea;
   pattern.setAttribute("src", "static/" + qImage);
   document.getElementById("alert").setAttribute("style", "color : blue");
+
+  boxes = document.querySelectorAll(".box");
+
+
 
   /* draggable element */
   // const items = document.querySelectorAll(".item");
@@ -524,7 +537,7 @@ function endSection2() {
   });
   sec2.push(totalSec2);
   localStorage.setItem("sec2Data", JSON.stringify(sec2));
-
+  freezeImages();
   // console.log("Score for section 2 : " + totalSec2);
   BtnNext.innerHTML = "Go to the Result";
   BtnNext.removeEventListener("click", gotoNextQ);
