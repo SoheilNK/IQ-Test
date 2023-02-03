@@ -32,7 +32,7 @@
 
       <div class="content">
         <h2>Please fill the form below to start the test.</h2>
-        <form onsubmit="start()" action="sec-01.html">
+        <form onsubmit="start()" action="sec-02.html">
           <label for="fname">First name:(optional)</label><br />
           <input type="text" id="fname" name="fname" /><br />
           <label for="lname">Last name:(optional)</label><br />
@@ -67,7 +67,6 @@
       delete pData[""];
       localStorage.clear();
       localStorage.setItem("personalData", JSON.stringify(pData));
-      console.log(pData);
     }
   </script>
 </html>

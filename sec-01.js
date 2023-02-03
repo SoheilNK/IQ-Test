@@ -269,7 +269,7 @@ function gotoNextQ() {
   //--------------------------finalize section 1-------------
   if (q > sec1.length) {
     document.getElementById("alert").setAttribute("style", "color : blue");
-    document.getElementById("alert").innerHTML = "End of Section 1";
+    document.getElementById("alert").innerHTML = "End of Section 2";
     BtnNext.setAttribute("disabled", "");
     InAnswer.setAttribute("disabled", "");
     let qqa = ""; //question data
@@ -285,8 +285,8 @@ function gotoNextQ() {
     sec1.push(totalSec1);
     localStorage.setItem("sec1Data", JSON.stringify(sec1));
     console.log("Score for section 1 : " + totalSec1);
-    BtnNext.innerHTML = "Go to the next Section";
-    BtnNext.setAttribute("onclick", 'window.location.href = "sec-02.html";');
+    BtnNext.innerHTML = "Go to the Result";
+    BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
     BtnNext.removeAttribute("disabled");
   } else {
     InAnswer.value = "";

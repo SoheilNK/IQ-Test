@@ -523,7 +523,7 @@ function showResult() {
 
 function endSection2() {
   document.getElementById("alert").setAttribute("style", "color : blue");
-  document.getElementById("alert").innerHTML = "End of Section 2";
+  document.getElementById("alert").innerHTML = "End of Section 1";
   BtnNext.setAttribute("disabled", "");
   clearInterval(myCounter);
 
@@ -539,10 +539,10 @@ function endSection2() {
   localStorage.setItem("sec2Data", JSON.stringify(sec2));
   freezeImages();
   // console.log("Score for section 2 : " + totalSec2);
-  BtnNext.innerHTML = "Go to the Result";
+  BtnNext.innerHTML = "Go to the Next Section";
   BtnNext.removeEventListener("click", gotoNextQ);
   // BtnNext.removeEventListener("touchstart", gotoNextQ);
-  BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
+  BtnNext.setAttribute("onclick", 'window.location.href = "sec-01.html";');
   // BtnNext.setAttribute("ontouchstart", 'window.location.href = "result.html";');
   BtnNext.removeAttribute("disabled");
 }
