@@ -15,21 +15,26 @@
     />
 
 <body>
-    <div class="header">
-      <nav>
-        <ul>
-          <li id="section"><strong>IQ Test</strong></li>
-          <li class="home">
-            <a href="index.html"> Home </a>
-          </li>
-          <li>
-            <a href="about.html"> About </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-    <div class="container">
+<div class="header">
+      <div class="header1">
+        <nav class="nav" id="nav">
+          <ul>
+            <li class="burger" onclick="showMenu()">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </li>
+            <li>
+              <a href="index.html"> Home </a>
+            </li>
+            <li>
+              <a id="about" href="about.html"> About </a>
+            </li>
+          </ul>
+        </nav>
+        <div id="logo"><strong>IQ Test</strong></div>
+      </div>
+    </div>    <div class="container">
         <div>
             <h1 style="text-align: center;">
                 <p>Wechsler Test & Intelligence Scale</p>
@@ -73,9 +78,6 @@
             </button>
         </div>
         
-    </div>
 </body>
-
-
-
+  <script src="utils.js"></script>
 </html>

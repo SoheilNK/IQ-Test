@@ -7,6 +7,7 @@
   --table: #cebbed;
   --width1: 50rem;
   --minWidth: 18.75rem;
+  --imgWidth: 3.75rem;
   --logoW: 7rem;
 }
 
@@ -132,10 +133,10 @@ li {
 }
 
   .nav.responsive {
-    
+    color: black;
     height: 6rem;
     flex-direction: column;
-    background-color: var(--deeppurple-1);
+    background-color: var(--table);
   }
   .nav.responsive a {
     float: none;
@@ -233,9 +234,7 @@ input {
 }
 
 /* section2 ----------------------------- */
-:root {
-  --imgWidth: 4rem;
-}
+
 
 
 img {
