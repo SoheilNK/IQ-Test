@@ -7,6 +7,7 @@
   --table: #cebbed;
   --width1: 50rem;
   --minWidth: 18.75rem;
+  --logoW: 7rem;
 }
 
 body {
@@ -31,10 +32,25 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-nav {
+.header1 {
+  display: flex;
   width: var(--width1);
   min-width: 18.75rem;
+}
+
+.nav {
+  
+  width: var(--logoW);
+  padding: 0.5rem;
+  margin-right: auto;
+}
+#logo {
+  display:block;
+  width: var(--logoW);
+  padding: 0.5rem;
+  text-align: right;
+  margin: auto;
+  margin-right: 0;
 }
 
 ul {
@@ -51,12 +67,10 @@ ul {
   margin: 0;
 }
 
-ul :nth-child(2) { order: 3;}
-ul :nth-child(3) { order: 1;}
-ul :nth-child(4) { order: 2; margin-right: auto;}
-ul :nth-child(1) { order: 4;}
+ul :nth-child(2) { order: 2;}
+ul :nth-child(3) { order: 3;}
+ul :nth-child(2) :hover {color: #1dffec;}
 ul :nth-child(3) :hover {color: #1dffec;}
-ul :nth-child(4) :hover {color: #1dffec;}
 
 ul a {
   color: inherit;
@@ -71,37 +85,62 @@ ul a {
   /* margin: 0.2rem ; */
 }
 /* Add an active class to highlight the current page */
-nav a.active {
+.nav a.active {
   background-color: #04AA6D;
   color: white;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
-nav .burger {
+.nav .burger {
   display: none;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 660px) {
   :root {--imgWidth: 2rem;}
-  nav a {display: none}
-  ul :nth-child(1) { order: 2;}
-  ul :nth-child(2) { order: 1;}
+  .nav a {display: none}
+  /* ul :nth-child(1) { order: 2;}
+  ul :nth-child(2) { order: 1;} */
 
-  nav .burger {display: block;}
-  .nav {
+  .nav .burger {
+    display: block;
+  }
+  /* .nav {
     position: absolute;
     right: 0;
     top: 1rem;
   }
+  #logo {
+    
+  } */
+  .header1 {flex-direction: row-reverse;}
+.nav {
+  position: absolute;
+  margin-right: 0;
+}
+#logo {
+  text-align: left;
+  margin: auto;
+  margin-left: 0;
+}
+ul {
+  flex-direction: column;
+}
+li {
+      margin-left: auto;
+
+}
+
   .nav.responsive {
+    
+    height: 6rem;
     flex-direction: column;
-    background-color: var(--deeppurple-4);
+    background-color: var(--deeppurple-1);
   }
   .nav.responsive a {
     float: none;
     display: block;
-    text-align: left;
+    text-align: right;
   }
 }
 @media only screen and (max-width: 320px) {

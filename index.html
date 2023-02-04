@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IQ Test/Home</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,26 +16,27 @@
 
   <body>
     <div class="header">
-      <nav>
-        <ul class="nav"  id="nav">
-          <li class="burger" onclick="showMenu()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </li>
-
-          <li id="section"><strong>IQ Test</strong></li>
-          <li id="home" class="home">
-            <a href="index.html"> Home </a>
-          </li>
-          <li>
-            <a id="about" href="about.html"> About </a>
-          </li>
-        </ul>
-      </nav>
+      <div class="header1">
+        <nav class="nav" id="nav">
+          <ul>
+            <li class="burger" onclick="showMenu()">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </li>
+            <li>
+              <a href="index.html"> Home </a>
+            </li>
+            <li>
+              <a id="about" href="about.html"> About </a>
+            </li>
+          </ul>
+        </nav>
+        <div id="logo"><strong>IQ Test</strong></div>
+      </div>
     </div>
     <div class="container">
-      <h1 style="text-align: center;">Welcome to the IQ Test</h1>
+      <h1 style="text-align: center">Welcome to the IQ Test</h1>
 
       <div class="content">
         <h2>How it Works!</h2>
@@ -53,7 +54,7 @@
         </ol>
       </div>
 
-      <div style="text-align: center;">
+      <div style="text-align: center">
         <button
           type="button"
           class="button1"
