@@ -215,16 +215,24 @@ ol li {
 }
 
 label {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
   font-weight: bold;
+  padding: 0.5rem;
 }
 
 input {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
   font-size: large;
-  border-radius: 1rem;
-  border: 0.2rem solid var(--deeppurple-4);
+  border-radius: 4px;
+  border: 0.3rem solid var(--deeppurple-5);
+  padding: 0.5rem;
 }
+
+
 
 /* section1 ----------------------------- */
 
