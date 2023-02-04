@@ -51,14 +51,61 @@ ul {
   margin: 0;
 }
 
-ul :nth-child(1) { order: 3;}
-ul :nth-child(2) { order: 1;}
-ul :nth-child(3) { order: 2; margin-right: auto;}
-
+ul :nth-child(2) { order: 3;}
+ul :nth-child(3) { order: 1;}
+ul :nth-child(4) { order: 2; margin-right: auto;}
+ul :nth-child(1) { order: 4;}
+ul :nth-child(3) :hover {color: #1dffec;}
+ul :nth-child(4) :hover {color: #1dffec;}
 
 ul a {
   color: inherit;
   text-decoration: none;
+}
+
+.bar {
+  width: 2rem;
+  height: .2rem;
+  background-color: var(--deeppurple-5);
+  margin-top: 3px;
+  /* margin: 0.2rem ; */
+}
+/* Add an active class to highlight the current page */
+nav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+nav .burger {
+  display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 660px) {
+  :root {--imgWidth: 2rem;}
+  nav a {display: none}
+  ul :nth-child(1) { order: 2;}
+  ul :nth-child(2) { order: 1;}
+
+  nav .burger {display: block;}
+  .nav {
+    position: absolute;
+    right: 0;
+    top: 1rem;
+  }
+  .nav.responsive {
+    flex-direction: column;
+    background-color: var(--deeppurple-4);
+  }
+  .nav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+@media only screen and (max-width: 320px) {
+  :root {--imgWidth: 1.75rem;}
 }
 
 h1,
@@ -150,13 +197,7 @@ input {
 :root {
   --imgWidth: 4rem;
 }
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 660px) {
-  :root {--imgWidth: 2rem;}
-}
-@media only screen and (max-width: 320px) {
-  :root {--imgWidth: 1.75rem;}
-}
+
 
 img {
   width: 100%;
