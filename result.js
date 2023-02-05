@@ -1,8 +1,8 @@
 //***************************test data********************************* */
 // let pData = {
-//   fname: "Soheil",
-//   lname: "Najmabadi Kia",
-//   birthday: "1976-12-14",
+//   fname: "John",
+//   lname: "Doe",
+//   birthday: "1985-12-24",
 // };
 // let sec1 = [
 //   {
@@ -249,37 +249,210 @@
 //   18,
 // ];
 
-let pData = JSON.parse(localStorage.getItem("personalData"));
-let sec1 = JSON.parse(localStorage.getItem("sec1Data"));
-let sec2 = JSON.parse(localStorage.getItem("sec2Data"));
 
-let today = new Date();
-let dob = new Date(pData.birthday);
 
-document.getElementById("fname").innerHTML = pData.fname;
-document.getElementById("lname").innerHTML = pData.lname;
-document.getElementById("age").innerHTML =
-  today.getFullYear() - dob.getFullYear();
+function showResult() {
+  let pData = JSON.parse(localStorage.getItem("personalData"));
+  let sec1 = JSON.parse(localStorage.getItem("sec1Data"));
+  let sec2 = JSON.parse(localStorage.getItem("sec2Data"));
 
-populateTable("section1Tb", sec1);
-populateTable("section2Tb", sec2);
+  let today = new Date();
+  let dob = new Date(pData.birthday);
+  document.getElementById("fname").innerHTML = pData.fname;
+  document.getElementById("lname").innerHTML = pData.lname;
+  document.getElementById("age").innerHTML =
+    today.getFullYear() - dob.getFullYear();
+  let mathRaw = sec1[sec1.length-1];
+  let cubeRaw = sec2[sec2.length-1];
+  var tblRows = document.getElementById("tblResult").rows;
+  let cubeScaleTbl = [
+    [0, 0],
+    [1, 1],
+    [2, 2],
+    [6, 3],
+    [10, 4],
+    [14, 5],
+    [19, 6],
+    [23, 7],
+    [26, 8],
+    [28, 9],
+    [31, 10],
+    [36, 11],
+    [39, 12],
+    [42, 13],
+    [44, 14],
+    [45, 15],
+    [47, 16],
+    [48, 18]
+  ];
+  let mathScaleTbl = [
+    [0, 0],
+    [1, 1],
+    [2, 2],
+    [3, 3],
+    [4, 4],
+    [5, 5],
+    [7, 6],
+    [8, 7],
+    [9, 8],
+    [10, 9],
+    [11, 10],
+    [12, 11],
+    [13, 12],
+    [15, 13],
+    [16, 14],
+    [17, 15],
+    [18, 17],
+  ];
+  let IQScaleTbl = [
+    [1, 41],
+    [2, 42],
+    [3, 44],
+    [4, 45],
+    [5, 46],
+    [6, 48],
+    [7, 49],
+    [8, 50],
+    [9, 52],
+    [10, 53],
+    [11, 54],
+    [12, 55],
+    [13, 57],
+    [14, 58],
+    [15, 59],
+    [16, 61],
+    [17, 62],
+    [18, 63],
+    [19, 65],
+    [20, 66],
+    [21, 67],
+    [22, 69],
+    [23, 70],
+    [24, 71],
+    [25, 72],
+    [26, 74],
+    [27, 75],
+    [28, 76],
+    [29, 78],
+    [30, 79],
+    [31, 80],
+    [32, 82],
+    [33, 83],
+    [34, 84],
+    [35, 86],
+    [36, 87],
+    [37, 88],
+    [38, 89],
+    [39, 91],
+    [40, 92],
+    [41, 93],
+    [42, 95],
+    [43, 96],
+    [44, 97],
+    [45, 99],
+    [46, 100],
+    [47, 101],
+    [48, 103],
+    [49, 104],
+    [50, 105],
+    [51, 106],
+    [52, 108],
+    [53, 109],
+    [54, 110],
+    [55, 112],
+    [56, 113],
+    [57, 114],
+    [58, 116],
+    [59, 117],
+    [60, 118],
+    [61, 120],
+    [62, 121],
+    [63, 122],
+    [64, 123],
+    [65, 125],
+    [66, 126],
+    [67, 127],
+    [68, 129],
+    [69, 130],
+    [70, 131],
+    [71, 133],
+    [72, 134],
+    [73, 135],
+    [74, 137],
+    [75, 138],
+    [76, 139],
+    [77, 140],
+    [78, 142],
+    [79, 143],
+    [80, 144],
+    [81, 146],
+    [82, 147],
+    [83, 148],
+    [84, 150],
+    [85, 151],
+    [86, 152],
+    [87, 154],
+    [88, 155],
+    [89, 156],
+    [90, 157]
+  ];  
+  let IQclass = [
+    [69, "Extremely Low"],
+    [79, "Borderline"],
+    [89, "Low Average"],
+    [109, "Average"],
+    [119, "High Average"],
+    [129, "Superior"],
+    [300, "Very Superior"]
+  ];
+  
+    
 
-function populateTable(tableId, data) {
-  var table = "";
-  //   var data = [];
-  for (i = 0; i < data.length - 1; i++) {
-    table += "<tr>"; //open row
-    table += "<td>" + (i + 1) + "</td>";
-    table += "<td>" + data[i].questionAnswer + "</td>";
-    table += "<td>" + data[i].answerGet + "</td>";
-    table += "<td>" + data[i].answerTime + "</td>";
-    table += "<td>" + data[i].answerPoint + "</td>";
-    table += "</tr>"; // Close Row
-  }
-
-  table += "<tr>"; //open row
-  table += "<td colspan='4'>Total Points" + "</td>";
-  table += "<td>" + data[i] + "</td>";
-  table += "</tr>"; // Close Row
-  document.getElementById(tableId).innerHTML += table;
+  tblRows[2].cells[1].innerHTML = cubeRaw;
+  tblRows[2].cells[2].innerHTML = mathRaw;
+  // cubeScaleTbl.forEach((item) => {
+  //   if (cubeRaw <= item[0]) {
+  //     cubeScale = item[1];
+  //    break
+  //   }
+  // });
+  cubePoint = cubeScaleTbl.find(item => cubeRaw <= item[0])[1];
+  mathPoint = mathScaleTbl.find(item => mathRaw <= item[0])[1];
+  cubeScale = Math.round(cubePoint / 18 * 90);
+  mathScale = Math.round(mathPoint / 17 * 90);
+  tblRows[3].cells[1].innerHTML = cubeScale;
+  tblRows[3].cells[2].innerHTML = mathScale;
+  cubePIQ = IQScaleTbl.find((item) => cubeScale <= item[0])[1];
+  mathPIQ = IQScaleTbl.find((item) => mathScale <= item[0])[1];
+  tblRows[4].cells[1].innerHTML = cubePIQ;
+  tblRows[4].cells[2].innerHTML = mathPIQ;
+  cubeClass = IQclass.find((item) => cubePIQ <= item[0])[1];
+  mathClass = IQclass.find((item) => mathPIQ <= item[0])[1];
+  tblRows[5].cells[1].innerHTML = cubeClass;
+  tblRows[5].cells[2].innerHTML = mathClass;
 }
+
+showResult();
+
+// populateTable("section1Tb", sec1);
+// populateTable("section2Tb", sec2);
+
+// function populateTable(tableId, data) {
+//   var table = "";
+//   //   var data = [];
+//   for (i = 0; i < data.length - 1; i++) {
+//     table += "<tr>"; //open row
+//     table += "<td>" + (i + 1) + "</td>";
+//     table += "<td>" + data[i].questionAnswer + "</td>";
+//     table += "<td>" + data[i].answerGet + "</td>";
+//     table += "<td>" + data[i].answerTime + "</td>";
+//     table += "<td>" + data[i].answerPoint + "</td>";
+//     table += "</tr>"; // Close Row
+//   }
+
+//   table += "<tr>"; //open row
+//   table += "<td colspan='4'>Total Points" + "</td>";
+//   table += "<td>" + data[i] + "</td>";
+//   table += "</tr>"; // Close Row
+//   document.getElementById(tableId).innerHTML += table;
+// }
