@@ -187,6 +187,7 @@ function pickup(event) {
   moving = event.target;
   moving.style.height = moving.clientHeight + "px";
   moving.style.width = moving.clientWidth + "px";
+  console.log("Pick Up : ", moving.style.height, moving.style.width);
   moving.style.position = "fixed";
   moving.style.zIndex = "-10";
 }
@@ -199,26 +200,29 @@ function pickup(event) {
 function move(event) {
   // event.preventDefault();
   if (moving) {
-    if (event.clientX) {
+    if (event.pageX) {
       // mousemove
       // for test
-      targetHit = document.elementFromPoint(event.clientX, event.clientY);
+      targetHit = document.elementFromPoint(event.pageX, event.pageY);
       // for test
 
-      moving.style.left = event.clientX - moving.clientWidth / 2 + "px";
-      moving.style.top = event.clientY - moving.clientHeight / 2 + "px";
+      moving.style.left = event.pageX - moving.clientWidth / 2 + "px";
+      moving.style.top = event.pageY - moving.clientHeight / 2 + "px";
     } else {
       // touchmove - assuming a single touchpoint
       targetHit = document.elementFromPoint(
-        event.changedTouches[0].clientX,
-        event.changedTouches[0].clientY
+        event.changedTouches[0].pageX,
+        event.changedTouches[0].pageY
       );
 
       moving.style.left =
-        event.changedTouches[0].clientX - moving.clientWidth / 2 + "px";
+        event.changedTouches[0].pageX - moving.clientWidth / 2 + "px";
       moving.style.top =
-        event.changedTouches[0].clientY - moving.clientHeight / 2 + "px";
+        event.changedTouches[0].pageY - moving.clientHeight / 2 + "px";
     }
+
+  console.log("Move : ", moving.style.left, moving.style.top);
+  
 
       boxes.forEach((box) => {
         if (targetHit.id == box.id) {
@@ -256,13 +260,13 @@ function drop(event) {
   if (moving) {
     if (event.currentTarget.tagName !== "HTML") {
       let target = null;
-      if (event.clientX) {
-        target = document.elementFromPoint(event.clientX, event.clientY);
+      if (event.pageX) {
+        target = document.elementFromPoint(event.pageX, event.pageY);
         // target = event.currentTarget;
       } else {
         target = document.elementFromPoint(
-          event.changedTouches[0].clientX,
-          event.changedTouches[0].clientY
+          event.changedTouches[0].pageX,
+          event.changedTouches[0].pageY
         );
         // if (target.tagName == "IMG") {
         //   target = target.parentElement;
