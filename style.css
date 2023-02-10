@@ -40,13 +40,12 @@ body {
 }
 
 .nav {
-  
   width: var(--logoW);
   padding: 0.5rem;
   margin-right: auto;
 }
 #logo {
-  display:block;
+  display: block;
   width: var(--logoW);
   padding: 0.5rem;
   text-align: right;
@@ -68,10 +67,18 @@ ul {
   margin: 0;
 }
 
-ul :nth-child(2) { order: 2;}
-ul :nth-child(3) { order: 3;}
-ul :nth-child(2) :hover {color: #1dffec;}
-ul :nth-child(3) :hover {color: #1dffec;}
+ul :nth-child(2) {
+  order: 2;
+}
+ul :nth-child(3) {
+  order: 3;
+}
+ul :nth-child(2) :hover {
+  color: #1dffec;
+}
+ul :nth-child(3) :hover {
+  color: #1dffec;
+}
 
 ul a {
   color: inherit;
@@ -80,72 +87,20 @@ ul a {
 
 .bar {
   width: 2rem;
-  height: .2rem;
+  height: 0.2rem;
   background-color: var(--deeppurple-5);
   margin-top: 3px;
   /* margin: 0.2rem ; */
 }
 /* Add an active class to highlight the current page */
 .nav a.active {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
 .nav .burger {
   display: none;
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 660px) {
-  :root {--imgWidth: 2rem;}
-  .nav a {display: none}
-  /* ul :nth-child(1) { order: 2;}
-  ul :nth-child(2) { order: 1;} */
-
-  .nav .burger {
-    display: block;
-  }
-  /* .nav {
-    position: absolute;
-    right: 0;
-    top: 1rem;
-  }
-  #logo {
-    
-  } */
-  .header1 {flex-direction: row-reverse;}
-.nav {
-  position: absolute;
-  margin-right: 0;
-}
-#logo {
-  text-align: left;
-  margin: auto;
-  margin-left: 0;
-}
-ul {
-  flex-direction: column;
-}
-li {
-      margin-left: auto;
-
-}
-
-  .nav.responsive {
-    color: black;
-    height: 6rem;
-    flex-direction: column;
-    background-color: var(--table);
-  }
-  .nav.responsive a {
-    float: none;
-    display: block;
-    text-align: right;
-  }
-}
-@media only screen and (max-width: 320px) {
-  :root {--imgWidth: 1.75rem;}
 }
 
 h1,
@@ -162,7 +117,7 @@ h3 {
   margin-top: 2rem;
   max-width: var(--width1);
   min-width: 18.75rem;
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
   flex-direction: column;
   /* display: none; */
 }
@@ -234,8 +189,6 @@ input {
   padding: 0.5rem;
 }
 
-
-
 /* section1 ----------------------------- */
 
 #question {
@@ -244,8 +197,6 @@ input {
 }
 
 /* section2 ----------------------------- */
-
-
 
 img {
   width: 100%;
@@ -394,3 +345,64 @@ td {
 /* .tblResult tr:nth-child(even) {
   background-color: var(--deeppurple-2);
 } */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 660px) {
+  :root {
+    --imgWidth: 2rem;
+  }
+
+  .nav a {
+    display: none;
+  }
+  .nav .burger {
+    display: block;
+    
+  }
+  .header1 {
+    flex-direction: row-reverse;
+  }
+  .nav {
+    position: absolute;
+    margin-right: 0;
+  }
+  #logo {
+    text-align: left;
+    margin: auto;
+    margin-left: 0;
+  }
+  ul {
+    flex-direction: column;
+  }
+  li {
+    margin-left: auto;
+  }
+
+  .nav.responsive {
+    color: black;
+    height: 6rem;
+    flex-direction: column;
+    background-color: var(--table);
+        position: absolute;
+    /* right: 0;
+    left: 0; */
+    /* padding: 0 30px 150px 36px; */
+    /* margin-top: 46px; */
+    transform: translateX(0);
+    transition: transform .25s;
+  }
+  .nav.responsive a {
+    float: none;
+    display: block;
+    text-align: right;
+  }
+}
+@media only screen and (max-width: 390px) {
+  :root {
+    --imgWidth: 1.75rem;
+  }
+  table {
+    font-size: 70%;
+  }
+}
+

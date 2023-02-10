@@ -59,7 +59,8 @@ function confirmExit() {
   }, 20);
 }
 
-function showMenu() {
+function
+  showMenu() {
   var x = document.getElementById("nav");
   if (x.className === "nav") {
     x.className += " responsive";
