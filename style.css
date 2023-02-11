@@ -383,13 +383,7 @@ td {
     height: 6rem;
     flex-direction: column;
     background-color: var(--table);
-        position: absolute;
-    /* right: 0;
-    left: 0; */
-    /* padding: 0 30px 150px 36px; */
-    /* margin-top: 46px; */
-    transform: translateX(0);
-    transition: transform .25s;
+
   }
   .nav.responsive a {
     float: none;
