@@ -1,4 +1,4 @@
-let q = 1; //question number
+let q = 1;
 let pattern = document.getElementById("pattern");
 let qImage; //question image
 let qTime; //question time
@@ -9,19 +9,20 @@ let attempt = 1; //attempts for questions 1 and 2
 let dropArea;
 let totalSec2 = 0;
 let errCount = 0; //counts number of consecutive errors
-let data;
-let source;
+let moving = null;
+let sourcePickup = "";
+let boxes = null;
 
 const BtnNext = document.getElementById("btnNext");
 let images;
 
 BtnNext.addEventListener("click", gotoNextQ);
-
+// BtnNext.addEventListener("touchstart", gotoNextQ);
 
 const sec2 = [
   {
     questionImage: "pattern-01.jpg",
-    questionTime: 60,
+    questionTime: 30,
     questionAnswer: "1122",
     rewardTime1: 0,
     rewardTime2: 0,
@@ -31,7 +32,7 @@ const sec2 = [
   },
   {
     questionImage: "pattern-02.jpg",
-    questionTime: 60,
+    questionTime: 30,
     questionAnswer: "4226",
     rewardTime1: 0,
     rewardTime2: 0,
@@ -41,7 +42,7 @@ const sec2 = [
   },
   {
     questionImage: "pattern-03.jpg",
-    questionTime: 60,
+    questionTime: 30,
     questionAnswer: "2116",
     rewardTime1: 0,
     rewardTime2: 0,
@@ -51,7 +52,7 @@ const sec2 = [
   },
   {
     questionImage: "pattern-04.jpg",
-    questionTime: 60,
+    questionTime: 30,
     questionAnswer: "4522",
     rewardTime1: 0,
     rewardTime2: 0,
@@ -61,7 +62,7 @@ const sec2 = [
   },
   {
     questionImage: "pattern-05.jpg",
-    questionTime: 60,
+    questionTime: 30,
     questionAnswer: "1531",
     rewardTime1: 0,
     rewardTime2: 0,
@@ -71,7 +72,7 @@ const sec2 = [
   },
   {
     questionImage: "pattern-06.jpg",
-    questionTime: 60,
+    questionTime: 30,
     questionAnswer: "5436",
     rewardTime1: 0,
     rewardTime2: 0,
@@ -81,8 +82,28 @@ const sec2 = [
   },
   {
     questionImage: "pattern-07.jpg",
-    questionTime: 120,
+    questionTime: 60,
     questionAnswer: "516121413",
+    rewardTime1: 15,
+    rewardTime2: 20,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-08.jpg",
+    questionTime: 60,
+    questionAnswer: "535353535",
+    rewardTime1: 23,
+    rewardTime2: 35,
+    answerTime: 0,
+    answerGet: "",
+    answerPoint: 0,
+  },
+  {
+    questionImage: "pattern-09.jpg",
+    questionTime: 60,
+    questionAnswer: "546635453",
     rewardTime1: 30,
     rewardTime2: 40,
     answerTime: 0,
@@ -90,106 +111,225 @@ const sec2 = [
     answerPoint: 0,
   },
   {
-    questionImage: "pattern-08.jpg",
-    questionTime: 120,
-    questionAnswer: "535353535",
-    rewardTime1: 45,
-    rewardTime2: 70,
-    answerTime: 0,
-    answerGet: "",
-    answerPoint: 0,
-  },
-  {
-    questionImage: "pattern-09.jpg",
-    questionTime: 120,
-    questionAnswer: "546635453",
-    rewardTime1: 60,
-    rewardTime2: 80,
-    answerTime: 0,
-    answerGet: "",
-    answerPoint: 0,
-  },
-  {
     questionImage: "pattern-10.jpg",
-    questionTime: 180,
+    questionTime: 90,
     questionAnswer: "425632146",
-    rewardTime1: 60,
-    rewardTime2: 80,
+    rewardTime1: 30,
+    rewardTime2: 40,
     answerTime: 0,
     answerGet: "",
     answerPoint: 0,
   },
 ];
-//------------------------------drag and drop----------------------
+//------------------------------drag and drop----old------------------
 
+// function dragStart(e) {
+//   e.dataTransfer.setData("data", e.target.id);
+//     e.dataTransfer.setData("source", e.target.parentElement.id);
 
-function dragStart(e) {
-  e.dataTransfer.setData("data", e.target.id);
-    e.dataTransfer.setData("source", e.target.parentElement.id);
+// }
 
+// function dragEnter(e) {
+//   var target_id = e.target.id;
+//   var content = target_id.slice(0, 3);
+//   if (content == 'img') {
+//     // e.Default();
+//   } else { e.preventDefault() };
+//     e.target.classList.add('drag-over');
+// }
+
+// function dragOver(e) {
+//   var target_id = e.target.id;
+//   var content = target_id.slice(0, 3);
+//   if (content == "img") {
+//     // e.Default();
+//   } else {
+//     e.preventDefault();
+//   }
+//   e.target.classList.add("drag-over");
+// }
+
+// function dragLeave(e) {
+//     e.target.classList.remove('drag-over');
+// }
+
+// function drop(e) {
+//   e.target.classList.remove("drag-over");
+//   var data = e.dataTransfer.getData("data");
+//   // get the draggable element
+//   const source_id = e.dataTransfer.getData("source");
+//   var target_id = e.target.id;
+//   const draggable = document.getElementById(data);
+
+//   // imagefile = draggable.innerHTML;
+//   e.target.appendChild(draggable);
+//   draggable.classList.remove("hide");
+//   parentElement = document.getElementById(source_id);
+//   if (source_id.slice(0, 4) == "cube") {
+//       idName = data.slice(0, 4);
+//       idNumber = +data.slice(5);
+//       idNumber++;
+//     newId = idName + "-" + idNumber;
+//     newImage = draggable.cloneNode(true);
+//     newImage.setAttribute('id', newId);
+//     parentElement.appendChild(newImage);
+
+//     document.getElementById(newId).addEventListener("dragstart", dragStart);
+//     }
+
+// }
+//--------------------------------------------------------------------------
+//------new drag and drop with touch support--------------------------------
+
+function pickup(event) {
+  event.preventDefault();
+  sourcePickup = event.currentTarget.parentElement.id;
+  moving = event.target;
+  moving.style.height = moving.clientHeight + "px";
+  moving.style.width = moving.clientWidth + "px";
+  // console.log(
+  //   "Pick Up : ",
+  //   moving.style.clientX,
+  //   moving.style.clientY,
+  //   moving.style.height,
+  //   moving.style.width
+  // );
+  moving.style.position = "fixed";
+  moving.style.zIndex = "-10";
 }
+// $(document).bind("touchstart", function (e) {
+//   e.preventDefault();
+//   var orig = e.riginalEvent;
 
+//         })
 
+function move(event) {
+  // event.preventDefault();
+  if (moving) {
+    if (event.clientX) {
+      // mousemove
+      // for test
+      targetHit = document.elementFromPoint(event.clientX, event.clientY);
+      // for test
 
+      moving.style.left = event.clientX - moving.clientWidth / 2 + "px";
+      moving.style.top = event.clientY - moving.clientHeight / 2 + "px";
+    } else {
+      // touchmove - assuming a single touchpoint
+      targetHit = document.elementFromPoint(
+        event.changedTouches[0].clientX,
+        event.changedTouches[0].clientY
+      );
 
-function dragEnter(e) {
-  var target_id = e.target.id;
-  var content = target_id.slice(0, 3);
-  if (content == 'img') {
-    // e.Default();
-  } else { e.preventDefault() };
-    e.target.classList.add('drag-over');
-}
-
-function dragOver(e) {
-  var target_id = e.target.id;
-  var content = target_id.slice(0, 3);
-  if (content == "img") {
-    // e.Default();
-  } else {
-    e.preventDefault();
-  }
-  e.target.classList.add("drag-over");
-}
-
-function dragLeave(e) {
-    e.target.classList.remove('drag-over');
-}
-
-function drop(e) {
-  e.target.classList.remove("drag-over");
-  var data = e.dataTransfer.getData("data");
-  // get the draggable element
-  const source_id = e.dataTransfer.getData("source");
-  var target_id = e.target.id;
-  const draggable = document.getElementById(data);
-
-  // imagefile = draggable.innerHTML;
-  e.target.appendChild(draggable);
-  draggable.classList.remove("hide");
-  parentElement = document.getElementById(source_id);
-  if (source_id.slice(0, 4) == "cube") {
-      idName = data.slice(0, 4);
-      idNumber = +data.slice(5);
-      idNumber++;
-    newId = idName + "-" + idNumber;
-    newImage = draggable.cloneNode(true);
-    newImage.setAttribute('id', newId);
-    parentElement.appendChild(newImage);
-   
-    document.getElementById(newId).addEventListener("dragstart", dragStart);
+      moving.style.left =
+        event.changedTouches[0].clientX - moving.clientWidth / 2 + "px";
+      moving.style.top =
+        event.changedTouches[0].clientY - moving.clientHeight / 2 + "px";
     }
 
-  // // add it to the drop target
-  // e.target.appendChild(draggable);
-
-  // display the draggable element
+  // console.log("Move : ", moving.style.left, moving.style.top);
   
+
+      boxes.forEach((box) => {
+        if (targetHit.id == box.id) {
+          box.classList.add("drag-over");
+        } else {
+          box.classList.remove("drag-over");
+        }
+      });
+
+    // if (targetHit.id == "div1") {
+    //   document.getElementById("div1").classList.add("drag-over");
+    // } else {
+    //   document.getElementById("div1").classList.remove("drag-over");
+    // }
+    // if (targetHit.id == "div2") {
+    //   document.getElementById("div2").classList.add("drag-over");
+    // } else {
+    //   document.getElementById("div2").classList.remove("drag-over");
+    // }
+    // if (targetHit.id == "div3") {
+    //   document.getElementById("div3").classList.add("drag-over");
+    // } else {
+    //   document.getElementById("div3").classList.remove("drag-over");
+    // }
+    // if (targetHit.id == "div4") {
+    //   document.getElementById("div4").classList.add("drag-over");
+    // } else {
+    //   document.getElementById("div4").classList.remove("drag-over");
+    // }
+  }
 }
-//--------------------------------------------------------------------------
+
+function drop(event) {
+  // event.preventDefault();
+  if (moving) {
+    if (event.currentTarget.tagName !== "HTML") {
+      let target = null;
+      if (event.clientX) {
+        target = document.elementFromPoint(event.clientX, event.clientY);
+        // target = event.currentTarget;
+      } else {
+        target = document.elementFromPoint(
+          event.changedTouches[0].clientX,
+          event.changedTouches[0].clientY
+        );
+        // if (target.tagName == "IMG") {
+        //   target = target.parentElement;
+        // }
+      }
+      if (
+        (target.innerHTML == "" && target.tagName !== "IMG") ||
+        target.id == "trash1"
+      ) {
+        target.appendChild(moving);
+        parentElement = document.getElementById(sourcePickup);
+        if (sourcePickup.slice(0, 4) == "cube") {
+          idName = moving.id.slice(0, 4);
+          idNumber = +moving.id.slice(5);
+          idNumber++;
+          newId = idName + "-" + idNumber;
+          newImage = moving.cloneNode(true);
+          newImage.setAttribute("id", newId);
+          parentElement.appendChild(newImage);
+
+          document
+            .getElementById(newId)
+            .setAttribute("onmousedown", "pickup(event)");
+          document
+            .getElementById(newId)
+            .setAttribute("ontouchstart", "pickup(event)");
+
+          // reset our element
+          newImage.style.left = "";
+          newImage.style.top = "";
+          newImage.style.height = "";
+          newImage.style.width = "";
+          newImage.style.position = "";
+          newImage.style.zIndex = "";
+
+          newImage = null;
+        }
+      }
+
+      // reset our element
+      moving.style.left = "";
+      moving.style.top = "";
+      moving.style.height = "";
+      moving.style.width = "";
+      moving.style.position = "";
+      moving.style.zIndex = "";
+
+      moving = null;
+    }
+  }
+}
+
+//-----------------------------------------------------------------
+
 function runSec2() {
   qTime = sec2[q - 1].questionTime;
-  
+
   showQuestion(q);
   timer(qTime);
 }
@@ -199,49 +339,52 @@ function showQuestion(qq) {
   qTime = sec2[q - 1].questionTime;
   qImage = sec2[qq - 1].questionImage;
   let pickupArea = `
-            <div id="trash" class="box" style="border: 0px;">
-                <img src="static/bin-icon.png" id="trash" width="100px" height="100px">
+            <div id="trash" class="box" >
+                <img src="static/recycle-bin-icon-16272.png" id="trash1" onmouseup="drop(event)" ontouchend="drop(event)">
             </div>
             <div id="cube1">
-                <img src="static/cube-red.jpg" draggable="true" class="item" id="img1-1">
+                <img src="static/cube-red.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img1-1">
             </div>
             <div id="cube2">
-                <img src="static/cube-black.jpg" draggable="true" class="item" id="img2-1">
+                <img src="static/cube-black.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img2-1">
             </div>
             <div id="cube3">
-                <img src="static/cube-half1.jpg" draggable="true" class="item" id="img3-1">
+                <img src="static/cube-half1.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img3-1">
             </div>
             <div id="cube4">
-                <img src="static/cube-half2.jpg" draggable="true" class="item" id="img4-1">
+                <img src="static/cube-half2.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img4-1">
             </div>
             <div id="cube5">
-                <img src="static/cube-half3.jpg" draggable="true" class="item" id="img5-1">
+                <img src="static/cube-half3.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)"class="item" id="img5-1">
             </div>
             <div id="cube6">
-                <img src="static/cube-half4.jpg" draggable="true" class="item" id="img6-1">
+                <img src="static/cube-half4.jpg" onmousedown="pickup(event)" ontouchstart="pickup(event)" class="item" id="img6-1">
             </div> 
   `;
   if (q <= 6) {
     dropArea = `
-          <div id="div1" class="box"></div>
-          <div id="div2" class="box"></div>
-          <div id="div3" class="box"></div>
-          <div id="div4" class="box"></div>
+    <div id="div2" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+    <div id="div3" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+    <div id="div4" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+    <div id="div1" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
         `;
   } else {
     document
       .getElementById("drop-area")
-      .setAttribute("style", "height: 300px; width: 300px;");
+      .setAttribute(
+        "style",
+        "height: calc(var(--imgWidth) * 240 / 80 ); width: calc(var(--imgWidth) * 240 / 80 );"
+      );
     dropArea = `
-          <div id="div1" class="box"></div>
-          <div id="div2" class="box"></div>
-          <div id="div3" class="box"></div>
-          <div id="div4" class="box"></div>
-          <div id="div5" class="box"></div>
-          <div id="div6" class="box"></div>
-          <div id="div7" class="box"></div>
-          <div id="div8" class="box"></div>
-          <div id="div8" class="box"></div>
+          <div id="div1" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div2" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div3" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div4" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div5" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div6" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div7" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div8" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
+          <div id="div9" class="box" onmouseup="drop(event)" ontouchend="drop(event)"></div>
         `;
   }
 
@@ -249,27 +392,28 @@ function showQuestion(qq) {
   document.getElementById("drop-area").innerHTML = dropArea;
   pattern.setAttribute("src", "static/" + qImage);
   document.getElementById("alert").setAttribute("style", "color : blue");
-  document.getElementById("alert").innerHTML =
-    "Complete the left side to go to the next question.";
+
+  boxes = document.querySelectorAll(".box");
+
+
 
   /* draggable element */
-  const items = document.querySelectorAll(".item");
+  // const items = document.querySelectorAll(".item");
 
-  items.forEach((item) => {
-    item.addEventListener("dragstart", dragStart);
-  });
+  // items.forEach((item) => {
+  //   item.addEventListener("dragstart", dragStart);
+  // });
 
   /* drop targets */
-  const boxes = document.querySelectorAll(".box");
+  // const boxes = document.querySelectorAll(".box");
 
-  boxes.forEach((box) => {
-    box.addEventListener("dragenter", dragEnter);
-    box.addEventListener("dragover", dragOver);
-    box.addEventListener("dragleave", dragLeave);
-    box.addEventListener("drop", drop);
-  });
+  // boxes.forEach((box) => {
+  //   box.addEventListener("dragenter", dragEnter);
+  //   box.addEventListener("dragover", dragOver);
+  //   box.addEventListener("dragleave", dragLeave);
+  //   box.addEventListener("drop", drop);
+  // });
 }
-
 
 function timerOut() {
   //what happens when timer hits zero
@@ -278,22 +422,24 @@ function timerOut() {
     "Time is up, Please click next to go to the next question.";
   BtnNext.removeAttribute("disabled");
   freezeImages(); //  prevent images from further movements
-
 }
 
-function gotoNextQ(){
+function gotoNextQ() {
+  document.getElementById("btnNext").style.backgroundColor =
+    "var(--deeppurple-3)";
   calulateAnswer();
   calculatePoints();
   if (q < 11 && errCount != 3) {
     showQuestion(q);
     timer(qTime);
-  } 
+  }
 }
 
 function freezeImages() {
   images = document.getElementsByTagName("img");
   for (var i = 0; i < images.length; i++) {
-    images[i].setAttribute("draggable", "false");
+    images[i].removeAttribute("onmousedown");
+    images[i].removeAttribute("ontouchstart");
   }
 }
 
@@ -367,9 +513,10 @@ function calculatePoints() {
   }
 
   sec2[q - 1].answerPoint = aPoint;
-  if (!repeat) { //****************** */
+  if (!repeat) {
+    //****************** */
     q++;
-  } 
+  }
 
   // window.alert("your point: " + aPoint);
 
@@ -382,11 +529,11 @@ function calculatePoints() {
 
 function showResult() {
   window.location.href = "result.html";
-} 
+}
 
 function endSection2() {
   document.getElementById("alert").setAttribute("style", "color : blue");
-  document.getElementById("alert").innerHTML = "End of Section 2";
+  document.getElementById("alert").innerHTML = "End of Section 1";
   BtnNext.setAttribute("disabled", "");
   clearInterval(myCounter);
 
@@ -400,13 +547,12 @@ function endSection2() {
   });
   sec2.push(totalSec2);
   localStorage.setItem("sec2Data", JSON.stringify(sec2));
-
+  freezeImages();
   // console.log("Score for section 2 : " + totalSec2);
-  BtnNext.innerHTML = "Go to the Result";
+  BtnNext.innerHTML = "Go to the Next Section";
   BtnNext.removeEventListener("click", gotoNextQ);
-  BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
+  // BtnNext.removeEventListener("touchstart", gotoNextQ);
+  BtnNext.setAttribute("onclick", 'window.location.href = "sec-01.html";');
+  // BtnNext.setAttribute("ontouchstart", 'window.location.href = "result.html";');
   BtnNext.removeAttribute("disabled");
-  
 }
-
-

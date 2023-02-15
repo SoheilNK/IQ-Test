@@ -1,48 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head style>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>IQ Test</title>
-    <link rel="stylesheet" href="sec-01.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
-<body onload="showQuestion(q)">
-    
-</script>
-    <script>  
-        alert("Be sure to answer each question before the time runs out!");
+  <head style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IQ Test/Section 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body onload="showQuestion(q)">
+    <script>
+      alert("Be sure to answer each question before the time runs out!");
     </script>
 
-    
-    <div class="container">
-        <div #navbar>
-                <nav>
-                    <ul>
-                        <li id="section"><strong>IQ Test</strong> / Section 1</li>
-                        <li id="timerDiv">
-                            <li id="remTime">
-                                <strong>Remaining Time:</strong>
-                            </li>
-                            <li id="time" style="font-weight: bold;"></li>
-                        </li>
-                    </ul>
-                </nav>
+    <div class="header">
+      <div class="header1">
+        <nav class="nav" id="nav">
+          <ul>
+            <li class="burger" onclick="showMenu()">
+              <button>
+                <svg
+                  aria-hidden="true"
+                  class="pre-nav-design-icon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                  role="img"
+                  width="24px"
+                  height="24px"
+                  fill="none"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    d="M21 5.25H3M21 12H3m18 6.75H3"
+                  ></path>
+                </svg>
+              </button>
+            </li>
+            <li>
+              <a onclick="return confirmExit()"> EXIT! </a>
+            </li>
+          </ul>
+        </nav>
+        <div id="logo"><strong>IQ Test</strong></div>
+      </div>
+    </div>
 
+    <div class="container" id="container">
+      <h2 style="text-align: center">Section Two Questions</h2>
+
+      <div class="content">
+        <div id="timeDiv">
+          <p id="remTime">
+            Remaining Time:
+            <span id="time" style="font-weight: bold"></span>
+          </p>
         </div>
         <div id="question">
-            <p></p>
+          <p></p>
         </div>
         <div>
-            <input type="text" placeholder="123..." name="answer" id="answer" autofocus autocomplete="off">
-            <p id="alert" style="text-align: center;"></p>
+          <input
+            type="text"
+            placeholder="123..."
+            name="answer"
+            id="answer"
+            autofocus
+            autocomplete="off"
+          />
+          <p id="alert" style="text-align: center"></p>
         </div>
-        <div><button  type="button" class="button1" id="btnNext" disabled="disabled">Next</button></div>
+      </div>
+      <div style="text-align: center">
+        <button type="button" class="button1" id="btnNext" disabled="disabled">
+          Next Question
+        </button>
+      </div>
     </div>
-    
-</body>
+  </body>
 
-<script src="sec-01.js"></script>
-<script src="utils.js"></script>
-
+  <script src="sec-01.js"></script>
+  <script src="utils.js"></script>
 </html>

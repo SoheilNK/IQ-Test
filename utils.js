@@ -36,3 +36,35 @@ function timer(t) {
     };
   }, 1000);
 }
+
+function confirmExit() {
+  let container = document.getElementById("container");
+  container.className = "hidden";
+  setTimeout(() => {
+    r = confirm(
+      "Are you Sure?\nIf you exit now, your progress will be lost and you have to start the test from the beginning."
+    );
+  }, 10); 
+
+  setTimeout(() => {
+    if (r) {
+      container.className = "container";
+      window.location.href = "index.html";
+      return false;
+    } else {
+      container.className = "container";
+
+      return;
+    }
+  }, 20);
+}
+
+function
+  showMenu() {
+  var x = document.getElementById("nav");
+  if (x.className === "nav") {
+    x.className += " responsive";
+  } else {
+    x.className = "nav";
+  }
+}

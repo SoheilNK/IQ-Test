@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html onmouseup="drop(event)" ontouchend="drop(event)">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>drag and drop with touch screens</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      #container {
+        display: flex;
+      }
+
+      #container > div {
+        border: 1px solid gray;
+        padding: 1em;
+
+        height: 10em;
+        width: 50%;
+      }
+
+      #movable-element {
+        border: 1px solid green;
+        background-color: #00ff0033;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container" onmousemove="move(event)" ontouchmove="move(event)">
+      <div id="left-parent" onmouseup="drop(event)" ontouchend="drop(event)">
+        <img src="static/cube-red.jpg"
+          id="movable-element"
+          onmousedown="pickup(event)"
+          ontouchstart="pickup(event)"
+        ></img>
+      </div>
+
+      <div
+        id="right-parent"
+        onmouseup="drop(event)"
+        ontouchend="drop(event)"
+      ></div>
+    </div>
+  </body>
+  <script>
+        let moving = null;
+
+    function pickup(event) {
+        moving = event.target;
+        moving.style.height = moving.clientHeight + "px";
+        moving.style.width = moving.clientWidth + "px";
+        moving.style.position = 'fixed';
+        moving.style.zIndex = '-10';
+    }
+
+
+
+    function move(event) {
+        if (moving) {
+            if (event.clientX) {
+                // mousemove
+                moving.style.left = event.clientX - moving.clientWidth / 2 + "px";
+                moving.style.top = event.clientY - moving.clientHeight / 2 + "px";
+            } else {
+                // touchmove - assuming a single touchpoint
+                moving.style.left =
+                  event.changedTouches[0].clientX - moving.clientWidth / 2 + "px";
+                moving.style.top =
+                  event.changedTouches[0].clientY - moving.clientHeight / 2 + "px";
+            }
+        }
+    }
+
+    function drop(event) {
+        if (moving) {
+            if (event.currentTarget.tagName !== 'HTML') {
+                let target = null;
+                if (event.clientX) {
+                    target = document.elementFromPoint(event.clientX , event.clientY );
+                } else {
+                    target = document.elementFromPoint(event.changedTouches[0].clientX , event.changedTouches[0].clientY );
+                }
+
+                target.appendChild(moving);
+            }
+
+            // reset our element
+            moving.style.left = '';
+            moving.style.top = '';
+            moving.style.height = '';
+            moving.style.width = '';
+            moving.style.position = '';
+            moving.style.zIndex = '';
+
+            moving = null;
+        }
+    }
+  </script>
+</html>

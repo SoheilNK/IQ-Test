@@ -15,9 +15,7 @@ let errCount = 0; //counts number of consecutive errors
 
 BtnNext.addEventListener("click", nextQ);
 InAnswer.addEventListener("keyup", handleAnswerChange);
-InAnswer.addEventListener("change", console.log("answer change"));
-
-
+// InAnswer.addEventListener("change", console.log("answer change"));
 
 //------------------------ section 1 data -------Start------------
 const sec1 = [
@@ -172,15 +170,16 @@ function showQuestion(qn) {
   document.getElementById("question").innerHTML = qText;
   if (qn == 1) {
     qText =
-      qText + '   <img src="static/sec01_q01.png" alt="cubes" width="600">';
+      qText +
+      '  <br/><br/> <img src="static/sec01_q01.png" alt="cubes" width="100%">';
     document.getElementById("question").innerHTML = qText;
   }
 
   timer(qTime);
 
-  console.log("q" + q + "     = ", qText);
-  console.log("Time:            ", qTime);
-  console.log("Answer:          ", qAnswer);
+  // console.log("q" + q + "     = ", qText);
+  // console.log("Time:            ", qTime);
+  // console.log("Answer:          ", qAnswer);
 }
 
 //--------------------------Validate input-----------Start-------
@@ -190,16 +189,15 @@ const checkAnswerValidation = (aGet) => !isNaN(aGet) && aGet !== 0;
 function handleAnswerChange(event) {
   // Get the value of the input field with id="answer"
   aGet = Number(event.target.value);
-  console.log(aGet);
-  console.log(typeof aGet);
+  // console.log(aGet);
+  // console.log(typeof aGet);
 
   const hasValidAnswer = checkAnswerValidation(aGet);
 
   if (hasValidAnswer) {
     BtnNext.removeAttribute("disabled");
     document.getElementById("alert").setAttribute("style", "color : blue");
-    document.getElementById("alert").innerHTML =
-      "Please click next to go to the next question.";
+    document.getElementById("alert").innerHTML = "";
   } else {
     BtnNext.setAttribute("disabled", "");
     document.getElementById("alert").setAttribute("style", "color : red");
@@ -214,13 +212,12 @@ function handleAnswerChange(event) {
 //--------------------------handle button click------Start-------
 
 function nextQ() {
-  
-if (q<15) {
-	  clearInterval(myCounter);
-	  calculate_points();
-	  gotoNextQ();
-	
-}}
+  if (q < 15) {
+    clearInterval(myCounter);
+    calculate_points();
+    gotoNextQ();
+  }
+}
 //--------------------------handle button click------End-------
 function calculate_points() {
   let remTime = document.getElementById("time").innerHTML;
@@ -237,10 +234,10 @@ function calculate_points() {
     aPoint = 0;
     errCount++;
   }
-  console.log("Question # : ", q);
-  console.log("Answer time: ", aTime);
-  console.log("Your answer: ", aGet);
-  console.log("Your point: ", aPoint);
+  // console.log("Question # : ", q);
+  // console.log("Answer time: ", aTime);
+  // console.log("Your answer: ", aGet);
+  // console.log("Your point: ", aPoint);
 
   question.answerGet = aGet;
   question.answerPoint = aPoint;
@@ -268,28 +265,28 @@ function gotoNextQ() {
     q++;
   }
 
-  console.log("error = " + errCount);
+  // console.log("error = " + errCount);
   //--------------------------finalize section 1-------------
   if (q > sec1.length) {
     document.getElementById("alert").setAttribute("style", "color : blue");
-    document.getElementById("alert").innerHTML = "End of Section 1";
+    document.getElementById("alert").innerHTML = "End of Section 2";
     BtnNext.setAttribute("disabled", "");
     InAnswer.setAttribute("disabled", "");
     let qqa = ""; //question data
 
     sec1.forEach((qq) => {
-      Object.keys(qq).forEach((key) => {
-        qqa = qqa + (key, qq[key]) + "  ";
-      });
+      // Object.keys(qq).forEach((key) => {
+      //   qqa = qqa + (key, qq[key]) + "  ";
+      // });
       totalSec1 = totalSec1 + qq.answerPoint;
-      console.log(qqa);
-      qqa = "";
+      // console.log(qqa);
+      // qqa = "";
     });
     sec1.push(totalSec1);
     localStorage.setItem("sec1Data", JSON.stringify(sec1));
     console.log("Score for section 1 : " + totalSec1);
-    BtnNext.innerHTML = "Go to the next Section";
-    BtnNext.setAttribute("onclick", 'window.location.href = "sec-02.html";');
+    BtnNext.innerHTML = "Go to the Result";
+    BtnNext.setAttribute("onclick", 'window.location.href = "result.html";');
     BtnNext.removeAttribute("disabled");
   } else {
     InAnswer.value = "";
@@ -304,8 +301,7 @@ function gotoNextQ() {
 function timerOut() {
   //what happens when timer hits zero
   document.getElementById("alert").setAttribute("style", "color : blue");
-  document.getElementById("alert").innerHTML =
-    "Time is up, Please click next to go to the next question.";
+  document.getElementById("alert").innerHTML = "Time is up!!!";
   BtnNext.removeAttribute("disabled");
   InAnswer.setAttribute("disabled", "");
 }

@@ -4,80 +4,80 @@
 <head style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>IQ Test/About</title>
-    <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
 
 <body>
-    <style>
-        ul {
-            display: flex;
-            gap: 12px;
-        }
-
-        li.home {
-            margin-right: auto;
-        }
-    </style>
-
-    <nav>
-        <ul>
-            <li class="home">
-                <a href="index.html">
-                    Home
-                </a>
+<div class="header">
+      <div class="header1">
+        <nav class="nav" id="nav">
+          <ul>
+            <li class="burger" onclick="showMenu()">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
             </li>
             <li>
-                <a href="about.html">
-                    About
-                </a>
+              <a href="index.html"> Home </a>
             </li>
-        </ul>
-    </nav>
-    <nav>
-                    <ul>
-                        <li id="section"><strong>IQ Test</strong> / About Page</li>
-                    </ul>
-
-
-    <div class="container">
+            <li>
+              <a id="about" href="about.html"> About </a>
+            </li>
+          </ul>
+        </nav>
+        <div id="logo"><strong>IQ Test</strong></div>
+      </div>
+    </div>    <div class="container">
         <div>
-            <h2>Wechsler Test & Intelligence Scale</h2>
-        <img src="static/WAIS_IV.jpg" alt="Wechsler Adult Intelligence Scale | Fourth Edition">
+            <h1 style="text-align: center;">
+                <p>Wechsler Test & Intelligence Scale</p>
+                <img src="static/WAIS_IV.jpg" alt="Wechsler Adult Intelligence Scale | Fourth Edition" width="80%">
+            </h1>
         </div>
-        <div>
+        <div class="content">
+
+
             <p>
             The Wechsler IQ test is a test that helps to measure cognitive abilities and intelligence. It has evolved over time, but
             the original Wechsler Intelligence Scales were developed by Dr. David Wechsler in 1939. It was initially called the
             Wechsler Bellevue Intelligence Scale, but it was revised 15 years later and renamed the Wechsler Adult Intelligence
-            Scale (WAIS). <br><br>
-            
-            Wechsler is a Romanian-American psychologist who was born on Jan 12, 1896, in Romania. His family relocated to the
-            states in New York when he was just a boy. He earned a Master’s Degree from Columbia University in 1917. By 1925, his
-            further delve into education earned him a Ph.D. It was Robert S. Woodworth that first took a chance on the young
-            psychologist. Woodworth was a big shot in the United States Army, and he was overwhelmed by the number of soldiers that
-            were experiencing mental issues after the war. Working alongside Charles Spearman and Karl Pearson, Wechsler was to
-            develop testing to help the army screen new draftees. However, things took a very different turn.
-            <br><br>
-            and his initial test was the Wechsler-Bellevue Intelligence Scale. The tests were developed after Dr. Wechsler’s
-            realization that existing intelligence tests for adults were merely adaptations of testing used for children, and had
-            little validity for adults.
-            <br><br>
-            Over time the test evolved into three separate versions used for different age groups. The Wechsler Adult Intelligence
-            Scale (WAIS) is used for adults, while the Wechsler Intelligence Scale for Children (WISC) is used for children between
-            the ages of 6 and 16. The Wechsler Preschool and Primary Scale of Intelligence (WPPSI) is used for children between the
-            ages of 4 and 6.5. In some cases of intellectual disabilities, the WISC may be used to help clinicians understand the
-            individual’s lowest level of knowledge.
+            Scale (WAIS).
             </p>
+            
+            <p>
+              Wechsler was a Romanian-American psychologist who was born on Jan 12, 1896, in Romania. His family relocated to the
+              USA in New York when he was just a boy. He earned a Master's Degree from Columbia University in 1917. By 1925, he had completed a Ph.D. It was Robert S. Woodworth who first took a chance on the young
+              psychologist. Woodworth was high up in the United States Army, and he was overwhelmed by the number of soldiers that
+              were experiencing psychological issues after the war. Working alongside Charles Spearman and Karl Pearson, Wechsler
+              developed testing to help the army screen new draftees. However, things took a very different turn.
+            </p>
+            <p>Dr. Wechsler realized that existing intelligence tests for adults were merely adaptations of testing used for children. As such, they had little validity for adults. For this reason, he dedicated himself to creating a dedicated intelligence test for adults.</p>
+            <p>
+              
+              His initial test was the Wechsler-Bellevue Intelligence Scale. Over time the test evolved into three separate versions used for different age groups. The Wechsler Adult Intelligence
+              Scale (WAIS) is used for adults, while the Wechsler Intelligence Scale for Children (WISC) is used for children between
+              the ages of 6 and 16. The Wechsler Preschool and Primary Scale of Intelligence (WPPSI) is used for children between the
+              ages of 4 and 6.5. In some cases of intellectual disabilities, the WISC may be used to help clinicians understand the
+              individual's lowest level of knowledge.
+            </p>
+            
         </div>
-        <div>
-            <button  type="button" class="button1" id="btnNext" onclick="history.back()">Go Back</button>
+        <div style="text-align: center;">
+           <button
+                type="button"
+                class="button1"
+                id="btnNext"
+                onclick="history.back()">Go Back
+            </button>
         </div>
         
-    </div>
 </body>
-
-
-
+  <script src="utils.js"></script>
 </html>

@@ -1,79 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="en" onmouseup="drop(event)" ontouchend="drop(event)">
 <head style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>IQ Test</title>
-    <link rel="stylesheet" href="sec-02.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Diplomata SC">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>IQ Test / Section 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 <body onload="runSec2()">
+    <style>
+        .content div {
+            padding: 0;
+        }
+    </style>
     
- <nav>
-                <ul>
-                    <li id="section"><strong>IQ Test</strong> / Section 2</li>
-                    <li id="timerDiv">
-                        <li id="remTime">
-                            Remaining Time:
-                        </li>
-                        <li id="time"></li>
-                    </li>
-                </ul>
-            </nav>   
+        <div class="header">
+      <div class="header1">
+        <nav class="nav" id="nav">
+          <ul>
+            <li class="burger" onclick="showMenu()">
+              <button>
+                <svg
+                  aria-hidden="true"
+                  class="pre-nav-design-icon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                  role="img"
+                  width="24px"
+                  height="24px"
+                  fill="none"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    d="M21 5.25H3M21 12H3m18 6.75H3"
+                  ></path>
+                </svg>
+              </button>
+            </li>
+            <li>
+              <a  onclick="return confirmExit()"> EXIT! </a>
+            </li>
+          </ul>
+        </nav>
+        <div id="logo"><strong>IQ Test</strong></div>
+      </div>
+    </div>
+
     
-    <div class="container" id="container">
-        <div>      
-        </div>
-        <div style="font-size: larger;"><p>Using the squares below, create a picture like the right-side pattern. </p></div>
+    <div class="container" id="container" onmousemove="move(event)" ontouchmove="move(event)" onmouseup="drop(event)" ontouchend="drop(event)">
+        <h2 style="text-align: center">Section One Questions</h2>
+        <div class="content" style="padding-bottom: 0rem;">
+            <div id="timeDiv">
+                <p id="remTime">
+                    Remaining Time:
+                    <span id="time" style="font-weight: bold;"></span>
+                </p>
+            </div>
+            <div id="question" style="font-size: larger;"><p>Using the squares below, create a picture like the right-side pattern. </p></div>
+            
+            <div class="pickup-area" id="pickup-area">
+            </div>
+            <div class="workshop" id="workshop">
+                
+                
+                <div class="drop-side"> 
+                    <div class="drop-area" id="drop-area">
+                    </div>
+                </div>
+                <div id="lineV"><img src="static/line.jpg"></div>
+                <div class="pattern-side">
+                    <div id="pattern-area">
+                        <img id="pattern" src="" alt="Pattern" >
+                    </div>
+                </div>
+            </div>
         
-        <div class="pickup-area" id="pickup-area">
-            <!-- <div id="trash" style="border: 0px;">
-                <img src="static/bin-icon.png" id="trash" width="100px" height="100px">
-            </div>
-            <div id="cube1" draggable="true" class="item">
-                <img src="static/cube-red.jpg"   id="img1-1">
-            </div>
-            <div id="cube2" ondrop="drop(event)">
-                <img src="static/cube-black.jpg" draggable="true" class="item" id="img2-1">
-            </div>
-            <div id="cube3" ondrop="drop(event)">
-                <img src="static/cube-half1.jpg" draggable="true" class="item" id="img3-1">
-            </div>
-            <div id="cube4" ondrop="drop(event)">
-                <img src="static/cube-half2.jpg" draggable="true" class="item" id="img4-1">
-            </div>
-            <div id="cube5" ondrop="drop(event)">
-                <img src="static/cube-half3.jpg" draggable="true" class="item" id="img5-1">
-            </div>
-            <div id="cube6" ondrop="drop(event)">
-                <img src="static/cube-half4.jpg" draggable="true" class="item" id="img6-1">
-            </div>  -->
-
+            <div><p id="alert" style="color: blue; text-align: center;"></p></div>
         </div>
-        <div class="workshop">
-            
-            
-            <div class="drop-side"> 
-                <div class="drop-area" id="drop-area">
-                    <!-- <div id="div1" class="box"></div>
-                    <div id="div2" class="box"></div>
-                    <div id="div3" class="box"></div>
-                    <div id="div4" class="box"></div> -->
-                </div>
-            </div>
-            <div id="lineV"><img src="static/cube-black.jpg" width="1" height="340"></div>
-            <div class="pattern-side">
-                <div >
-                    <img id="pattern" src="" alt="Pattern">
-                </div>
-            </div>
-        </div>
-
-        <div><p id="alert" style="color: blue; text-align: center;"></p></div>
-        <div>
-            
-            <button  type="button" class="button1" id="btnNext" >Next</button>
-        </div>
+        <div style="text-align: center">
+        <button
+          type="button"
+          class="button1"
+          id="btnNext"
+        >
+          Next Question
+        </button>
+      </div>
     </div>
 
 </body>

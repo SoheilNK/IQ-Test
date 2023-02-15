@@ -3,82 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Result</title>
-    <link rel="stylesheet" href="result.css">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>IQ Test / Result</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-    <img src="static/website-under-construction.png" alt="website-under-construction.png" srcset="">
-<div id="result"></div>
-<!-- ********************************************************** -->
+    <!-- <img src="static/website-under-construction.png" alt="website-under-construction.png" srcset=""> -->
 
-<nav>
-        <ul>
-            <li class="home">
-                <a href="index.html">
-                    Home
-                </a>
+    <div class="header">
+      <div class="header1">
+        <nav class="nav" id="nav">
+          <ul>
+            <li class="burger" onclick="showMenu()">
+              <button>
+                <svg
+                  aria-hidden="true"
+                  class="pre-nav-design-icon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                  role="img"
+                  width="24px"
+                  height="24px"
+                  fill="none"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    d="M21 5.25H3M21 12H3m18 6.75H3"
+                  ></path>
+                </svg>
+              </button>
             </li>
             <li>
-                <a href="about.html">
-                    About
-                </a>
+              <a href="index.html"> Home </a>
             </li>
-        </ul>
-    </nav>
-    <nav>
-    <ul>
-        <li id="section"><strong>IQ Test</strong> / Result Page</li>
-    </ul>
+            <li>
+              <a id="about" href="about.html"> About </a>
+            </li>
+          </ul>
+        </nav>
+        <div id="logo"><strong>IQ Test</strong></div>
+      </div>
+    </div>
 
     <div class="container">
-        <div id="title">
-            <p>Your results for the test.</p>
-        </div>
-        <div id="tables">
-            <table id="userDataTb">
-                <tr>
-                    <th colspan="3">User Data</th>
-                </tr>
-                <tr>
-                    <th>First Name</th>
-                    <th>Family Name</th>
-                    <th>Age</th>
-                </tr>
-                <tr>
-                    <td id="fname"></td>
-                    <td id="lname"></td>
-                    <td id="age"></td>
-                </tr>
-            </table>
-            <table id="section1Tb">
-                <tr>
-                    <th colspan="5">Section 1 Result</th>
-                </tr>
+              <h1 style="text-align: center;">Your Test Result</h1>
+            <div class="content">
+            <div id="tables">
+                
+                <table class="tblUser" id="userDataTb">
+                    <tr>
+                        <th>First Name: </th>
+                        <td id="fname"></td>
+                    </tr>
+                    <tr>
+                        <th>Family Name: </th>
+                        <td id="lname"></td>
+                    </tr>
+                    <tr>
+                      <th>Age: </th>
+                      <td id="age"></td>
+                    </tr>
+                </table>
+                <table class="tblResult" id="tblResult">
+                    <tr>
+                        <th colspan="3">Partial IQ Test Result</th>
+                    </tr>
 
-                <tr>
-                    <th>Question Number</th>
-                    <th>Correct Answer</th>
-                    <th>Your Answer</th>
-                    <th>Your Time</th>
-                    <th>Points</th>
-                </tr>
-            </table>
-            <table id="section2Tb">
-                <tr>
-                    <th colspan="5">Section 2 Result</th>
-                </tr>
-                <tr>
-                    <th>Question Number</th>
-                    <th>Correct Answer</th>
-                    <th>Your Answer</th>
-                    <th>Your Time</th>
-                    <th>Points</th>
-                </tr>
-            </table>
-        </div>
-        
+                    <tr>
+                        <th></th>
+                        <th>Cube Design</th>
+                        <th>Arithmetic</th>
+                    </tr>
+                    <tr>
+                        <th>Raw Point</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <th>Scaled Score</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Partial IQ Score</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Descriptive Classification</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Comment</th>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            
     </div>
 
 
